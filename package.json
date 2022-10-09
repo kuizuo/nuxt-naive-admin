@@ -6,7 +6,9 @@
   "author": {
     "url": "https://kuizuo.cn",
     "email": "hi@kuizuo.cn",
-    "name": "Kuizuo"
+    "name": "Kuizuo",
+    "qq": "",
+    "wx": ""
   },
   "license": "MIT",
   "repository": {

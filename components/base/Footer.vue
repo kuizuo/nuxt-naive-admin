@@ -17,8 +17,8 @@ import pkg from '~/package.json'
           </a>
         </div>
         <div class="flex items-center gap-3">
-          <a i-ri-wechat-2-line href="javascript:void(0);" />
-          <a i-ri-qq-line href="javascript:void(0);" />
+          <a i-ri-qq-line :href="pkg.author.qq" />
+          <a i-ri-wechat-2-line :href="pkg.author.wx" />
           <a i-ri-github-line :href="pkg.repository.url" target="_blank" />
         </div>
       </div>
