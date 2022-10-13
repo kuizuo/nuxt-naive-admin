@@ -7,11 +7,12 @@
     "url": "https://kuizuo.cn",
     "email": "hi@kuizuo.cn",
     "name": "Kuizuo",
-    "qq": "",
-    "wx": ""
+    "qq": "https://im.qq.com/",
+    "wx": "https://wx.qq.com/"
   },
   "license": "MIT",
   "repository": {
+    "name": "protocol",
     "url": "https://github.com/kuizuo/protocol",
     "type": "git"
   },
@@ -22,12 +23,6 @@
     "lint": "eslint .",
     "postinstall": "nuxi prepare",
     "generate": "nuxi generate"
-  },
-  "dependencies": {
-    "async": "^3.2.4",
-    "axios": "^0.27.2",
-    "pinia-plugin-persist": "^1.0.0",
-    "qs": "^6.11.0"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.26.2",
@@ -40,10 +35,13 @@
     "@pinia/nuxt": "^0.4.1",
     "@unocss/nuxt": "^0.45.13",
     "@vueuse/nuxt": "^9.1.1",
+    "axios": "^0.27.2",
     "eslint": "^8.23.0",
     "naive-ui": "^2.33.3",
     "nuxt": "^3.0.0-rc.11",
     "pinia": "^2.0.21",
+    "pinia-plugin-persist": "^1.0.0",
+    "qs": "^6.11.0",
     "typescript": "^4.8.2",
     "unplugin-auto-import": "^0.11.2",
     "unplugin-vue-components": "^0.22.7"

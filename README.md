@@ -14,7 +14,7 @@
 
 - 将 public/logo.png 换成你想要展示的 logo。
 - 修改 package.json 中的name、author，versopm信息，默认以这些属性设置为网站标题，作者，版本信息。
-- 在  content/help.md 与 content/changelog.md 编写项目的使用说明和更新日志。
+- 在 content/help.md 与 content/changelog.md 编写项目的使用说明和更新日志。
 - 在 server/api 编写你要后端请求接口。
 - 在 pages 与 components 编写你的前端页面与组件。
 
