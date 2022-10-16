@@ -26,10 +26,27 @@ Nuxt3 + Unocss + Naive UI
 
 ### 服务器部署
 
-```bash
-npm run build
-node .output/server/index.mjs 
+这里使用 pm2 进行部署，创建 `ecosystem.config.js` 文件：
+
+```js
+module.exports = {
+  apps: [
+    {
+      name: 'Protocol',
+      exec_mode: 'cluster',
+      instances: '1',
+      env: {
+        NITRO_PORT: 8044,
+        NITRO_HOST: '127.0.0.1',
+        NODE_ENV: 'production',
+      },
+      script: './.output/server/index.mjs',
+    },
+  ],
+}
 ```
+
+接着执行 `pm2 start ecosystem.config.js` 即可。
 
 ### Vercel
 
@@ -38,3 +55,7 @@ node .output/server/index.mjs
 ### Netlify
 
 转到 [Netlify](https://app.netlify.com/start) 并选择您的项目，点击 "Deploy site"，您的应用程序将在一分钟内上线。
+
+## License 
+
+[MIT](./LICENSE) License &copy; 2022-PRESENT [Kuizuo](https://github.com/kuizuo)
