@@ -18,15 +18,11 @@ async function getUser() {
   }
   loading = false
 }
-
-useHead({
-  title: 'Demo',
-})
 </script>
 
 <template>
   <div flex justify-center>
-    <n-card max-w-1024px>
+    <n-card max-w-5xl>
       <n-alert title="演示说明" type="info">
         <div flex items-center>
           调用 github api，获取用户信息。
@@ -38,7 +34,7 @@ useHead({
         </div>
       </n-alert>
 
-      <div my-4 w-80 mx-auto flex justify-center items-center gap-1>
+      <div my-4 mx-auto flex justify-center items-center gap-1>
         <n-input v-model:value="username" placeholder="请输入要查询github账号" />
         <n-button type="primary" :loading="loading" :disabled="!username" @click="getUser">
           查询
