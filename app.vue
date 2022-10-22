@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import '@unocss/reset/normalize.css'
+import '@unocss/reset/eric-meyer.css'
+import 'assets/css/preflight.css'
 import { darkTheme, lightTheme } from 'naive-ui'
 import type { GlobalTheme } from 'naive-ui'
 import pkg from '~/package.json'

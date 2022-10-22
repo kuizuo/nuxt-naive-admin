@@ -1,4 +1,5 @@
 import { acceptHMRUpdate, defineStore } from 'pinia'
+import { useMessage } from 'naive-ui'
 import type { User } from '~/types'
 
 const namespace = 'github'

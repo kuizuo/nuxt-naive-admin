@@ -22,13 +22,13 @@ export default defineNuxtConfig({
   },
   experimental: {
     reactivityTransform: true,
-    viteNode: false,
+    viteNode: true,
   },
   unocss: {
     uno: true,
     icons: true,
     attributify: true,
-    preflight: true,
+    preflight: false,
   },
   colorMode: {
     classSuffix: '',
