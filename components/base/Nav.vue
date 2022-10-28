@@ -1,13 +1,14 @@
 <script setup lang="ts">
 import pkg from '~/package.json'
+const { title } = useAppConfig()
 </script>
 
 <template>
   <nav px-8 py-4 border="b gray-400/10" flex="~ gap-2 " items-center>
     <RouterLink to="/" flex="~ gap-2" items-center>
-      <img src="/logo.png" h-10>
-      <div font-sans mr-6 leading-1em text-left text-sm capitalize>
-        {{ pkg.repository.name }}
+      <i i-carbon-api />
+      <div font-sans leading-1em text-left text-sm capitalize>
+        {{ title }}
       </div>
     </RouterLink>
 
@@ -15,12 +16,12 @@ import pkg from '~/package.json'
 
     <div flex="~ gap-4" items-center>
       <RouterLink to="/changelog">
-        <div font-medium text-sm hover="opacity-100 text-teal-600">
+        <div font-medium text-sm hover="opacity-100 text-green-600">
           更新公告
         </div>
       </RouterLink>
       <RouterLink to="/help">
-        <div font-medium text-sm hover="opacity-100 text-teal-600">
+        <div font-medium text-sm hover="opacity-100 text-green-600">
           帮助说明
         </div>
       </RouterLink>

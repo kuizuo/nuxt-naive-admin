@@ -3,7 +3,10 @@
   "compilerOptions": {
     "strict": true,
     "types": [
-      "naive-ui/volar"
+      "naive-ui/volar",
+      "@vueuse/nuxt",
+      "@pinia/nuxt",
+      "pinia-plugin-persist"
     ]
   }
 }

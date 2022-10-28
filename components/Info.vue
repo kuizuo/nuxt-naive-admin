@@ -1,13 +1,16 @@
 <script setup lang="ts">
-import type { User } from '~~/types'
+import { useUserStore } from '~~/stores/user'
 
-const { user } = defineProps<{
-  user: User
-}>()
+const userStore = useUserStore()
+const user = $computed(() => userStore.user)
 </script>
 
 <template>
   <n-avatar :size="100" :src="user!.avatar_url" />
+  <h2 class="text-xl font-bold">
+    <a v-if="user!.blog" :href="user!.blog" target="_blank" hover="text-blue">{{ user!.name }}</a>
+    <a v-else>{{ user!.name }}</a>
+  </h2>
   <div flex justify-center items-center gap-4>
     <a
       flex flex-col cursor-pointer hover:text-blue-3 transition
@@ -34,4 +37,5 @@ const { user } = defineProps<{
 </template>
 
 <style scoped>
+
 </style>

@@ -1,15 +1,13 @@
----
-aside: false
-toc: false
-title: 帮助说明
----
+# 帮助说明
 
-### 先这样
+> 使用 github api 获取用户信息
 
-### 然后这样
+### 用法
 
-### 再这样
+1. 输入你要查询的 Github 账号
 
-### 最后这样
+2. 点击查询按钮
 
-所以你懂了吗 
+3. 等待响应结果，效果如下
+
+![preview.png](/img/preview.png)

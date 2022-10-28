@@ -1,17 +1,27 @@
 import { defineNuxtConfig } from 'nuxt/config'
-import AutoImport from 'unplugin-auto-import/vite'
 import Components from 'unplugin-vue-components/vite'
 import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 
 export default defineNuxtConfig({
+  app: {
+    pageTransition: { name: 'page', mode: 'out-in' },
+  },
+  runtimeConfig: {
+    jwtSecret: process.env.JWT_SECRET || 'secret',
+  },
   modules: [
     '@vueuse/nuxt',
     '@unocss/nuxt',
     '@pinia/nuxt',
     '@nuxtjs/color-mode',
     '@nuxt/content',
+    'nuxt-icon',
   ],
   content: {
+    documentDriven: true,
+    markdown: {
+      mdc: true,
+    },
     highlight: {
       theme: {
         default: 'github-light',
@@ -19,10 +29,6 @@ export default defineNuxtConfig({
         sepia: 'monokai',
       },
     },
-  },
-  experimental: {
-    reactivityTransform: true,
-    viteNode: true,
   },
   unocss: {
     uno: true,
@@ -32,6 +38,22 @@ export default defineNuxtConfig({
   },
   colorMode: {
     classSuffix: '',
+  },
+  imports: {
+    dirs: [
+      'composables',
+      'composables/*/index.{ts,js,mjs,mts}',
+      'composables/**',
+      'stores/*/index.{ts,js,mjs,mts}',
+      'stores/**',
+    ],
+  },
+  pinia: {
+    autoImports: [['defineStore', 'definePiniaStore']],
+  },
+  experimental: {
+    reactivityTransform: true,
+    viteNode: true,
   },
   // https://github.com/nuxt/framework/issues/6204#issuecomment-1201398080
   hooks: {
@@ -43,7 +65,7 @@ export default defineNuxtConfig({
       }
     },
   },
-  build: {
+  buidl: {
     transpile:
       process.env.NODE_ENV === 'production'
         ? [
@@ -56,22 +78,13 @@ export default defineNuxtConfig({
   },
   vite: {
     plugins: [
-      AutoImport({
-        imports: [
-          {
-            'naive-ui': [
-              'useDialog',
-              'useMessage',
-              'useNotification',
-              'useLoadingBar',
-            ],
-          },
-        ],
-      }),
       Components({
         resolvers: [NaiveUiResolver()],
       }),
     ],
+    ssr: {
+      noExternal: ['moment', 'naive-ui', '@juggle/resize-observer', '@css-render/vue3-ssr'],
+    },
     optimizeDeps: {
       include:
         process.env.NODE_ENV === 'development'

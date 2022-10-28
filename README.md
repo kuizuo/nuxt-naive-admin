@@ -1,26 +1,21 @@
-# 协议复现/模拟请求模板
+# Protocol
 
-![protocol](https://img.kuizuo.cn/protocol.png)
+![preview](./public/img/preview.png)
 
 ## 目的
 
-本项目旨在提供一个协议复现的模板，用作敏捷开发，快速复现协议/模拟请求。
+一个用于快速复现请求协议的 Web 开发模板。
 
-如果你恰好使用 Node.js 来做爬虫，api接口等等。那么基于本项目复现一个协议请求将会特别容易。
+如果你恰好使用 Node.js 来请求api接口或者爬虫，并且部署在 Web 上，那么基于本项目将会特别容易做到。
 
-**本项目仅用于学习研究使用，请勿将本项目的任何内容用于商业或非法目的，否则后果自负。**
+**本模板仅仅是web模板，任何开发者用该模板做什么样的站点都与本人无关。仅作为个人技术专研，仅供学习参考。**
 
 ## 用法
 
-- 将 public/logo.png 换成你想要展示的 logo。
-- 修改 package.json 中的name、author，versopm信息，默认以这些属性设置为网站标题，作者，版本信息。
-- 在 content/help.md 与 content/changelog.md 编写项目的使用说明和更新日志。
-- 在 server/api 编写你要后端请求接口。
-- 在 pages 与 components 编写你的前端页面与组件。
-
-## 技术栈
-
-Nuxt3 + Unocss + Naive UI
+- 将 public/logo.svg 换成你想要展示的 logo。
+- 修改 [app.config.ts](https://v3.nuxtjs.org/guide/directory-structure/app.config/) 中的配置，并通过 `useConfig()` 在页面中获取。
+- 在 content 目录下修改 `help.md` 与 `changelog.md` 以更新使用说明与更新日志。支持 [MDC Syntax](https://content.nuxtjs.org/guide/writing/mdc/)
+- 在 server/api 下编写你的后端请求接口。server/protocol 下编写协议请求核心逻辑便于调用。
 
 ## 部署
 
