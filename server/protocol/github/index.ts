@@ -13,7 +13,7 @@ export class Github {
       return data
 
     else
-      throw new Error('用户不存在')
+      throw new Error(data.message)
   }
 
   static async getRepos(username: string) {

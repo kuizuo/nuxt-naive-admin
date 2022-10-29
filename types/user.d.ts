@@ -33,6 +33,8 @@ declare namespace API {
     created_at: string
     updated_at: string
     repos: Repo[]
+
+    message: string
   }
   
   export interface Repo {
