@@ -65,7 +65,7 @@ export default defineNuxtConfig({
       }
     },
   },
-  buidl: {
+  build: {
     transpile:
       process.env.NODE_ENV === 'production'
         ? [
@@ -82,9 +82,6 @@ export default defineNuxtConfig({
         resolvers: [NaiveUiResolver()],
       }),
     ],
-    ssr: {
-      noExternal: ['moment', 'naive-ui', '@juggle/resize-observer', '@css-render/vue3-ssr'],
-    },
     optimizeDeps: {
       include:
         process.env.NODE_ENV === 'development'
