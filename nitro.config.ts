@@ -7,9 +7,6 @@ export default defineNitroConfig({
       driver: 'fs',
       base: './data/db',
     },
-    redis: {
-      driver: 'redis',
-    },
   },
   // Development
   devStorage: {

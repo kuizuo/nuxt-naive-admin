@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import { useUserStore } from '~~/stores/user'
-
 let username = $ref('kuizuo')
 let loading = $ref(false)
 
@@ -56,7 +54,4 @@ function reset() {
     </n-card>
   </div>
 </template>
-
-<style scoped>
-</style>
 

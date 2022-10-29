@@ -1,18 +1,10 @@
 <script setup lang="ts">
-import '@unocss/reset/normalize.css'
-import '@unocss/reset/eric-meyer.css'
 import 'assets/css/preflight.css'
 
 import { darkTheme, lightTheme } from 'naive-ui'
-import type { GlobalTheme } from 'naive-ui'
 
-const theme = ref<GlobalTheme | null>(darkTheme)
 const colorMode = useColorMode()
 const { title, description } = useAppConfig()
-
-watchEffect(() => {
-  theme.value = colorMode.preference === 'dark' ? darkTheme : lightTheme
-})
 
 useHead({
   title,
@@ -34,7 +26,7 @@ useHead({
 
 <template>
   <NuxtLayout>
-    <n-config-provider :theme="theme">
+    <n-config-provider :theme="colorMode.preference === 'dark' ? darkTheme : lightTheme">
       <n-message-provider>
         <NuxtPage />
       </n-message-provider>

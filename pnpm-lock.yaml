@@ -5,7 +5,7 @@ specifiers:
   '@iconify-json/ri': ^1.1.3
   '@iconify-json/twemoji': ^1.1.5
   '@kuizuo/eslint-config': ^1.0.0
-  '@kuizuo/http': ^0.3.2
+  '@kuizuo/http': ^0.3.5
   '@kuizuo/utils': ^0.2.0
   '@nuxt/content': ^2.1.1
   '@nuxtjs/color-mode': ^3.1.4
@@ -18,7 +18,6 @@ specifiers:
   eslint: ^8.23.0
   naive-ui: ^2.33.3
   nuxt: ^3.0.0-rc.12
-  nuxt-icon: ^0.1.7
   pinia: ^2.0.21
   pinia-plugin-persistedstate: ^2.3.0
   typescript: ^4.8.2
@@ -30,7 +29,7 @@ devDependencies:
   '@iconify-json/ri': 1.1.3
   '@iconify-json/twemoji': 1.1.5
   '@kuizuo/eslint-config': 1.0.1_s6jeshzhc5cdln4g7cuxbedvyq
-  '@kuizuo/http': 0.3.2
+  '@kuizuo/http': 0.3.5_axios@1.1.3
   '@kuizuo/utils': 0.2.0
   '@nuxt/content': 2.2.1
   '@nuxtjs/color-mode': 3.1.8
@@ -43,7 +42,6 @@ devDependencies:
   eslint: 8.25.0
   naive-ui: 2.33.5_vue@3.2.41
   nuxt: 3.0.0-rc.12_z4bbprzjrhnsfa24uvmcbu7f5q
-  nuxt-icon: 0.1.7_vue@3.2.41
   pinia: 2.0.23_l7r24p6nevbtlimqmqcwa3ouhu
   pinia-plugin-persistedstate: 2.3.0_pinia@2.0.23
   typescript: 4.8.4
@@ -388,13 +386,6 @@ packages:
       - supports-color
     dev: true
 
-  /@babel/runtime/7.20.0:
-    resolution: {integrity: sha512-NDYdls71fTXoU8TZHfbBWg7DiZfNzClcKui/+kyi6ppD2L1qnWW3VV6CjtaBXSUGGhiTWJ6ereOIkUvenif66Q==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      regenerator-runtime: 0.13.10
-    dev: true
-
   /@babel/standalone/7.19.5:
     resolution: {integrity: sha512-H2eXpo1ZfTZhBwsCbfSKHrjTb934laSas14hdjULLSKmLxU4B7kazQKm3mjpDuH/HyPmRq1cbrGL7223M7EDFw==}
     engines: {node: '>=6.9.0'}
@@ -579,15 +570,6 @@ packages:
       - supports-color
     dev: true
 
-  /@iconify/vue/4.0.0_vue@3.2.41:
-    resolution: {integrity: sha512-73z81Yf2HISfehu3qvN9GqL1OnUO7wEMKkiFwVGJ2pqAdGCR8FrVylhRhka+6U+gFLlng0ynnT20svk3jJYwow==}
-    peerDependencies:
-      vue: '>=3'
-    dependencies:
-      '@iconify/types': 2.0.0
-      vue: 3.2.41
-    dev: true
-
   /@ioredis/commands/1.2.0:
     resolution: {integrity: sha512-Sx1pU8EM64o2BrqNpEO1CNLtKQwyhuXuqyfH7oGKCk+1a33d2r5saW8zNwm3j6BTExtjrv2BxTgzzkMwts6vGg==}
     dev: true
@@ -739,18 +721,12 @@ packages:
       - vue
     dev: true
 
-  /@kuizuo/http/0.3.2:
-    resolution: {integrity: sha512-NT3Ay2nGOXQXhO5JQhpuiOucE2QZAvBz7fvw7wQOT/mTnGRlwIekoCp2jty922ZEQDVnRUP6ZP1/VAvP4DWC6g==}
+  /@kuizuo/http/0.3.5_axios@1.1.3:
+    resolution: {integrity: sha512-RYFXfBToVSoJJmvfWjbuwZnleTFtveh/jcZhWe68GZLsmqycQ5wy7gdS8Xtp76mtLgzJbbbexVGedwQrcYHOHQ==}
+    peerDependencies:
+      axios: ^1.0.0
     dependencies:
       axios: 1.1.3
-      axios-retry: 3.3.1
-      deasync: 0.1.28
-      http-cookie-agent: 4.0.2_ec7rva7ulk5ptkr4zwb7ix45ii
-      tough-cookie: 4.1.2
-    transitivePeerDependencies:
-      - debug
-      - supports-color
-      - undici
     dev: true
 
   /@kuizuo/utils/0.2.0:
@@ -2204,13 +2180,6 @@ packages:
       postcss-value-parser: 4.2.0
     dev: true
 
-  /axios-retry/3.3.1:
-    resolution: {integrity: sha512-RohAUQTDxBSWLFEnoIG/6bvmy8l3TfpkclgStjl5MDCMBDgapAWCmr1r/9harQfWC8bzLC8job6UcL1A1Yc+/Q==}
-    dependencies:
-      '@babel/runtime': 7.20.0
-      is-retry-allowed: 2.2.0
-    dev: true
-
   /axios/1.1.3:
     resolution: {integrity: sha512-00tXVRwKx/FZr/IDVFt4C+f9FYairX517WoGCL6dpOntqLkZofjhu43F/Xl44UOpqa+9sLFDrG/XAnFsUYgkDA==}
     dependencies:
@@ -2840,15 +2809,6 @@ packages:
 
   /dayjs/1.11.6:
     resolution: {integrity: sha512-zZbY5giJAinCG+7AGaw0wIhNZ6J8AhWuSXKvuc1KAyMiRsvGQWqh4L+MomvhdAYjN+lqvVCMq1I41e3YHvXkyQ==}
-    dev: true
-
-  /deasync/0.1.28:
-    resolution: {integrity: sha512-QqLF6inIDwiATrfROIyQtwOQxjZuek13WRYZ7donU5wJPLoP67MnYxA6QtqdvdBy2mMqv5m3UefBVdJjvevOYg==}
-    engines: {node: '>=0.11.0'}
-    requiresBuild: true
-    dependencies:
-      bindings: 1.5.0
-      node-addon-api: 1.7.2
     dev: true
 
   /debug/2.6.9:
@@ -4409,26 +4369,6 @@ packages:
       entities: 4.4.0
     dev: true
 
-  /http-cookie-agent/4.0.2_ec7rva7ulk5ptkr4zwb7ix45ii:
-    resolution: {integrity: sha512-noTmxdH5CuytTnLj/Qv3Z84e/YFq8yLXAw3pqIYZ25Edhb9pQErIAC+ednw40Cic6Le/h9ryph5/TqsvkOaUCw==}
-    engines: {node: '>=14.18.0 <15.0.0 || >=16.0.0'}
-    peerDependencies:
-      deasync: ^0.1.26
-      tough-cookie: ^4.0.0
-      undici: ^5.1.1
-    peerDependenciesMeta:
-      deasync:
-        optional: true
-      undici:
-        optional: true
-    dependencies:
-      agent-base: 6.0.2
-      deasync: 0.1.28
-      tough-cookie: 4.1.2
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
   /http-errors/2.0.0:
     resolution: {integrity: sha512-FtwrG/euBzaEjYeRqOgly7G0qviiXoJWnvEH2Z1plBdXgbyjv34pHTSb9zoeHMyDy33+DWy5Wt9Wo+TURtOYSQ==}
     engines: {node: '>= 0.8'}
@@ -4755,11 +4695,6 @@ packages:
     dependencies:
       call-bind: 1.0.2
       has-tostringtag: 1.0.0
-    dev: true
-
-  /is-retry-allowed/2.2.0:
-    resolution: {integrity: sha512-XVm7LOeLpTW4jV19QSH38vkswxoLud8sQ57YwJVTPWdiaI9I8keEhGFpBlslyVsgdQy4Opg8QOLb8YRgsyZiQg==}
-    engines: {node: '>=10'}
     dev: true
 
   /is-shared-array-buffer/1.0.2:
@@ -5815,10 +5750,6 @@ packages:
       - utf-8-validate
     dev: true
 
-  /node-addon-api/1.7.2:
-    resolution: {integrity: sha512-ibPK3iA+vaY1eEjESkQkM0BbCqFOaZMiXRTtdB0u7b4djtY6JnsjvPdUHVMg6xQt3B8fpTTWHI9A+ADjM9frzg==}
-    dev: true
-
   /node-domexception/1.0.0:
     resolution: {integrity: sha512-/jKZoMpw0F8GRwl4/eLROPA3cfcXtLApP0QzLmUT/HuPCZWyB7IY9ZrMeKw2O/nFIqPQB3PVM9aYm0F312AXDQ==}
     engines: {node: '>=10.5.0'}
@@ -5935,16 +5866,6 @@ packages:
     hasBin: true
     optionalDependencies:
       fsevents: 2.3.2
-    dev: true
-
-  /nuxt-icon/0.1.7_vue@3.2.41:
-    resolution: {integrity: sha512-JQ2OKKulcDAUMiPY3Q4YaXncL5de9fiVdrgXKnNZU3Cs2VbR//RAR9xt90+hpmVzDSdEB5UXIJLnWc5uBxm/hw==}
-    dependencies:
-      '@iconify/vue': 4.0.0_vue@3.2.41
-      '@nuxt/kit': 3.0.0-rc.12
-    transitivePeerDependencies:
-      - supports-color
-      - vue
     dev: true
 
   /nuxt/3.0.0-rc.12_z4bbprzjrhnsfa24uvmcbu7f5q:
@@ -6706,17 +6627,9 @@ packages:
     resolution: {integrity: sha512-yPw4Sng1gWghHQWj0B3ZggWUm4qVbPwPFcRG8KyxiU7J2OHFSoEHKS+EZ3fv5l1t9CyCiop6l/ZYeWbrgoQejw==}
     dev: true
 
-  /psl/1.9.0:
-    resolution: {integrity: sha512-E/ZsdU4HLs/68gYzgGTkMicWTLPdAftJLfJFlLUAAKZGkStNU72sZjT66SnMDVOfOWY/YAoiD7Jxa9iHvngcag==}
-    dev: true
-
   /punycode/2.1.1:
     resolution: {integrity: sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==}
     engines: {node: '>=6'}
-    dev: true
-
-  /querystringify/2.2.0:
-    resolution: {integrity: sha512-FIqgj2EUvTa7R50u0rGsyTftzjYmv/a3hO345bZNrqabNqjtgiDMgmo4mkUjd+nzU5oF3dClKqFIPUKybUyqoQ==}
     dev: true
 
   /queue-microtask/1.2.3:
@@ -6815,10 +6728,6 @@ packages:
     engines: {node: '>=4'}
     dependencies:
       redis-errors: 1.2.0
-    dev: true
-
-  /regenerator-runtime/0.13.10:
-    resolution: {integrity: sha512-KepLsg4dU12hryUO7bp/axHAKvwGOCV0sGloQtpagJ12ai+ojVDqkeGSiRX1zlq+kjIMZ1t7gpze+26QqtdGqw==}
     dev: true
 
   /regexp-tree/0.1.24:
@@ -7650,16 +7559,6 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /tough-cookie/4.1.2:
-    resolution: {integrity: sha512-G9fqXWoYFZgTc2z8Q5zaHy/vJMjm+WV0AkAeHxVCQiEB1b+dGvWzFW6QV07cY5jQ5gRkeid2qIkzkxUnmoQZUQ==}
-    engines: {node: '>=6'}
-    dependencies:
-      psl: 1.9.0
-      punycode: 2.1.1
-      universalify: 0.2.0
-      url-parse: 1.5.10
-    dev: true
-
   /tr46/0.0.3:
     resolution: {integrity: sha512-N3WMsuqV66lT30CrXNbEjx4GEwlow3v6rr4mCcv6prnfwhS01rkgyFdjPNBYd9br7LpXV1+Emh01fHnq2Gdgrw==}
     dev: true
@@ -7883,11 +7782,6 @@ packages:
       unist-util-visit-parents: 5.1.1
     dev: true
 
-  /universalify/0.2.0:
-    resolution: {integrity: sha512-CJ1QgKmNg3CwvAv/kOFmtnEN05f0D/cn9QntgNOQlQF9dgvVTHj3t+8JPdjqawCHk7V/KA+fbUqzZ9XWhcqPUg==}
-    engines: {node: '>= 4.0.0'}
-    dev: true
-
   /universalify/2.0.0:
     resolution: {integrity: sha512-hAZsKq7Yy11Zu1DE0OzWjw7nnLZmJZYTDZZyEFHZdUhV8FkH5MCfoU1XMaxXovpyW5nq5scPqq0ZDP9Zyl04oQ==}
     engines: {node: '>= 10.0.0'}
@@ -8014,13 +7908,6 @@ packages:
     resolution: {integrity: sha512-7rKUyy33Q1yc98pQ1DAmLtwX109F7TIfWlW1Ydo8Wl1ii1SeHieeh0HHfPeL2fMXK6z0s8ecKs9frCuLJvndBg==}
     dependencies:
       punycode: 2.1.1
-    dev: true
-
-  /url-parse/1.5.10:
-    resolution: {integrity: sha512-WypcfiRhfeUP9vvF0j6rw0J3hrWrw6iZv3+22h6iRMJ/8z1Tj6XfLP4DsUix5MhMPnXpiHDoKyoZ/bdCkwBCiQ==}
-    dependencies:
-      querystringify: 2.2.0
-      requires-port: 1.0.0
     dev: true
 
   /util-deprecate/1.0.2:
