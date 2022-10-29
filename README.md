@@ -16,6 +16,7 @@
 - 修改 [app.config.ts](https://v3.nuxtjs.org/guide/directory-structure/app.config/) 中的配置，并通过 `useConfig()` 在页面中获取。
 - 在 content 目录下修改 `help.md` 与 `changelog.md` 以更新使用说明与更新日志。支持 [MDC Syntax](https://content.nuxtjs.org/guide/writing/mdc/)
 - 在 server/api 下编写你的后端请求接口。server/protocol 下编写协议请求核心逻辑便于调用。
+- 在 [nitro.config.ts](https://nitro.unjs.io/guide/introduction/storage) 配置数据存储位置，并使用 `useStorage()` 来存取数据，得益于[unjs/unstorage](https://github.com/unjs/unstorage)
 
 ## 部署
 
