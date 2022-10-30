@@ -48,8 +48,8 @@ function reset() {
       </div>
 
       <div v-if="user?.login">
-        <Info :user="user" />
-        <Repos :repos="user.repos" />
+        <Info />
+        <Repos />
       </div>
     </n-card>
   </div>

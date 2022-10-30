@@ -5,26 +5,26 @@ const { title } = useAppConfig()
 
 <template>
   <nav px-8 py-4 border="b gray-400/10" flex="~ gap-2 " items-center>
-    <RouterLink to="/" flex="~ gap-2" items-center>
+    <NuxtLink to="/" flex="~ gap-2" items-center>
       <i i-carbon-api />
       <div font-sans leading-1em text-left text-sm capitalize>
         {{ title }}
       </div>
-    </RouterLink>
+    </NuxtLink>
 
     <div flex="auto" />
 
     <div flex="~ gap-4" items-center>
-      <RouterLink to="/changelog">
+      <NuxtLink to="/changelog">
         <div font-medium text-sm hover="opacity-100 text-green-600">
           更新公告
         </div>
-      </RouterLink>
-      <RouterLink to="/help">
+      </NuxtLink>
+      <NuxtLink to="/help">
         <div font-medium text-sm hover="opacity-100 text-green-600">
           帮助说明
         </div>
-      </RouterLink>
+      </NuxtLink>
 
       <DarkToggle />
       <a i-ri-github-line :href="pkg.repository.url" target="_blank" />
