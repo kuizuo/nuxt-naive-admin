@@ -1,19 +1,19 @@
-export class ResOp {
-  readonly data: any
+export class ResOp<T = any> {
+  readonly data: T
   readonly code: number
   readonly message: string
 
-  constructor(code: number, data?: any, message = 'success') {
+  constructor(code: number, data: T, message = 'success') {
     this.code = code
     this.data = data
     this.message = message
   }
 
-  static success(data?: any) {
+  static success<T>(data: T) {
     return new ResOp(200, data)
   }
 
   static error(code: number, message: string) {
-    return new ResOp(code, {}, message)
+    return new ResOp(code, null, message)
   }
 }

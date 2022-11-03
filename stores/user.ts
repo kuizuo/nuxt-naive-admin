@@ -6,7 +6,7 @@ export const useUserStore = definePiniaStore('user', () => {
   const message = useMessage()
 
   async function getUser(username: string) {
-    const { data } = await http.get<API.User>(`/api/user/${username}`)
+    const { data } = await request(`/api/user/${username}`)
     if (data.login) {
       user.value = data
       message.success('获取成功')
@@ -18,7 +18,7 @@ export const useUserStore = definePiniaStore('user', () => {
 
   async function getRepos() {
     const username = user.value?.login
-    const { data } = await http.get<API.Repo[]>(`/api/repo/${username}`)
+    const { data } = await request(`/api/repo/${username}`)
     repos.value = data
   }
 

@@ -34,7 +34,6 @@ function reset() {
           </a>
         </div>
       </n-alert>
-
       <div my-4>
         <n-space justify="center">
           <n-input v-model:value="username" placeholder="请输入要查询github账号" />

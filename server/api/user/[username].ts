@@ -7,7 +7,7 @@ export default defineEventHandler(async (event) => {
   const user = await Github.getUser(username)
 
   if (!user.login)
-    return ResOp.error(404, user.message ?? 'User not found')
+    throw createError({ statusCode: 404, message: user.message ?? 'User not found' })
 
   await useStorage().setItem(`db:github:user:${username}`, user)
 
