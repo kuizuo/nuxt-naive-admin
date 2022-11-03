@@ -44,7 +44,7 @@ pnpm run dev
 - 在 content 目录下修改 `help.md` 与 `changelog.md` 以更新使用说明与更新日志。支持 [MDC Syntax](https://content.nuxtjs.org/guide/writing/mdc/)
 - 在 server/api 下编写你的后端请求接口。在 server/protocol 下编写协议请求核心逻辑便于调用
 - 在 [nitro.config.ts](https://nitro.unjs.io/guide/introduction/storage) 配置数据存储位置，并使用 `useStorage()` 来存取数据，得益于[unjs/unstorage](https://github.com/unjs/unstorage)
-- 前端根据实际需求自由发挥
+- 前端使用 [ohmyfetch](https://github.com/unjs/ohmyfetch) 来请求后端接口，有完善的接口类型提示
 
 ## 🎉部署
 
