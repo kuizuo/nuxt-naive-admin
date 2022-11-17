@@ -47,9 +47,6 @@ export default defineNuxtConfig({
       'stores/**',
     ],
   },
-  pinia: {
-    autoImports: [['defineStore', 'definePiniaStore']],
-  },
   experimental: {
     reactivityTransform: true,
     viteNode: true,

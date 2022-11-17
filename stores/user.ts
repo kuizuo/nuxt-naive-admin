@@ -1,6 +1,7 @@
 import { useMessage } from 'naive-ui'
+import { defineStore } from 'pinia'
 
-export const useUserStore = definePiniaStore('user', () => {
+export const useUserStore = defineStore('user', () => {
   const user = ref<API.User | null>(null)
   const repos = ref<API.Repo[]>([])
   const message = useMessage()
