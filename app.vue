@@ -4,7 +4,7 @@ import 'assets/css/preflight.css'
 import { darkTheme, lightTheme } from 'naive-ui'
 
 const colorMode = useColorMode()
-const { title, description } = useAppConfig()
+const { title, keywords, description } = useAppConfig()
 
 useHead({
   title,
@@ -14,6 +14,10 @@ useHead({
     },
   ],
   meta: [
+    {
+      name: 'keywords',
+      content: keywords,
+    },
     {
       name: 'description', content: description,
     },
@@ -28,6 +32,7 @@ useHead({
   <NuxtLayout>
     <n-config-provider :theme="colorMode.preference === 'dark' ? darkTheme : lightTheme">
       <n-message-provider>
+        <NuxtLoadingIndicator />
         <NuxtPage />
       </n-message-provider>
     </n-config-provider>
