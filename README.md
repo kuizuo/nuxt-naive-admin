@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  <i>Artwork from <a href="https://v3.nuxtjs.org/">Nuxt3</a></i>
+  <i>Artwork from <a href="https://nuxt.com/">Nuxt</a></i>
 </p>
 
 <h1 align="center">Protocol</h1>
@@ -46,7 +46,7 @@ pnpm run dev
 - 在 [nitro.config.ts](https://nitro.unjs.io/guide/introduction/storage) 配置数据存储位置，并使用 `useStorage()` 来存取数据，得益于[unjs/unstorage](https://github.com/unjs/unstorage)
 - 前端使用 [ohmyfetch](https://github.com/unjs/ohmyfetch) 来请求后端接口，有完善的接口类型提示
 
-## 🎉部署
+## 🎉 部署
 
 ### 服务器
 
@@ -80,13 +80,13 @@ module.exports = {
 
 转到 [Netlify](https://app.netlify.com/start) 并选择您的项目，点击 "Deploy site"，您的应用程序将在一分钟内上线。
 
-## 🖥️演示
+## 🖥️ 演示
 
 ![preview](./public/img/preview.png)
 
 ## 
 
-## 🤝免责声明
+## 🤝 免责声明
 
 **本模板仅仅是web模板，任何开发者用该模板编写任何站点都与本人无关。本项目仅作为个人技术专研，仅供学习参考。**
 
