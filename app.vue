@@ -53,11 +53,9 @@ html.dark {
   color: white;
 }
 
-.page-enter-active {
-  transition: all 0.1s ease-out;
-}
+.page-enter-active,
 .page-leave-active {
-  transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
+  transition: all 0.4s;
 }
 .page-enter-from,
 .page-leave-to {
@@ -65,11 +63,10 @@ html.dark {
   opacity: 0;
 }
 
-.layout-enter-active {
-  transition: all 0.1s ease-out;
-}
+.layout-enter-active ,
 .layout-leave-active {
-  transition: all 0.3s cubic-bezier(1, 0.5, 0.8, 1);
+  transition: all 0.1s ease-out;
+  transition: all 0.4s;
 }
 .layout-enter-from,
 .layout-leave-to {

@@ -5,6 +5,7 @@ import { NaiveUiResolver } from 'unplugin-vue-components/resolvers'
 export default defineNuxtConfig({
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
+    layoutTransition: { name: 'layout', mode: 'out-in' },
   },
   runtimeConfig: {
     jwtSecret: process.env.JWT_SECRET || 'secret',
@@ -51,6 +52,9 @@ export default defineNuxtConfig({
     reactivityTransform: true,
     viteNode: true,
   },
+  typescript: {
+    shim: false,
+  },
   // https://github.com/nuxt/framework/issues/6204#issuecomment-1201398080
   hooks: {
     'vite:extendConfig': function (config: any, { isServer }: any) {
@@ -83,6 +87,22 @@ export default defineNuxtConfig({
         process.env.NODE_ENV === 'development'
           ? ['naive-ui', 'vueuc', 'date-fns-tz/esm/formatInTimeZone']
           : [],
+    },
+  },
+  nitro: {
+    // Production
+    storage: {
+      db: {
+        driver: 'fs',
+        base: './data/db',
+      },
+    },
+    // Development
+    devStorage: {
+      db: {
+        driver: 'fs',
+        base: './data/db',
+      },
     },
   },
 })
