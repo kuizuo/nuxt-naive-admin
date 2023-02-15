@@ -16,6 +16,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/color-mode',
     '@nuxt/content',
+    '@nuxt/devtools',
   ],
   content: {
     documentDriven: false,
@@ -47,6 +48,10 @@ export default defineNuxtConfig({
       'stores/*/index.{ts,js,mjs,mts}',
       'stores/**',
     ],
+  },
+  devtools: {
+    enabled: true,
+    vscode: {},
   },
   experimental: {
     reactivityTransform: true,
