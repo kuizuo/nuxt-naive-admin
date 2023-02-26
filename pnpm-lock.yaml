@@ -10,6 +10,7 @@ specifiers:
   '@nuxt/content': ^2.4.3
   '@nuxt/devtools': ^0.1.2
   '@nuxtjs/color-mode': ^3.2.0
+  '@pinia-plugin-persistedstate/nuxt': ^1.0.0
   '@pinia/nuxt': ^0.4.4
   '@unocss/nuxt': ^0.49.4
   '@vueuse/nuxt': ^9.5.0
@@ -33,6 +34,7 @@ devDependencies:
   '@nuxt/content': 2.4.3
   '@nuxt/devtools': 0.1.2_nuxt@3.2.0+vite@4.1.1
   '@nuxtjs/color-mode': 3.2.0
+  '@pinia-plugin-persistedstate/nuxt': 1.0.0_pmn3pkofjo2dy5pcg7xln6lrgi
   '@pinia/nuxt': 0.4.4_3n7pquhpwt6sihuapjz3wrhtve
   '@unocss/nuxt': 0.49.4_vite@4.1.1+webpack@5.75.0
   '@vueuse/nuxt': 9.5.0_nuxt@3.2.0+vue@3.2.47
@@ -1696,6 +1698,20 @@ packages:
       lodash.template: 4.5.0
       pathe: 1.0.0
     transitivePeerDependencies:
+      - rollup
+      - supports-color
+    dev: true
+
+  /@pinia-plugin-persistedstate/nuxt/1.0.0_pmn3pkofjo2dy5pcg7xln6lrgi:
+    resolution: {integrity: sha512-oBLnkFXy0mcP9wCR0NQj1SguhgalEoubDF302gpRr1lh0V34vSL2Nlw8XDwRrULq5v3eHt4da632YSjNny1+BA==}
+    peerDependencies:
+      '@pinia/nuxt': ^0.4.4
+    dependencies:
+      '@nuxt/kit': 3.2.0
+      '@pinia/nuxt': 0.4.4_3n7pquhpwt6sihuapjz3wrhtve
+      pinia-plugin-persistedstate: 3.1.0_pinia@2.0.24
+    transitivePeerDependencies:
+      - pinia
       - rollup
       - supports-color
     dev: true
@@ -7246,6 +7262,14 @@ packages:
     peerDependenciesMeta:
       pinia:
         optional: true
+    dependencies:
+      pinia: 2.0.24_3n7pquhpwt6sihuapjz3wrhtve
+    dev: true
+
+  /pinia-plugin-persistedstate/3.1.0_pinia@2.0.24:
+    resolution: {integrity: sha512-8UN+vYMEPBdgNLwceY08mi5olI0wkYaEb8b6hD6xW7SnBRuPydWHlEhZvUWgNb/ibuf4PvufpvtS+dmhYjJQOw==}
+    peerDependencies:
+      pinia: ^2.0.0
     dependencies:
       pinia: 2.0.24_3n7pquhpwt6sihuapjz3wrhtve
     dev: true

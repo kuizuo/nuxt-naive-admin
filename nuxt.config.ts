@@ -16,6 +16,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/color-mode',
     '@nuxt/content',
+    '@pinia-plugin-persistedstate/nuxt',
     '@nuxt/devtools',
   ],
   content: {
