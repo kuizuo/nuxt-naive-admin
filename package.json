@@ -48,6 +48,7 @@
     "bumpp": "^8.2.1",
     "eslint": "^8.27.0",
     "naive-ui": "^2.33.5",
+    "naive-ui-nuxt": "^1.0.1",
     "nuxt": "^3.2.0",
     "pinia": "^2.0.24",
     "pinia-plugin-persistedstate": "^2.4.0",
