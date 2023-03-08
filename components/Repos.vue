@@ -2,15 +2,15 @@
 const userStore = useUserStore()
 const repos = computed(() => userStore.repos)
 
-let loading = $ref(false)
+const loading = ref(false)
 
 async function getRepos() {
-  loading = true
+  loading.value = true
   try {
     await userStore.getRepos()
   }
   finally {
-    loading = false
+    loading.value = false
   }
 }
 </script>

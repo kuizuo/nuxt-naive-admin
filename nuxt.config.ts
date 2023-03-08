@@ -53,10 +53,6 @@ export default defineNuxtConfig({
     enabled: true,
     vscode: {},
   },
-  experimental: {
-    reactivityTransform: true,
-    viteNode: true,
-  },
   typescript: {
     shim: false,
   },

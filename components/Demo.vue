@@ -1,23 +1,23 @@
 <script setup lang="ts">
-let username = $ref('kuizuo')
-let loading = $ref(false)
+const username = ref('kuizuo')
+const loading = ref(false)
 
 const userStore = useUserStore()
-const user = $computed(() => userStore.user)
+const user = computed(() => userStore.user)
 
 async function getUser() {
-  loading = true
+  loading.value = true
   try {
-    await userStore.getUser(username)
+    await userStore.getUser(username.value)
   }
   finally {
-    loading = false
+    loading.value = false
   }
 }
 
 function reset() {
   userStore.reset()
-  username = ''
+  username.value = ''
 }
 </script>
 

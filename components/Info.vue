@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const userStore = useUserStore()
-const user = $computed(() => userStore.user)
+const user = computed(() => userStore.user)
 </script>
 
 <template>
