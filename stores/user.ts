@@ -1,4 +1,3 @@
-import { useMessage } from 'naive-ui'
 import { defineStore } from 'pinia'
 
 export const useUserStore = defineStore('user', () => {

@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import pkg from '~/package.json'
 const { title } = useAppConfig()
 </script>
 
@@ -27,7 +26,7 @@ const { title } = useAppConfig()
       </NuxtLink>
 
       <DarkToggle />
-      <a i-ri-github-line :href="pkg.repository.url" target="_blank" />
+      <BaseUserDropdown />
     </div>
   </nav>
 </template>

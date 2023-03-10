@@ -1,21 +1,18 @@
-import { defineNuxtConfig } from 'nuxt/config'
-
 export default defineNuxtConfig({
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
     layoutTransition: { name: 'layout', mode: 'out-in' },
   },
-  runtimeConfig: {
-    jwtSecret: process.env.JWT_SECRET || 'secret',
-  },
   modules: [
     '@vueuse/nuxt',
     '@unocss/nuxt',
-    '@pinia/nuxt',
     '@nuxtjs/color-mode',
     '@nuxt/content',
+    '@pinia/nuxt',
     '@pinia-plugin-persistedstate/nuxt',
     'naive-ui-nuxt',
+    'nuxt-icon',
+    '@sidebase/nuxt-auth',
     '@nuxt/devtools',
   ],
   content: {
@@ -31,14 +28,16 @@ export default defineNuxtConfig({
       },
     },
   },
+  colorMode: {
+    preference: 'system',
+    fallback: 'dark',
+    classSuffix: '',
+  },
   unocss: {
     uno: true,
     icons: true,
     attributify: true,
     preflight: false,
-  },
-  colorMode: {
-    classSuffix: '',
   },
   imports: {
     dirs: [
@@ -49,9 +48,12 @@ export default defineNuxtConfig({
       'stores/**',
     ],
   },
-  devtools: {
-    enabled: true,
-    vscode: {},
+  auth: {
+    origin: process.env.ORIGIN,
+    enableGlobalAppMiddleware: false,
+    globalMiddlewareOptions: {
+      allow404WithoutAuth: true,
+    },
   },
   typescript: {
     shim: false,
@@ -71,5 +73,9 @@ export default defineNuxtConfig({
         base: './data/db',
       },
     },
+  },
+  devtools: {
+    enabled: true,
+    vscode: {},
   },
 })
