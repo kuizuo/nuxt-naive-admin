@@ -58,22 +58,6 @@ export default defineNuxtConfig({
   typescript: {
     shim: false,
   },
-  nitro: {
-    // Production
-    storage: {
-      db: {
-        driver: 'fs',
-        base: './data/db',
-      },
-    },
-    // Development
-    devStorage: {
-      db: {
-        driver: 'fs',
-        base: './data/db',
-      },
-    },
-  },
   devtools: {
     enabled: true,
     vscode: {},

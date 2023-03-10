@@ -1,0 +1,27 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  // provider = "postgresql"
+  // url      = env("DATABASE_URL")
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model User {
+  id    String  @id @default(cuid())
+  email String  @unique
+  name  String?
+  image String?
+}
+
+model GithubUser {
+  id         Int   @id @unique
+  name       String
+  avatar_url String
+  followers  Int
+  following  Int
+  created_at DateTime
+  updated_at DateTime
+}
