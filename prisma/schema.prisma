@@ -10,14 +10,15 @@ datasource db {
 }
 
 model User {
-  id    String  @id @default(cuid())
-  email String  @unique
-  name  String?
-  image String?
+  id       String  @id @default(cuid())
+  name     String
+  password String
+  email    String?
+  image    String?
 }
 
 model GithubUser {
-  id         Int   @id @unique
+  id         Int      @id @unique
   name       String
   avatar_url String
   followers  Int

@@ -1,4 +1,3 @@
-import { prisma } from '~~/server/db'
 import { Github } from '~~/server/protocol/github'
 import { ResOp } from '~~/server/utils'
 
@@ -10,10 +9,10 @@ export default defineEventHandler(async (event) => {
   if (!user.login)
     throw createError({ statusCode: 404, message: user.message ?? 'User not found' })
 
-  const existingUser = await prisma.githubUser.findUnique({ where: { id: user.id } })
+  const existingUser = await event.context.prisma.githubUser.findUnique({ where: { id: user.id } })
 
   if (!existingUser) {
-    await prisma.githubUser.create({
+    await event.context.prisma.githubUser.create({
       data: {
         id: user.id,
         name: user.login,

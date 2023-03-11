@@ -26,7 +26,7 @@ const { title } = useAppConfig()
       </NuxtLink>
 
       <DarkToggle />
-      <BaseUserDropdown />
+      <UserDropdown />
     </div>
   </nav>
 </template>

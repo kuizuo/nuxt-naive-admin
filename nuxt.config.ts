@@ -8,11 +8,16 @@ export default defineNuxtConfig({
     '@unocss/nuxt',
     '@nuxtjs/color-mode',
     '@nuxt/content',
-    '@pinia/nuxt',
+    ['@pinia/nuxt', {
+      autoImports: [
+        'defineStore',
+        ['defineStore', 'definePiniaStore'],
+      ],
+    }],
     '@pinia-plugin-persistedstate/nuxt',
-    'naive-ui-nuxt',
-    'nuxt-icon',
     '@sidebase/nuxt-auth',
+    '@huntersofbook/naive-ui-nuxt',
+    'nuxt-icon',
     '@nuxt/devtools',
   ],
   content: {
