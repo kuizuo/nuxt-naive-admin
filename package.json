@@ -1,6 +1,6 @@
 {
   "name": "protocol",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "private": true,
   "packageManager": "pnpm@7.14.0",
   "description": "一个用于快速复现请求协议的 Web 开发模板。",
