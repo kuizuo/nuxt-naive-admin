@@ -1,11 +1,16 @@
+import got from 'got'
+
+const api = got.extend({
+  prefixUrl: 'https://api.github.com/',
+  responseType: 'json',
+})
+
 export class Github {
   static async getUser(username: string) {
-    const data = await (await fetch(`/users/${username}`)).json() as API.User
-    return data
+    return await api.get(`users/${username}`).json<API.User>()
   }
 
   static async getRepos(username: string) {
-    const data = await (await fetch(`/users/${username}/repos`)).json() as API.Repo[]
-    return data
+    return await api.get(`users/${username}/repos`).json<API.Repo[]>()
   }
 }
