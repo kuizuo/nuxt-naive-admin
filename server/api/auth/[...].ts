@@ -40,7 +40,9 @@ export default NuxtAuthHandler({
     GithubProvider.default({
       clientId: process.env.GITHUB_CLIENT_ID,
       clientSecret: process.env.GITHUB_CLIENT_SECRET,
-
     }),
   ],
+  pages: {
+    signIn: '/login',
+  },
 })
