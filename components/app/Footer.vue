@@ -9,31 +9,35 @@ const { author } = useAppConfig()
     <div class="mx-auto w-full px-4 sm:px-6 lg:px-8 max-w-6xl">
       <div class="flex flex-col items-center h-full gap-2 py-4 sm:flex-row sm:justify-between sm:gap-x-4">
         <div class="inline-flex gap-4">
-          <a :href="pkg.author.url" target="_blank" class="flex items-center gap-1">
+          <NuxtLink :to="pkg.author.url" target="_blank" class="flex items-center gap-1">
             <i i-ri:user-star-line />
-            <p class="text-xs font-semibold self-end">作者: {{ pkg.author.name }}</p>
-          </a>
-          <a target="_blank" class="flex items-center gap-1">
+            <p class="text-xs font-semibold self-end">
+              作者: {{ pkg.author.name }}
+            </p>
+          </NuxtLink>
+          <NuxtLink target="_blank" class="flex items-center gap-1">
             <i i-ri:file-code-line />
-            <p class="text-xs font-semibold self-end">版本: {{ pkg.version }}</p>
-          </a>
+            <p class="text-xs font-semibold self-end">
+              版本: {{ pkg.version }}
+            </p>
+          </NuxtLink>
         </div>
         <div class="inline-flex">
-          <a class="flex items-center gap-1">
+          <div class="flex items-center gap-1">
             <i i-ri:building-2-line />
-            <a :href="pkg.repository.url" target="_blank" class="text-xs font-semibold self-end">
+            <NuxtLink :to="pkg.repository.url" target="_blank" class="text-xs font-semibold self-end">
               构建于: Protocol
-            </a>
-            <a href="https://nuxt.com/" class="block bg-green-500 rounded px-1 py-0.5 text-white text-xs" target="_blank">
+            </NuxtLink>
+            <NuxtLink to="https://nuxt.com/" class="block bg-green-500 rounded px-1 py-0.5 text-white text-xs" target="_blank">
               nuxt@{{ pkg.devDependencies.nuxt }}
-            </a>
-          </a>
+            </NuxtLink>
+          </div>
         </div>
         <div flex-auto />
         <div class="flex items-center gap-3">
-          <a v-if="author.qq" i-ri-qq-line :href="author.qq" target="_blank" />
-          <a v-if="author.wx" i-ri-wechat-2-line :href="author.wx" target="_blank" />
-          <a i-ri-github-line :href="pkg.repository.url" target="_blank" />
+          <NuxtLink v-if="author.qq" i-ri-qq-line :to="author.qq" target="_blank" />
+          <NuxtLink v-if="author.wx" i-ri-wechat-2-line :to="author.wx" target="_blank" />
+          <NuxtLink i-ri-github-line :to="pkg.repository.url" target="_blank" />
         </div>
       </div>
     </div>
