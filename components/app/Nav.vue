@@ -1,19 +1,14 @@
-<script setup lang="ts">
-const { title } = useAppConfig()
-</script>
-
 <template>
-  <nav px-8 py-4 border="b gray-400/10" flex="~ gap-2 " items-center>
-    <NuxtLink to="/" flex="~ gap-2" items-center>
-      <i i-carbon-api />
-      <div font-sans leading-1em text-left text-sm capitalize>
-        {{ title }}
-      </div>
-    </NuxtLink>
-
+  <nav px-6 py-2 border="b gray-400/10" flex="~ gap-2 " items-center>
+    <AppLogo />
     <div flex="auto" />
 
     <div flex="~ gap-4" items-center>
+      <NuxtLink to="/dashboard">
+        <div py-1 px-2 rounded bg-green-6 text-white font-medium text-sm hover=" bg-green-700">
+          仪表盘
+        </div>
+      </NuxtLink>
       <NuxtLink to="/changelog">
         <div font-medium text-sm hover="opacity-100 text-green-600">
           更新公告
@@ -25,7 +20,7 @@ const { title } = useAppConfig()
         </div>
       </NuxtLink>
 
-      <DarkToggle />
+      <AppDarkToggle />
       <UserDropdown />
     </div>
   </nav>

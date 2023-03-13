@@ -47,8 +47,8 @@ function reset() {
       </div>
 
       <div v-if="user?.login">
-        <Info />
-        <Repos />
+        <DemoInfo />
+        <DemoRepos />
       </div>
     </n-card>
   </div>

@@ -1,5 +1,9 @@
 <script setup lang="ts">
 const { status, data, signOut, signIn } = useSession()
+
+definePageMeta({
+  auth: false,
+})
 </script>
 
 <template>

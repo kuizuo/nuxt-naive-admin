@@ -55,7 +55,7 @@ export default defineNuxtConfig({
   },
   auth: {
     origin: process.env.ORIGIN,
-    enableGlobalAppMiddleware: false,
+    enableGlobalAppMiddleware: true,
     globalMiddlewareOptions: {
       allow404WithoutAuth: true,
     },
