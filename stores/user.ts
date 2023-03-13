@@ -1,5 +1,3 @@
-import { defineStore } from 'pinia'
-
 export const useUserStore = defineStore('user', () => {
   const user = ref<API.User | null>(null)
   const repos = ref<API.Repo[]>([])

@@ -44,6 +44,9 @@ export default defineNuxtConfig({
     attributify: true,
     preflight: false,
   },
+  naiveUI: {
+
+  },
   imports: {
     dirs: [
       'composables',

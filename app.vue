@@ -29,14 +29,15 @@ useHead({
 </script>
 
 <template>
-  <NuxtLayout>
-    <n-config-provider :theme="colorMode.preference === 'dark' ? darkTheme : lightTheme">
+  <n-config-provider :theme="colorMode.preference === 'dark' ? darkTheme : lightTheme">
+    <n-global-style />
+    <NuxtLayout>
       <n-message-provider>
         <NuxtLoadingIndicator />
         <NuxtPage />
       </n-message-provider>
-    </n-config-provider>
-  </NuxtLayout>
+    </NuxtLayout>
+  </n-config-provider>
 </template>
 
 <style>
@@ -48,9 +49,8 @@ body,
   padding: 0;
 }
 
-html.dark {
-  background: #121213;
-  color: white;
+html.dark body {
+  @apply duration-300 transition-colors text-gray-800 dark:text-gray-200 bg-white dark:bg-gray-900;
 }
 
 .page-enter-active,
