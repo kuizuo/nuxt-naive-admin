@@ -2,14 +2,15 @@ module.exports = {
   apps: [
     {
       name: 'Protocol',
+      script: './.output/server/index.mjs',
       exec_mode: 'cluster',
       instances: '1',
+      instance_var: 'INSTANCE_ID',
       env: {
-        NITRO_PORT: 8010,
-        NITRO_HOST: 'localhost',
+        PORT: 8010,
+        HOST: 'localhost',
         NODE_ENV: 'production',
       },
-      script: './.output/server/index.mjs',
     },
   ],
 }

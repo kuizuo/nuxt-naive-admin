@@ -25,7 +25,7 @@
   "scripts": {
     "build": "nuxi build",
     "dev": "nuxi dev -o",
-    "start": "node .output/server/index.mjs",
+    "start": "node -r dotenv/config .output/server/index.mjs dotenv_config_path=.env.production",
     "start:pm2": "pm2 start ecosystem.config.js --env production",
     "migrate": "prisma migrate dev",
     "lint": "eslint .",

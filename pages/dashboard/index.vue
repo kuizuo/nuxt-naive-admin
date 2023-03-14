@@ -1,8 +1,6 @@
 <script lang="ts" setup>
 const route = useRoute()
 
-const title = route.meta.title as string
-
 definePageMeta({
   layout: 'dashboard',
   title: '仪表盘',
