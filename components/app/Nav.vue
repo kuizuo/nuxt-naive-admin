@@ -4,7 +4,7 @@
     <div flex="auto" />
 
     <div flex="~ gap-4" items-center>
-      <NuxtLink to="/dashboard">
+      <NuxtLink to="/admin/dashboard">
         <div py-1 px-2 rounded bg-green-6 text-white font-medium text-sm hover=" bg-green-700">
           仪表盘
         </div>

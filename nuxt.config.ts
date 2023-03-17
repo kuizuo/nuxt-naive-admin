@@ -9,10 +9,7 @@ export default defineNuxtConfig({
     '@nuxtjs/color-mode',
     '@nuxt/content',
     ['@pinia/nuxt', {
-      autoImports: [
-        'defineStore',
-        ['defineStore', 'definePiniaStore'],
-      ],
+      autoImports: ['defineStore', 'definePiniaStore'],
     }],
     '@pinia-plugin-persistedstate/nuxt',
     '@sidebase/nuxt-auth',
@@ -20,6 +17,12 @@ export default defineNuxtConfig({
     'nuxt-icon',
     '@nuxt/devtools',
   ],
+  imports: {
+    dirs: [
+      'composables/**/*',
+      'stores/**/*',
+    ],
+  },
   content: {
     documentDriven: false,
     markdown: {
@@ -38,20 +41,14 @@ export default defineNuxtConfig({
     fallback: 'dark',
     classSuffix: '',
   },
+  nuxtIcon: {
+    size: '20px',
+  },
   unocss: {
     uno: true,
     icons: true,
     attributify: true,
     preflight: false,
-  },
-  imports: {
-    dirs: [
-      'composables',
-      'composables/*/index.{ts,js,mjs,mts}',
-      'composables/**',
-      'stores/*/index.{ts,js,mjs,mts}',
-      'stores/**',
-    ],
   },
   auth: {
     origin: process.env.ORIGIN,
