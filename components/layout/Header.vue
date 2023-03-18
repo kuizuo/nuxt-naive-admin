@@ -4,12 +4,13 @@ const router = useRouter()
 
 const { isMobile } = useDevice()
 const { collapsed, toggleCollapsed, menuMode } = useMenuSetting()
-const { showBreadCrumb, showBreadCrumbIcon } = useHeaderSetting()
+const { headerSetting } = useHeaderSetting()
+
 const getShowHeaderLogo = computed(() => {
   return !isMobile.value && !menuMode
 })
 
-const generator: any = (routerMap: any) => {
+const generator = (routerMap: any[]) => {
   return routerMap.map((item: any) => {
     const currentMenu = {
       ...item,
@@ -19,7 +20,7 @@ const generator: any = (routerMap: any) => {
 
     // 是否有子菜单，并递归处理
     if (item.children && item.children.length > 0)
-      currentMenu.children = generator(item.children, currentMenu)
+      currentMenu.children = generator(item.children)
 
     if (currentMenu.children && currentMenu.children.length === 0)
       delete currentMenu.children
@@ -30,14 +31,14 @@ const generator: any = (routerMap: any) => {
 
 const breadcrumbList = computed(() => generator(route.matched))
 
-const dropdownSelect = (key) => {
+const dropdownSelect = (key: string) => {
   router.push({ name: key })
 }
 </script>
 
 <template>
   <div
-    class="p-2 z-40 w-full h-12 flex justify-center items-center backdrop-filter backdrop-blur-md"
+    class="p-2 z-40 w-full h-12 flex justify-center items-center backdrop-filter backdrop-blur-md border-b-1 border-[var(--n-border-color)]"
   >
     <AppLogo v-if="getShowHeaderLogo || isMobile" :show-title="!isMobile" class="mr-2" />
     <div class="layout-header-left flex justify-center items-center gap-2">
@@ -45,7 +46,7 @@ const dropdownSelect = (key) => {
         <Icon v-if="collapsed" name="ant-design:menu-unfold-outlined" size="20" />
         <Icon v-else name="ant-design:menu-fold-outlined" size="20" />
       </div>
-      <n-breadcrumb v-if="showBreadCrumb">
+      <n-breadcrumb v-if="headerSetting.showBreadCrumb">
         <template v-for="routeItem in breadcrumbList" :key="routeItem.name === 'Redirect' ? void 0 : routeItem.name">
           <n-breadcrumb-item v-if="routeItem.meta.title">
             <n-dropdown
@@ -55,7 +56,7 @@ const dropdownSelect = (key) => {
             >
               <span>
                 <Icon
-                  v-if="showBreadCrumbIcon && routeItem.meta.icon"
+                  v-if="headerSetting.showBreadCrumbIcon && routeItem.meta.icon"
                   :name="routeItem.meta.icon"
                 />
                 {{ routeItem.meta.title }}
@@ -63,7 +64,7 @@ const dropdownSelect = (key) => {
             </n-dropdown>
             <span v-else>
               <Icon
-                v-if="showBreadCrumbIcon && routeItem.meta.icon"
+                v-if="headerSetting.showBreadCrumbIcon && routeItem.meta.icon"
                 :name="routeItem.meta.icon"
               />
               {{ routeItem.meta.title }}
@@ -76,7 +77,8 @@ const dropdownSelect = (key) => {
     <div flex="auto" />
     <div class="layout-header-right flex justify-center items-center">
       <!-- 个人中心 -->
-      <div class="flex gap-4">
+      <div class="flex items-center gap-4">
+        <Fullscreen />
         <AppDarkToggle />
         <UserDropdown />
       </div>

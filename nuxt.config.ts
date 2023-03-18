@@ -23,6 +23,13 @@ export default defineNuxtConfig({
       'stores/**/*',
     ],
   },
+  components: [
+    {
+      path: '~/components/layout/components',
+      pathPrefix: false,
+    },
+    '~/components',
+  ],
   content: {
     documentDriven: false,
     markdown: {
