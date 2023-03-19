@@ -3,7 +3,6 @@ definePageMeta({
   layout: 'dashboard',
   pageTransition: false,
   layoutTransition: false,
-  name: 'Redirect',
   title: 'Redirect',
   order: 1,
   icon: 'ant-design:dashboard-outlined',

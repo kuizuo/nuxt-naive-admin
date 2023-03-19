@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { useSortable } from '@vueuse/integrations/useSortable'
+import { moveArrayElement, useSortable } from '@vueuse/integrations/useSortable'
 
 const route = useRoute()
 const router = useRouter()
@@ -13,6 +13,12 @@ useSortable('.n-tabs-wrapper', tabStore.tabList, {
   animation: 300,
   delay: 400,
   delayOnTouchOnly: true,
+  onUpdate: (e) => {
+    moveArrayElement(tabStore.tabList, e.oldIndex, e.newIndex)
+
+    const nonEmptyTabs = tabStore.tabList.filter(item => item)
+    tabStore.setTabList(nonEmptyTabs)
+  },
 })
 
 function handleClose(fullPath: string) {
@@ -23,9 +29,7 @@ function handleClose(fullPath: string) {
 const handleUpdateValue = (fullPath: string) => {
   const tab = tabList.value.find(item => item.fullPath === fullPath)
   if (tab)
-    router.push(tab.fullPath)
-
-  activeKey.value = fullPath
+    router.replace(tab.fullPath)
 }
 
 watch(
@@ -65,7 +69,7 @@ onMounted(() => {
       @close="handleClose"
     >
       <n-tab
-        v-for="item in tabList" :key="item.query ? item.fullPath : item.path"
+        v-for="item in tabList" :key="item.fullPath"
         :name="item.fullPath"
         :closable="!(item && item.meta && item.meta.affix)"
       >

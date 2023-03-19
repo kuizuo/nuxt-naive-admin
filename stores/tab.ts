@@ -35,6 +35,9 @@ export const useTabStore = defineStore({
         path: `/redirect${router.currentRoute.value.fullPath}`,
       })
     },
+    setTabList(tabList: RouteLocationNormalized[]) {
+      this.tabList = tabList
+    },
     addTab(route: RouteLocationNormalized) {
       const rawRoute = getRawRoute(route)
       const { name, fullPath, path, meta } = rawRoute
@@ -90,6 +93,6 @@ export const useTabStore = defineStore({
     },
   },
   persist: {
-    key: 'app-tabs',
+    key: 'app-tabs1',
   },
 })

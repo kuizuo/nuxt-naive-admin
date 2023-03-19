@@ -3,6 +3,8 @@ declare module '#app' {
     title?: string
     order?: number
     icon?: string
+    affix?: boolean
+    hideMenu?: boolean
   }
 }
 
