@@ -6,6 +6,7 @@ export const defaultSettings: ProjectSetting = {
   headerSetting: {
     showBreadCrumb: true,
     showBreadCrumbIcon: false,
+    showTabs: true,
   },
   menuSetting: {
     collapsed: false,

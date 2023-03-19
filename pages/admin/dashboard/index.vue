@@ -1,11 +1,11 @@
 <script lang="ts" setup>
-const route = useRoute()
-
 definePageMeta({
   layout: 'dashboard',
   title: '仪表盘',
   order: 1,
   icon: 'ant-design:dashboard-outlined',
+  affix: true,
+  keepalive: true,
 })
 </script>
 

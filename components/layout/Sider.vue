@@ -1,9 +1,7 @@
 <script setup lang="ts">
 const { menuWidth, collapsed, toggleCollapsed, setMenuSetting } = useMenuSetting()
-
 const { isMobile } = useDevice()
 
-// 控制显示或隐藏移动端侧边栏
 const showSideDrawder = computed({
   get: () => isMobile.value && !collapsed.value,
   set: (val: any) => {

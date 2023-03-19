@@ -1,15 +1,14 @@
 <script setup lang="ts">
 definePageMeta({
   layout: 'dashboard',
-  title: '用户管理',
+  title: '角色管理',
   order: 1,
-  icon: 'carbon:user',
 })
 </script>
 
 <template>
   <div>
-    用户管理
+    角色管理
   </div>
 </template>
 

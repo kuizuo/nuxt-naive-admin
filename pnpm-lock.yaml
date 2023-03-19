@@ -15,7 +15,8 @@ specifiers:
   '@prisma/client': ^4.11.0
   '@sidebase/nuxt-auth': ^0.4.3
   '@unocss/nuxt': ^0.49.4
-  '@vueuse/nuxt': ^9.5.0
+  '@vueuse/integrations': ^10.0.0-beta.0
+  '@vueuse/nuxt': ^10.0.0-beta.0
   bumpp: ^8.2.1
   eslint: ^8.35.0
   got: ^12.6.0
@@ -26,6 +27,7 @@ specifiers:
   nuxt-icon: ^0.3.2
   prisma: ^4.11.0
   sass: ^1.59.2
+  sortablejs: ^1.15.0
   typescript: ^4.9.5
   vitest: ^0.24.5
 
@@ -41,13 +43,14 @@ devDependencies:
   '@kuizuo/eslint-config': 1.0.1_ycpbpc6yetojsgtrx3mwntkhsu
   '@kuizuo/utils': 0.2.0
   '@nuxt/content': 2.4.3
-  '@nuxt/devtools': /@nuxt/devtools-edge/0.2.5-27983113.6faec60_nuxt@3.2.3
+  '@nuxt/devtools': /@nuxt/devtools-edge/0.2.5-27985609.d608a0f_nuxt@3.2.3
   '@nuxtjs/color-mode': 3.2.0
   '@pinia-plugin-persistedstate/nuxt': 1.0.0_@pinia+nuxt@0.4.7
   '@pinia/nuxt': 0.4.7_typescript@4.9.5
   '@sidebase/nuxt-auth': 0.4.3_next-auth@4.20.1
   '@unocss/nuxt': 0.49.8
-  '@vueuse/nuxt': 9.13.0_nuxt@3.2.3
+  '@vueuse/integrations': 10.0.0-beta.0_sortablejs@1.15.0
+  '@vueuse/nuxt': 10.0.0-beta.0_nuxt@3.2.3
   bumpp: 8.2.1
   eslint: 8.35.0
   got: 12.6.0
@@ -57,6 +60,7 @@ devDependencies:
   nuxt-icon: 0.3.2
   prisma: 4.11.0
   sass: 1.59.2
+  sortablejs: 1.15.0
   typescript: 4.9.5
   vitest: 0.24.5_sass@1.59.2
 
@@ -1626,15 +1630,15 @@ packages:
     resolution: {integrity: sha512-YBI/6o2EBz02tdEJRBK8xkt3zvOFOWlLBf7WKYGBsSYSRtjjgrqPe2skp6VLLmKx5WbHHDNcW+6oACaurxGzeA==}
     dev: true
 
-  /@nuxt/devtools-edge/0.2.5-27983113.6faec60_nuxt@3.2.3:
-    resolution: {integrity: sha512-O5ayHF1qZAgEybYOxkRRFrMjvVGMaXaJ4qbL/HlvuIBDYwPF4avcN8O9OMQa6wXkeozH/3tNn0bLkpwlSDPAyA==}
+  /@nuxt/devtools-edge/0.2.5-27985609.d608a0f_nuxt@3.2.3:
+    resolution: {integrity: sha512-eSoG4KdzNACShyLTq5Qi1vDqiTtfKWR8XY9XpLUwD/j+M4Wv+us9R6hwzQTls2ah6sFtNbOIqd+r4d6hrblcAQ==}
     hasBin: true
     peerDependencies:
       nuxt: ^3.3.1
       vite: '*'
     dependencies:
       '@antfu/install-pkg': 0.1.1
-      '@nuxt/devtools-kit': /@nuxt/devtools-kit-edge/0.2.5-27983113.6faec60_nuxt@3.2.3
+      '@nuxt/devtools-kit': /@nuxt/devtools-kit-edge/0.2.5-27985609.d608a0f_nuxt@3.2.3
       '@nuxt/kit': 3.3.1
       birpc: 0.2.10
       consola: 2.15.3
@@ -1659,8 +1663,8 @@ packages:
       - supports-color
     dev: true
 
-  /@nuxt/devtools-kit-edge/0.2.5-27983113.6faec60_nuxt@3.2.3:
-    resolution: {integrity: sha512-33N3W+gK7UZ51rmVBYWQXn/6iBxZk+1FslLqa0PwQo+u/gbq9yNQGWverhT4zlt2J391L/gQIJCWYbUmEO9wvA==}
+  /@nuxt/devtools-kit-edge/0.2.5-27985609.d608a0f_nuxt@3.2.3:
+    resolution: {integrity: sha512-yTGWKTEYSsf+B3D+nf0n6MfP1pwtXkhpQQsa6Yq6SJywni2D5Wgq8PEAqjSALq2b19Jj4f9h6I8im8xKAwHoZQ==}
     peerDependencies:
       nuxt: ^3.3.1
       vite: '*'
@@ -2890,12 +2894,12 @@ packages:
     resolution: {integrity: sha512-BHGyyGN3Q97EZx0taMQ+OLNuZcW3d37ZEVmEAyeoA9ERdGvm9Irc/0Fua8SNyOtV1w6BS4q25wbMzJujO9HIfQ==}
     dev: true
 
-  /@vueuse/core/9.13.0:
-    resolution: {integrity: sha512-pujnclbeHWxxPRqXWmdkKV5OX4Wk4YeK7wusHqRwU0Q7EFusHoqNA/aPhB6KCh9hEqJkLAJo7bb0Lh9b+OIVzw==}
+  /@vueuse/core/10.0.0-beta.0:
+    resolution: {integrity: sha512-vvl/UqN74rKcbobsCA/zXTigaxQIZV0ceZsG7DokSzp8MGC9a6JqYIp/ObVcb2k1OsXwuljtRb71J2eTOa21qA==}
     dependencies:
       '@types/web-bluetooth': 0.0.16
-      '@vueuse/metadata': 9.13.0
-      '@vueuse/shared': 9.13.0
+      '@vueuse/metadata': 10.0.0-beta.0
+      '@vueuse/shared': 10.0.0-beta.0
       vue-demi: 0.13.11
     transitivePeerDependencies:
       - '@vue/composition-api'
@@ -2914,18 +2918,68 @@ packages:
       vue: 3.2.47
     dev: true
 
-  /@vueuse/metadata/9.13.0:
-    resolution: {integrity: sha512-gdU7TKNAUVlXXLbaF+ZCfte8BjRJQWPCa2J55+7/h+yDtzw3vOoGQDRXzI6pyKyo6bXFT5/QoPE4hAknExjRLQ==}
+  /@vueuse/integrations/10.0.0-beta.0_sortablejs@1.15.0:
+    resolution: {integrity: sha512-YimX5qjsHudOdRxVlH1NxECfe9eAckoR/UZln6TWaOa0kh95Yn3sC611FaMp+AM+erQ5/nI5WZNScw1Qpme0/g==}
+    peerDependencies:
+      async-validator: '*'
+      axios: '*'
+      change-case: '*'
+      drauu: '*'
+      focus-trap: '*'
+      fuse.js: '*'
+      idb-keyval: '*'
+      jwt-decode: '*'
+      nprogress: '*'
+      qrcode: '*'
+      sortablejs: '*'
+      universal-cookie: '*'
+    peerDependenciesMeta:
+      async-validator:
+        optional: true
+      axios:
+        optional: true
+      change-case:
+        optional: true
+      drauu:
+        optional: true
+      focus-trap:
+        optional: true
+      fuse.js:
+        optional: true
+      idb-keyval:
+        optional: true
+      jwt-decode:
+        optional: true
+      nprogress:
+        optional: true
+      qrcode:
+        optional: true
+      sortablejs:
+        optional: true
+      universal-cookie:
+        optional: true
+    dependencies:
+      '@vueuse/core': 10.0.0-beta.0
+      '@vueuse/shared': 10.0.0-beta.0
+      sortablejs: 1.15.0
+      vue-demi: 0.13.11
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
     dev: true
 
-  /@vueuse/nuxt/9.13.0_nuxt@3.2.3:
-    resolution: {integrity: sha512-JunH/w6nFIwCyaZ0s+pfrYFMfBzGfhkwmFPz7ogHFmb71Ty/5HINrYOAOZCXpN44X6QH6FiJq/wuLLdvYzqFUw==}
+  /@vueuse/metadata/10.0.0-beta.0:
+    resolution: {integrity: sha512-n60qpVAiqxchTglK/3Hx5e/FTorpS+N6XxcVB/enF0DpIEguEeAAP+NYY0uoCRdznZ9Zjl4DCpKxPFDWQvrnoA==}
+    dev: true
+
+  /@vueuse/nuxt/10.0.0-beta.0_nuxt@3.2.3:
+    resolution: {integrity: sha512-otfm66osJnAxUGlAtCf/rYDBWEFdnBJ2O9Lojoopcu5brVkrEJjcqkftNA2iaA2IGSuXdqONMHgKwrg4xYMw7w==}
     peerDependencies:
       nuxt: ^3.0.0
     dependencies:
-      '@nuxt/kit': 3.2.3
-      '@vueuse/core': 9.13.0
-      '@vueuse/metadata': 9.13.0
+      '@nuxt/kit': 3.3.1
+      '@vueuse/core': 10.0.0-beta.0
+      '@vueuse/metadata': 10.0.0-beta.0
       local-pkg: 0.4.3
       nuxt: 3.2.3_dlgxxmtd3x66x2hhmg4qd45hqu
       vue-demi: 0.13.11
@@ -2936,8 +2990,8 @@ packages:
       - vue
     dev: true
 
-  /@vueuse/shared/9.13.0:
-    resolution: {integrity: sha512-UrnhU+Cnufu4S6JLCPZnkWh0WwZGUp72ktOF2DFptMlOs3TOdVv8xJN53zhHGARmVOsz5KqOls09+J1NR6sBKw==}
+  /@vueuse/shared/10.0.0-beta.0:
+    resolution: {integrity: sha512-GhnEjm/G38dYRj4HpHlkdS3l/6OXZtQlI3nvoguBrxXb2UhrEs8FYcKK+mgBIckS+rLe6MZcY1c5/uTcpwUSRA==}
     dependencies:
       vue-demi: 0.13.11
     transitivePeerDependencies:
@@ -8184,7 +8238,7 @@ packages:
     resolution: {integrity: sha512-hM58GKXOcj8WTqUXnsQyJYXdeAPbythQgEF3nTcEo+nkD49chjQ9IKm/QJy9xf6JakXptz86h7ecP2024rrLaQ==}
     dependencies:
       jsonc-parser: 3.2.0
-      mlly: 1.1.1
+      mlly: 1.2.0
       pathe: 1.1.0
     dev: true
 
@@ -9263,6 +9317,10 @@ packages:
     dependencies:
       ip: 2.0.0
       smart-buffer: 4.2.0
+    dev: true
+
+  /sortablejs/1.15.0:
+    resolution: {integrity: sha512-bv9qgVMjUMf89wAvM6AxVvS/4MX3sPeN0+agqShejLU5z5GX4C75ow1O2e5k4L6XItUyAK3gH6AxSbXrOM5e8w==}
     dev: true
 
   /source-map-js/1.0.2:

@@ -1,3 +1,6 @@
+import { h } from 'vue'
+import { Icon } from '#components'
+
 // 深度合并
 export function deepMerge<T = any>(src: any = {}, target: any = {}): T {
   const result = Object.assign({}, src)
@@ -9,4 +12,8 @@ export function deepMerge<T = any>(src: any = {}, target: any = {}): T {
       result[key] = target[key]
   })
   return result
+}
+
+export function renderIcon(icon: string) {
+  return () => h(Icon, { name: icon })
 }

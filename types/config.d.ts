@@ -3,6 +3,7 @@ import { MenuModeEnum } from "~~/constants/menu";
 export interface HeaderSetting{
   showBreadCrumb: boolean;
   showBreadCrumbIcon: boolean;
+  showTabs: boolean;
 }
 
 export interface MenuSetting {

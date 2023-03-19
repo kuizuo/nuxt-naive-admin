@@ -21,6 +21,7 @@ function buildMenuList(routes: Readonly<RouteRecordRaw[]>, parentPath = ''): Men
 
   routes
     .filter(route => route.meta?.layout === 'dashboard')
+    .filter(route => !route.meta?.hideMenu)
     .sort((a, b) => a.meta!.order as number - (b.meta!.order as number))
     .forEach((route) => {
       const { meta, path, children, name } = route

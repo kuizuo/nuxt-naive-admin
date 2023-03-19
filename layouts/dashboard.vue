@@ -1,30 +1,5 @@
 <script setup lang="ts">
-// const mobileWidth = 950
-
-// // 判断是否触发移动端模式
-// const checkMobileMode = () => {
-//   if (document.body.clientWidth <= mobileWidth)
-//     isMobile.value = true
-
-//   else
-//     isMobile.value = false
-
-// }
-
-// const watchWidth = () => {
-//   const width = document.body.clientWidth
-//   if (width <= mobileWidth)
-//     collapsed.value = true
-
-//   else collapsed.value = false
-
-//   checkMobileMode()
-// }
-
-// onMounted(() => {
-//   checkMobileMode()
-//   window.addEventListener('resize', watchWidth)
-// })
+const { headerSetting } = useHeaderSetting()
 </script>
 
 <template>
@@ -32,15 +7,14 @@
     <LayoutSider />
 
     <n-layout :has-sider="false">
-      <n-layout-header bordered>
+      <n-layout-header>
         <LayoutHeader />
+        <LayoutTabs v-if="headerSetting.showTabs" />
       </n-layout-header>
       <n-layout-content style="max-height: calc(100vh - 50px);" content-style="padding: 24px;" :native-scrollbar="false">
-        <!-- <ClientOnly fallback-tag="span" fallback="Loading..."> -->
-        <!-- <MultiTabs v-if="isMultiTabs" v-model:collapsed="collapsed" /> -->
-
-        <slot />
-        <!-- </ClientOnly> -->
+        <ClientOnly fallback-tag="span" fallback="Loading...">
+          <slot />
+        </ClientOnly>
       </n-layout-content>
 
       <n-back-top :right="100" />
