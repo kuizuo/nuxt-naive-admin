@@ -12,9 +12,7 @@ const { headerSetting } = useHeaderSetting()
         <LayoutTabs v-if="headerSetting.showTabs" />
       </n-layout-header>
       <n-layout-content style="max-height: calc(100vh - 50px);" content-style="padding: 24px;" :native-scrollbar="false">
-        <ClientOnly fallback-tag="span" fallback="Loading...">
-          <slot />
-        </ClientOnly>
+        <slot />
       </n-layout-content>
 
       <n-back-top :right="100" />

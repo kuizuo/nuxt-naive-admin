@@ -30,6 +30,18 @@ export default defineNuxtConfig({
     },
     '~/components',
   ],
+  colorMode: {
+    preference: 'system',
+    fallback: 'dark',
+    classSuffix: '',
+  },
+
+  unocss: {
+    uno: true,
+    icons: true,
+    attributify: true,
+    preflight: false,
+  },
   content: {
     documentDriven: false,
     markdown: {
@@ -43,19 +55,11 @@ export default defineNuxtConfig({
       },
     },
   },
-  colorMode: {
-    preference: 'system',
-    fallback: 'dark',
-    classSuffix: '',
-  },
-  nuxtIcon: {
-    size: '20px',
-  },
-  unocss: {
-    uno: true,
-    icons: true,
-    attributify: true,
-    preflight: false,
+  routeRules: {
+    '/changelog': { static: true },
+    '/help': { static: true },
+    '/admin/**': { ssr: false },
+    '/api/**': { cors: true },
   },
   auth: {
     origin: process.env.ORIGIN,

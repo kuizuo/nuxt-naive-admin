@@ -1,14 +1,9 @@
-<script lang="tsx" setup>
-import { Icon } from '#components'
+<script  setup lang="ts">
 const { status, data, signOut, signIn, getProviders } = useSession()
 const router = useRouter()
 
 const showModal = ref(false)
 const user = computed(() => data.value?.user)
-
-function renderIcon(icon: string) {
-  return () => <Icon name={icon}></Icon>
-}
 
 const options = [
   {
@@ -37,10 +32,6 @@ function handleSelect(key: string) {
 function handleSuccess() {
   showModal.value = false
 }
-
-definePageMeta({
-  auth: false,
-})
 </script>
 
 <template>
