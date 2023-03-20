@@ -33,7 +33,3 @@ const user = computed(() => userStore.user)
     </a>
   </div>
 </template>
-
-<style scoped>
-
-</style>

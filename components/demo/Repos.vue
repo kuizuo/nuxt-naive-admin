@@ -56,7 +56,3 @@ async function getRepos() {
     </n-button>
   </div>
 </template>
-
-<style scoped>
-
-</style>
