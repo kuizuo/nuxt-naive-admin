@@ -1,14 +1,13 @@
 <script setup lang="ts">
 definePageMeta({
   layout: 'admin',
-  title: '外链',
-  order: 4,
-  icon: 'ic:sharp-launch',
+  title: 'Nuxt',
+  order: 1,
+  icon: 'logos:nuxt-icon',
+  path: 'https://nuxt.com',
 })
 </script>
 
 <template>
-  <div>
-    <NuxtPage />
-  </div>
+  <div />
 </template>

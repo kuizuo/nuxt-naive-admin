@@ -1,14 +1,13 @@
 <script setup lang="ts">
 definePageMeta({
   layout: 'admin',
-  title: '角色管理',
+  title: 'Naive UI',
   order: 2,
-  icon: 'carbon:user-role',
+  icon: 'logos:naiveui',
+  path: 'https://naiveui.com',
 })
 </script>
 
 <template>
-  <div>
-    角色管理
-  </div>
+  <div />
 </template>

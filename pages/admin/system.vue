@@ -3,7 +3,7 @@ definePageMeta({
   layout: 'admin',
   title: '系统管理',
   name: 'system',
-  order: 3,
+  order: 99,
   icon: 'ion:settings-outline',
 })
 </script>

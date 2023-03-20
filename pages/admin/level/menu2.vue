@@ -16,7 +16,3 @@ const inputValue = ref('')
     <n-input v-model:value="inputValue" />
   </div>
 </template>
-
-<style scoped>
-
-</style>
