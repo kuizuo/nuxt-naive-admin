@@ -1,6 +1,6 @@
 <script setup lang="ts">
 definePageMeta({
-  layout: 'dashboard',
+  layout: 'admin',
   keepalive: true,
   title: 'Menu2',
   order: 2,

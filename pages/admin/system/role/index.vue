@@ -1,6 +1,6 @@
 <script setup lang="ts">
 definePageMeta({
-  layout: 'dashboard',
+  layout: 'admin',
   title: '角色管理',
   order: 1,
 })

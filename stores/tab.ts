@@ -44,7 +44,7 @@ export const useTabStore = defineStore({
       if (whiteList.includes(name as string))
         return
 
-      if (meta.layout !== 'dashboard')
+      if (meta.layout !== 'admin')
         return
 
       const tabHasExits = this.tabList.some((tab, index) => {

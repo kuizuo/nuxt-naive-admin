@@ -1,11 +1,9 @@
 <script lang="ts" setup>
 definePageMeta({
-  layout: 'dashboard',
+  layout: 'admin',
   pageTransition: false,
   layoutTransition: false,
   title: 'Redirect',
-  order: 1,
-  icon: 'ant-design:dashboard-outlined',
   hideMenu: true,
 })
 

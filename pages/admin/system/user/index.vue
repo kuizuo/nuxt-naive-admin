@@ -1,6 +1,6 @@
 <script setup lang="ts">
 definePageMeta({
-  layout: 'dashboard',
+  layout: 'admin',
   title: '用户管理',
   order: 1,
   icon: 'carbon:user',

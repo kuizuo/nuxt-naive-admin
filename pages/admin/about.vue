@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 definePageMeta({
-  layout: 'dashboard',
+  layout: 'admin',
   title: '关于',
   order: 100,
   icon: 'simple-icons:about-dot-me',

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 definePageMeta({
-  layout: 'dashboard',
+  layout: 'admin',
   title: 'Menu1',
   order: 1,
   icon: 'ion:menu-outline',

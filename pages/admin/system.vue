@@ -1,6 +1,6 @@
 <script setup lang="ts">
 definePageMeta({
-  layout: 'dashboard',
+  layout: 'admin',
   title: '系统管理',
   name: 'system',
   order: 3,
