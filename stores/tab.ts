@@ -91,6 +91,13 @@ export const useTabStore = defineStore({
     closeAllTab() {
       this.tabList = this.tabList.filter(item => item?.meta?.affix ?? false)
     },
+
+    // Sort the tabs
+    async sortTabs(oldIndex: number, newIndex: number) {
+      const currentTab = this.tabList[oldIndex]
+      this.tabList.splice(oldIndex, 1)
+      this.tabList.splice(newIndex, 0, currentTab)
+    },
   },
   persist: {
     key: 'app-tabs1',

@@ -13,12 +13,6 @@ useSortable('.n-tabs-wrapper', tabStore.tabList, {
   animation: 300,
   delay: 400,
   delayOnTouchOnly: true,
-  onUpdate: (e) => {
-    moveArrayElement(tabStore.tabList, e.oldIndex, e.newIndex)
-
-    const nonEmptyTabs = tabStore.tabList.filter(item => item)
-    tabStore.setTabList(nonEmptyTabs)
-  },
 })
 
 function handleClose(fullPath: string) {
@@ -50,6 +44,11 @@ function updateTabPad() {
       pad.className = 'n-tabs-tab-pad'
       wrapper.insertBefore(pad, wrapper.children[0])
     }
+  })
+
+  const scrollPaddings = document.querySelectorAll('.n-tabs-scroll-padding')
+  scrollPaddings.forEach((scrollPadding) => {
+    scrollPadding.remove()
   })
 }
 
