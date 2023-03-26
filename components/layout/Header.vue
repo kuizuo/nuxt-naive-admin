@@ -43,8 +43,8 @@ const dropdownSelect = (key: string) => {
     <AppLogo v-if="getShowHeaderLogo || isMobile" :show-title="!isMobile" class="mr-2" />
     <div class="layout-header-left flex justify-center items-center gap-2">
       <div class="ml-1 cursor-pointer flex justify-center items-center" @click="toggleCollapsed">
-        <Icon v-if="collapsed" name="ant-design:menu-unfold-outlined" size="20" />
-        <Icon v-else name="ant-design:menu-fold-outlined" size="20" />
+        <Icon v-if="collapsed" name="ant-design:menu-unfold-outlined" />
+        <Icon v-else name="ant-design:menu-fold-outlined" />
       </div>
       <n-breadcrumb v-if="headerSetting.showBreadCrumb">
         <template v-for="routeItem in breadcrumbList" :key="routeItem.name === 'Redirect' ? void 0 : routeItem.name">

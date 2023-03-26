@@ -10,8 +10,8 @@ const title = computed(() => {
   <n-tooltip class="flex justify-center items-center" placement="bottom" trigger="click">
     <template #trigger>
       <span class="flex cursor-pointer" @click="toggle">
-        <Icon v-if="!isFullscreen" name="ant-design:fullscreen-outlined" size="20" />
-        <Icon v-else name="ant-design:fullscreen-outlined" size="20" />
+        <Icon v-if="!isFullscreen" name="ant-design:fullscreen-outlined" />
+        <Icon v-else name="ant-design:fullscreen-outlined" />
       </span>
     </template>
     <span>{{ title }}</span>

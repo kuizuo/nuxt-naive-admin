@@ -50,6 +50,7 @@
     "@pinia-plugin-persistedstate/nuxt": "^1.0.0",
     "@pinia/nuxt": "^0.4.7",
     "@sidebase/nuxt-auth": "^0.4.3",
+    "@types/sortablejs": "^1.15.1",
     "@unocss/nuxt": "^0.49.4",
     "@vueuse/integrations": "^10.0.0-beta.0",
     "@vueuse/nuxt": "^10.0.0-beta.0",

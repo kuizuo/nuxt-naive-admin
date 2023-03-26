@@ -158,7 +158,7 @@ function handleContext(e: MouseEvent) {
     >
       <span @click="handleContext">
         <Icon
-          name="ion:chevron-down" size="20"
+          name="ion:chevron-down"
           class="w-8 inline-block cursor-pointer"
         />
       </span>

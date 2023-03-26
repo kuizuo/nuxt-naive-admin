@@ -10,4 +10,8 @@ export default defineAppConfig({
     qq: 'https://im.qq.com/',
     wx: 'https://wx.qq.com/',
   },
+  nuxtIcon: {
+    size: '20px',
+    class: 'icon',
+  },
 })

@@ -6,19 +6,21 @@ const contentHeight = computed(() => {
 </script>
 
 <template>
-  <n-layout class="flex flex-col min-h-screen" has-sider>
+  <n-layout class="flex flex-col max-h-screen" position="absolute" has-sider>
     <LayoutSider />
 
-    <n-layout class="min-h-screen">
+    <n-layout class="min-h-screen" :native-scrollbar="false">
       <n-layout-header>
         <LayoutHeader />
         <LayoutTabs v-if="headerSetting.showTabs" />
       </n-layout-header>
       <n-layout-content
         :style="{
-          'max-height': contentHeight,
+          height: contentHeight,
         }"
-        content-style="padding: 24px"
+        :content-style="{
+          padding: '24px',
+        }"
         :native-scrollbar="false"
       >
         <slot />
@@ -30,8 +32,3 @@ const contentHeight = computed(() => {
   </n-layout>
 </template>
 
-<style scoped>
-:deep(.n-scrollbar) {
-  max-height: v-bind(contentHeight);
-}
-</style>
