@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import { NAvatar, NTag } from 'naive-ui'
+import TableAction from '~/components/basic/table/components/TableAction.vue'
 
 definePageMeta({
   layout: 'admin',
@@ -112,9 +113,61 @@ const fetchData = async (params?) => {
 
 // const data = (await fetchData()).items
 
-const createData = () => {
+const handleCreate = () => {
   message.success('新增数据')
 }
+
+const handleUpdate = () => {
+  message.success('更新数据')
+}
+
+const handleDelete = (record) => {
+  message.success(`删除数据: ${record.id}`)
+}
+
+const actionColumn = reactive({
+  width: 80,
+  title: '操作',
+  key: 'actions',
+  fixed: 'right',
+  align: 'center',
+  render(record) {
+    return h(TableAction as any, {
+      style: 'text',
+      actions: [
+        {
+          // label: '编辑',
+          tooltip: '编辑',
+          type: 'primary',
+          icon: 'ant-design:edit-outlined',
+          onClick: handleUpdate.bind(null, record),
+        },
+        {
+          // label: '删除',
+          type: 'error',
+          color: 'red',
+          icon: 'ant-design:delete-outlined',
+          onClick: handleDelete.bind(null, record),
+        },
+      ],
+      // dropDownActions: [
+      //   {
+      //     label: '编辑',
+      //     type: 'primary',
+      //     icon: 'ant-design:edit-outlined',
+      //     onClick: handleUpdate.bind(null, record),
+      //   },
+      //   {
+      //     label: '删除',
+      //     type: 'error',
+      //     color: 'red',
+      //     icon: 'ant-design:delete-outlined',
+      //     onClick: handleDelete.bind(null, record),
+      //   },
+      // ],
+    })
+  },
+})
 </script>
 
 <template>
@@ -122,10 +175,11 @@ const createData = () => {
     <BasicTable
       title="基础表格"
       :columns="columns"
+      :action-column="actionColumn"
       :request="fetchData"
     >
       <template #toolbar>
-        <n-button type="primary" size="small" @click="createData">
+        <n-button type="primary" size="small" @click="handleCreate">
           新增数据
         </n-button>
       </template>

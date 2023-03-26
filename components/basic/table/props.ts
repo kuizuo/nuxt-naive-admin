@@ -46,11 +46,6 @@ export const basicProps: BasicTableProps = {
     type: [Object, Boolean],
     default: () => {},
   },
-  // 废弃
-  showPagination: {
-    type: [String, Boolean],
-    default: 'auto',
-  },
   actionColumn: {
     type: Object as PropType<TableBaseColumn>,
     default: null,

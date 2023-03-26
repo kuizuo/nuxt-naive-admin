@@ -96,13 +96,12 @@ function handleActionColumn(propsRef: ComputedRef<BasicTableProps>, columns: Bas
   if (!actionColumn)
     return
 
-  const hasIndex = columns.findIndex(column => column?.flag === ACTION_COLUMN_FLAG)
+  const hasIndex = columns.findIndex(column => column?.key === 'actions')
   if (hasIndex === -1) {
     columns.push({
       ...columns[hasIndex],
       fixed: 'right',
       ...actionColumn,
-      flag: ACTION_COLUMN_FLAG,
     })
   }
 }

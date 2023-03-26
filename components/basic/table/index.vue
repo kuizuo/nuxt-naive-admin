@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { basicProps } from './props'
 import type { BasicTableProps, TableActionType } from './types/table'
+
 import { createTableContext } from './hooks/useTableContext'
 import { useDataSource } from './hooks/useDataSource'
 import { useColumns } from './hooks/useColumns'
@@ -84,10 +85,6 @@ const tableAction: TableActionType | any = {
   setCacheColumnsByField,
   getDataSource,
 }
-
-watch(tableData, (val) => {
-  console.log('tableData', val)
-})
 
 createTableContext({ ...tableAction, wrapRef, getBindValues })
 </script>
