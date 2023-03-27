@@ -171,7 +171,7 @@ const actionColumn = reactive({
 </script>
 
 <template>
-  <div>
+  <BasicPage>
     <BasicTable
       title="基础表格"
       :columns="columns"
@@ -184,5 +184,5 @@ const actionColumn = reactive({
         </n-button>
       </template>
     </BasicTable>
-  </div>
+  </BasicPage>
 </template>

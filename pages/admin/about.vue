@@ -8,32 +8,9 @@ definePageMeta({
 </script>
 
 <template>
-  <div>
+  <BasicPage title="关于">
     <n-h2>平山道</n-h2>
     <n-h2>平山道</n-h2>
     <n-h2>平山道</n-h2>
-    <n-h2>平山道</n-h2>
-    <n-h2>平山道</n-h2>
-    <n-h2>平山道</n-h2>
-    <n-h2>平山道</n-h2>
-    <n-h2>平山道</n-h2>
-    <n-h2>平山道</n-h2>
-    <n-h2>平山道</n-h2>
-    <n-h2>平山道</n-h2>
-    <n-h2>平山道</n-h2>
-    <n-h2>平山道</n-h2>
-    <n-h2>平山道</n-h2>
-    <n-h2>平山道</n-h2>
-    <n-h2>平山道</n-h2>
-    <n-h2>平山道</n-h2>
-    <n-h2>平山道</n-h2>
-    <n-h2>平山道</n-h2>
-    <n-h2>平山道</n-h2>
-    <n-h2>平山道</n-h2>
-    <n-h2>平山道</n-h2>
-    <n-h2>平山道</n-h2>
-    <n-h2>平山道</n-h2>
-    <n-h2>平山道</n-h2>
-    <n-h2>平山道</n-h2>
-  </div>
+  </BasicPage>
 </template>
