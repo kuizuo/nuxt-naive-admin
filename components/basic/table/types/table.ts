@@ -393,10 +393,10 @@ export type CellFormat =
   | ((text: string, record: Record<string, any>, index: number) => string | number)
   | Map<string | number, any>
 
-export interface BasicColumn extends DataTableBaseColumn<Record<string, any>> {
+export interface BasicColumn<T = Record<string, any>> extends DataTableBaseColumn<T> {
   type?: 'selection' | 'expand'
   key: string
-  children?: BasicColumn[]
+  children?: BasicColumn<T>[]
   filters?: {
     text: string
     value: string
@@ -423,14 +423,14 @@ export interface BasicColumn extends DataTableBaseColumn<Record<string, any>> {
   // 业务控制是否显示
   ifShow?: boolean | ((column: BasicColumn) => boolean)
   // 自定义修改后显示的内容
-  editRender?: (opt: {
-    text: string | number | boolean | Record<string, any>
-    record: Record<string, any>
-    column: BasicColumn
-    index: number
-  }) => VNodeChild | JSX.Element
+  // editRender?: (opt: {
+  //   text: string | number | boolean | Record<string, any>
+  //   record: Record<string, any>
+  //   column: BasicColumn
+  //   index: number
+  // }) => VNodeChild | JSX.Element
   // 动态 Disabled
-  editDynamicDisabled?: boolean | ((record: Record<string, any>) => boolean)
+  // editDynamicDisabled?: boolean | ((record: Record<string, any>) => boolean)
 }
 
 export interface ColumnChangeParam {

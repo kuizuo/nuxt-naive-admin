@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { NAvatar, NTag } from 'naive-ui'
 import TableAction from '~/components/basic/table/components/TableAction.vue'
+import type { BasicColumn } from '~~/components/basic/table/types/table'
 
 definePageMeta({
   layout: 'admin',
@@ -25,7 +26,7 @@ interface TableData {
   time: string
 }
 
-const columns = [
+const columns: BasicColumn<TableData>[] = [
   {
     title: 'id',
     key: 'id',
@@ -45,7 +46,7 @@ const columns = [
     title: '头像',
     key: 'avatar',
     width: 100,
-    render(row: TableData) {
+    render(row) {
       return h(NAvatar, {
         size: 48,
         src: row.avatar,
