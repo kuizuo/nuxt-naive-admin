@@ -1,5 +1,7 @@
 <script lang="ts" setup>
-import { moveArrayElement, useSortable } from '@vueuse/integrations/useSortable'
+import { useSortable } from '@vueuse/integrations/useSortable'
+import TabRedo from './components/TabRedo.vue'
+import TabContent from './components/TabContent.vue'
 
 const route = useRoute()
 const router = useRouter()

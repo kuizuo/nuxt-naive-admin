@@ -12,6 +12,19 @@ definePageMeta({
 
 const message = useMessage()
 
+interface TableData {
+  id: number
+  no: string
+  name: string
+  avatar: string
+  address: string
+  beginTime: string
+  endTime: string
+  status: boolean
+  date: string
+  time: string
+}
+
 const columns = [
   {
     title: 'id',
@@ -32,7 +45,7 @@ const columns = [
     title: '头像',
     key: 'avatar',
     width: 100,
-    render(row) {
+    render(row: TableData) {
       return h(NAvatar, {
         size: 48,
         src: row.avatar,
@@ -58,7 +71,7 @@ const columns = [
     title: '状态',
     key: 'status',
     width: 100,
-    render(row) {
+    render(row: TableData) {
       return h(
         NTag,
         {
@@ -131,7 +144,7 @@ const actionColumn = reactive({
   key: 'actions',
   fixed: 'right',
   align: 'center',
-  render(record) {
+  render(record: TableData) {
     return h(TableAction as any, {
       style: 'text',
       actions: [

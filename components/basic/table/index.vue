@@ -8,6 +8,10 @@ import { useColumns } from './hooks/useColumns'
 import { usePagination } from './hooks/usePagination'
 import { useLoading } from './hooks/useLoading'
 
+import RedoSetting from './components/settings/RedoSetting.vue'
+import SizeSetting from './components/settings/SizeSetting.vue'
+import ColumnSetting from './components/settings/ColumnSetting.vue'
+
 const props = defineProps(basicProps)
 const emits = defineEmits([
   'fetch-success',

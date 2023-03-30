@@ -28,14 +28,6 @@ export default defineNuxtConfig({
       path: '~/components',
       extensions: ['vue'],
     },
-    {
-      path: '~/components/layout/components',
-      pathPrefix: false,
-    },
-    {
-      path: '~/components/basic/table/components',
-      pathPrefix: false,
-    },
   ],
   colorMode: {
     preference: 'system',

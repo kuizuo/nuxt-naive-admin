@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import Fullscreen from './components/Fullscreen.vue'
+
 const route = useRoute()
 const router = useRouter()
 
