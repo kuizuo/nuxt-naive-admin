@@ -9,7 +9,7 @@ const { message } = createDiscreteApi(['message'])
 
 const loading = ref(false)
 const form = ref({
-  username: 'test',
+  username: 'admin',
   password: '123456',
 })
 
@@ -35,6 +35,11 @@ async function login() {
 
   else
     return navigateTo('/', { external: true })
+}
+
+async function goToRegister() {
+  emit('success')
+  await navigateTo('/register', { external: true })
 }
 </script>
 
@@ -80,8 +85,12 @@ async function login() {
           </div>
           <div class="space-y-4 w-full">
             <n-button v-if="providers.github" class="w-full flex" @click="signIn('github')">
-              <i i-ri-github-line text-lg mr-1 />
+              <i i-ri-github-line text-md mr-1 />
               Sign in with Github
+            </n-button>
+            <n-button class="w-full flex" @click="goToRegister()">
+              <i i-ri-login-box-line text-md mr-1 />
+              Register
             </n-button>
           </div>
         </div>

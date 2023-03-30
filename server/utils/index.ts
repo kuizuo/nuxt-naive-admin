@@ -2,6 +2,7 @@ export class ResOp<T = any> {
   readonly data: T
   readonly code: number
   readonly message: string
+  readonly error: string | null | undefined
 
   constructor(code: number, data: T, message = 'success') {
     this.code = code
