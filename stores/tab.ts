@@ -92,11 +92,24 @@ export const useTabStore = defineStore({
       this.tabList = this.tabList.filter(item => item?.meta?.affix ?? false)
     },
 
-    // Sort the tabs
     async sortTabs(oldIndex: number, newIndex: number) {
       const currentTab = this.tabList[oldIndex]
       this.tabList.splice(oldIndex, 1)
       this.tabList.splice(newIndex, 0, currentTab)
+    },
+
+    async setTabTitle(title: string, route: RouteLocationNormalized) {
+      const findTab = this.tabList.find(item => item === route)
+      if (findTab)
+        findTab.meta.title = title
+    },
+
+    async updateTabPath(fullPath: string, route: RouteLocationNormalized) {
+      const findTab = this.tabList.find(item => item === route)
+      if (findTab) {
+        findTab.fullPath = fullPath
+        findTab.path = fullPath
+      }
     },
   },
   persist: {
