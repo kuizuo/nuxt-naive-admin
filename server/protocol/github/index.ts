@@ -7,10 +7,12 @@ const api = got.extend({
 
 export class Github {
   static async getUser(username: string) {
-    return await api.get(`users/${username}`).json<API.User>()
+    return await api.get(`users/${username}`).json<API.Github.User>()
   }
 
   static async getRepos(username: string) {
-    return await api.get(`users/${username}/repos`).json<API.Repo[]>()
+    const data = await api.get(`users/${username}/repos`).json<API.Github.Repo[]>()
+    return data
   }
 }
+

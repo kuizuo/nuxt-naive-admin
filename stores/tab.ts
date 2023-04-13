@@ -113,6 +113,6 @@ export const useTabStore = defineStore({
     },
   },
   persist: {
-    key: 'app-tabs1',
+    key: 'app-tabs',
   },
 })

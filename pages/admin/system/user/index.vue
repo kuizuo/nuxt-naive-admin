@@ -3,6 +3,7 @@ import { NAvatar } from 'naive-ui'
 import TableAction from '~/components/basic/table/components/TableAction.vue'
 import type { BasicColumn } from '~~/components/basic/table/types/table'
 import type { Admin } from '~~/types/admin/user'
+import { createUser, deleteUser, getUserList, updateUser } from '~~/apis/admin/system/user'
 
 definePageMeta({
   layout: 'admin',
@@ -43,34 +44,25 @@ const columns: BasicColumn<Admin.User>[] = [
   },
 ]
 
-// const fetchData = async (params: any) => {
-//   const { data } = await api.admin.user.list(params)
-//   return {
-//     data: data.data,
-//     total: data.total,
-//   }
-// }
-
-const fetchData = async (params: any) => {
-  const { data } = await request('/api/sys/users', params)
-  return {
-    items: data,
-    meta: {
-      total: data.length,
-    },
-  }
-}
-
 const handleCreate = () => {
   message.success('新增数据')
+  createUser({
+    name: 'test',
+    email: 'hi@example.com',
+    password: 'a123456',
+  })
 }
 
 const handleUpdate = () => {
   message.success('更新数据')
+  updateUser('1', {
+    name: 'kuizuo',
+  })
 }
 
 const handleDelete = (record: Admin.User) => {
   message.success(`删除数据: ${record.id}`)
+  deleteUser('1')
 }
 
 const actionColumn = reactive<BasicColumn<Admin.User>>({
@@ -107,7 +99,7 @@ const actionColumn = reactive<BasicColumn<Admin.User>>({
       title="用户列表"
       :columns="columns"
       :action-column="actionColumn"
-      :request="fetchData"
+      :request="getUserList"
     >
       <template #toolbar>
         <n-button type="primary" size="small" @click="handleCreate">

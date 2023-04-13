@@ -1,23 +1,20 @@
 <script setup lang="ts">
-const userStore = useUserStore()
-const repos = computed(() => userStore.repos)
-
-const loading = ref(false)
-
-async function getRepos() {
-  loading.value = true
-  try {
-    await userStore.getRepos()
-  }
-  finally {
-    loading.value = false
-  }
+interface Props {
+  user: API.Github.User
 }
+
+const props = defineProps<Props>()
+
+const { data: repos, pending, execute } = await useAsyncData(async () => {
+  return (await request(`/api/github/repo/${props.user?.login}`)).data
+}, { watch: [() => props.user?.login] })
+
+
 </script>
 
 <template>
-  <div>
-    <div v-if="repos?.length > 0" class="mt-2">
+  <n-spin :show="pending">
+    <div v-if="repos?.length! > 0" class="mt-2">
       <n-list hoverable clickable bordered>
         <n-list-item v-for="repo in repos" :key="repo.id">
           <n-thing content-style="margin-top: 10px;">
@@ -45,14 +42,14 @@ async function getRepos() {
           </n-thing>
           <template #suffix>
             <a :href="repo.html_url" target="_blank">
-              <n-button type="primary">进入仓库</n-button>
+              <n-button type="primary">查看仓库</n-button>
             </a>
           </template>
         </n-list-item>
       </n-list>
     </div>
-    <n-button v-else class="!mt-1" :loading="loading" @click="getRepos()">
-      查看他的仓库列表
-    </n-button>
-  </div>
+    <div v-else>
+      <n-empty description="暂无仓库" />
+    </div>
+  </n-spin>
 </template>

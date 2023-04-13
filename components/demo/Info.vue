@@ -1,6 +1,9 @@
 <script setup lang="ts">
-const userStore = useUserStore()
-const user = computed(() => userStore.user)
+interface Props {
+  user: API.Github.User
+}
+
+const props = defineProps<Props>()
 </script>
 
 <template>
