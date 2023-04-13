@@ -29,6 +29,10 @@ export default defineNuxtConfig({
       path: '~/components',
       extensions: ['vue'],
     },
+    {
+      path: '~/components/global',
+      global: true,
+    }
   ],
   colorMode: {
     preference: 'system',
