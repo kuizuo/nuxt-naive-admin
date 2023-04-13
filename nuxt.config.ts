@@ -46,10 +46,6 @@ export default defineNuxtConfig({
     preflight: false,
   },
   content: {
-    documentDriven: false,
-    markdown: {
-      mdc: true,
-    },
     highlight: {
       theme: {
         default: 'github-light',
@@ -65,7 +61,6 @@ export default defineNuxtConfig({
     '/api/**': { cors: true },
   },
   auth: {
-    origin: process.env.ORIGIN,
     enableGlobalAppMiddleware: true,
     globalMiddlewareOptions: {
       allow404WithoutAuth: true,
