@@ -40,10 +40,10 @@ const dropdownSelect = (key: string) => {
 
 <template>
   <div
-    class="p-2 z-40 w-full h-12 flex justify-center items-center backdrop-filter backdrop-blur-md border-b-1 border-[var(--n-border-color)]"
+    class="p-2 z-40 w-full h-12 flex justify-center items-center backdrop-filter backdrop-blur-md border-b-[1px] border-[--n-border-color]"
   >
     <AppLogo v-if="getShowHeaderLogo || isMobile" :show-title="!isMobile" class="mr-2" />
-    <div class="layout-header-left flex justify-center items-center gap-2">
+    <div class="flex justify-center items-center gap-2">
       <div class="ml-1 cursor-pointer flex justify-center items-center" @click="toggleCollapsed">
         <Icon v-if="collapsed" name="ant-design:menu-unfold-outlined" />
         <Icon v-else name="ant-design:menu-fold-outlined" />
@@ -76,12 +76,12 @@ const dropdownSelect = (key: string) => {
       </n-breadcrumb>
     </div>
 
-    <div flex="auto" />
-    <div class="layout-header-right flex justify-center items-center">
+    <div class="flex-auto" />
+    <div class="flex justify-center items-center">
       <!-- 个人中心 -->
       <div class="flex items-center gap-4">
         <Fullscreen />
-        <AppDarkToggle />
+        <AppThemeSwitcher/>
         <UserDropdown />
       </div>
     </div>

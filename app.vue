@@ -48,7 +48,7 @@ body,
 }
 
 html.dark body {
-  @apply duration-300 transition-colors text-gray-800 dark:text-gray-200 bg-white dark:bg-gray-900;
+  @apply duration-300 transition-colors;
 }
 
 .page-enter-active,

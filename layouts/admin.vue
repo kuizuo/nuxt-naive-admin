@@ -3,10 +3,11 @@ const headerRef = ref<any>(null)
 
 const { headerSetting } = useHeaderSetting()
 
+const headerHeight = ref(headerRef.value?.$el.offsetHeight || 0)
 const contentHeight = computed(() => {
-  const headerHeight = headerRef.value?.$el.offsetHeight || 0
   return `calc(100vh - ${headerHeight}px)`
 })
+
 </script>
 
 <template>

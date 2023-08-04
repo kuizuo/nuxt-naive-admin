@@ -35,8 +35,6 @@ export default defineNuxtConfig({
     },
   ],
   colorMode: {
-    preference: 'system',
-    fallback: 'dark',
     classSuffix: '',
   },
   tailwindcss: {
@@ -75,6 +73,5 @@ export default defineNuxtConfig({
   },
   devtools: {
     enabled: true,
-    vscode: {},
   },
 })

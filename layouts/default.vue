@@ -1,6 +1,6 @@
 <template>
   <div>
-    <AppNav />
+    <AppHeader />
     <main class="py-4 px-5 lg:px-10 text-center">
       <slot />
     </main>
