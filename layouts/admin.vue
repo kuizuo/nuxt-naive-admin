@@ -8,6 +8,8 @@ const contentHeight = computed(() => {
   return `calc(100vh - ${headerHeight}px)`
 })
 
+const refreshing = computed(() => useTabStore().refreshing)
+
 </script>
 
 <template>
@@ -22,7 +24,8 @@ const contentHeight = computed(() => {
       <n-layout-content :style="{
         height: contentHeight,
       }" :native-scrollbar="false">
-        <slot />
+        <slot v-if="!refreshing" />
+
       </n-layout-content>
 
       <n-back-top :right="100" />

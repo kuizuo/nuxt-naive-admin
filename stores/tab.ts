@@ -4,7 +4,8 @@ import type { RouteLocationNormalized, RouteRecordNormalized, Router } from 'vue
 const whiteList = ['Redirect']
 
 export interface ITabsState {
-  tabList: RouteLocationNormalized[]
+  tabList: RouteLocationNormalized[],
+  refreshing: boolean,
 }
 
 export function getRawRoute(route: RouteLocationNormalized): RouteLocationNormalized {
@@ -27,13 +28,18 @@ export const useTabStore = defineStore({
   id: 'app-tab',
   state: (): ITabsState => ({
     tabList: [],
+    refreshing: false,
   }),
   actions: {
     async refreshPage() {
-      const router = useRouter()
-      router.replace({
-        path: `/redirect${router.currentRoute.value.fullPath}`,
-      })
+      // const router = useRouter()
+      // router.replace({
+      //   path: `/redirect${router.currentRoute.value.fullPath}`,
+      // })
+      this.refreshing = true
+      setTimeout(() => {
+        this.refreshing = false
+      }, 500)
     },
     setTabList(tabList: RouteLocationNormalized[]) {
       this.tabList = tabList

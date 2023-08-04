@@ -1,23 +1,16 @@
 <script lang="ts" setup>
-const loading = ref(false)
+const tabStore = useTabStore()
 
-const { refreshPage } = useTabStore()
+const refreshing = computed(() => tabStore.refreshing)
 
 async function handleRedo() {
-  loading.value = true
-  await refreshPage()
-  setTimeout(() => {
-    loading.value = false
-  }, 1200)
+  await tabStore.refreshPage()
 }
 </script>
 
 <template>
   <span class="h-full flex items-center border-l-1 border-[var(--n-border-color)]" @click="handleRedo">
-    <Icon
-      name="ant-design:redo-outlined"
-      class="w-8 inline-block cursor-pointer"
-      :class="{ 'animate-spin': loading }"
-    />
+    <Icon name="ant-design:redo-outlined" class="w-8 inline-block cursor-pointer"
+      :class="{ 'animate-spin': refreshing }" />
   </span>
 </template>
