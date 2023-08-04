@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import 'assets/css/preflight.css'
-
 import { darkTheme, lightTheme } from 'naive-ui'
 
 const colorMode = useColorMode()

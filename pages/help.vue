@@ -1,7 +1,7 @@
 <script setup lang="ts">
 definePageMeta({
   auth: false,
-  layout: 'markdown',
+  layout: 'page',
 })
 </script>
 

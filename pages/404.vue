@@ -4,10 +4,11 @@ const router = useRouter()
 definePageMeta({
   auth: false,
 })
+
 </script>
 
 <template>
-  <main p="x4 y10" text="center teal-700 dark:gray-200">
+  <main class="px-4 py-10 text-center text-teal-700 dark:text-gray-200">
     <n-result status="404" title="404 资源不存在" description="生活总归带点荒谬">
       <template #footer>
         <n-space justify="center">

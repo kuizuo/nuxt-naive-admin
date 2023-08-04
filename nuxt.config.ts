@@ -5,9 +5,9 @@ export default defineNuxtConfig({
   },
   modules: [
     '@vueuse/nuxt',
-    '@unocss/nuxt',
     '@nuxtjs/color-mode',
     '@nuxt/content',
+    '@nuxtjs/tailwindcss',
     ['@pinia/nuxt', {
       autoImports: ['defineStore', 'definePiniaStore'],
     }],
@@ -32,18 +32,21 @@ export default defineNuxtConfig({
     {
       path: '~/components/global',
       global: true,
-    }
+    },
   ],
   colorMode: {
     preference: 'system',
     fallback: 'dark',
     classSuffix: '',
   },
-  unocss: {
-    uno: true,
-    icons: true,
-    attributify: true,
-    preflight: false,
+  tailwindcss: {
+    viewer: false,
+    exposeConfig: true,
+    config: {
+      content: [
+        'content/**/**.md',
+      ],
+    },
   },
   content: {
     highlight: {
@@ -54,10 +57,11 @@ export default defineNuxtConfig({
       },
     },
   },
+  css: ['~/assets/css/main.css'],
   routeRules: {
     '/changelog': { static: true },
     '/help': { static: true },
-    '/admin/**': { ssr: false },
+    '/admin/**': { swr: false },
     '/api/**': { cors: true },
   },
   auth: {

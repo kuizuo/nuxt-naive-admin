@@ -109,8 +109,6 @@ export function useDataSource(
         opt?.filterInfo ?? {},
       )
 
-      console.log('params', params)
-
       if (beforeFetch && isFunction(beforeFetch))
         params = (await beforeFetch(params)) || params
 

@@ -16,7 +16,7 @@ const { author } = useAppConfig()
             </p>
           </NuxtLink>
           <NuxtLink target="_blank" class="flex items-center gap-1">
-            <i i-ri:file-code-line />
+            <i class="i-ri:file-code-line" />
             <p class="text-xs font-semibold self-end">
               版本: {{ pkg.version }}
             </p>
@@ -33,7 +33,7 @@ const { author } = useAppConfig()
             </NuxtLink>
           </div>
         </div>
-        <div flex-auto />
+        <div class="flex-auto" />
         <div class="flex items-center gap-3">
           <NuxtLink v-if="author.qq" i-ri-qq-line :to="author.qq" target="_blank" />
           <NuxtLink v-if="author.wx" i-ri-wechat-2-line :to="author.wx" target="_blank" />

@@ -73,23 +73,25 @@ async function goToRegister() {
               </n-input>
             </n-form-item>
             <n-form-item>
-              <n-button type="primary" w-full @click="login()">
+              <n-button type="primary" class="w-full" @click="login()">
                 登录
               </n-button>
             </n-form-item>
           </n-form>
           <div
-            class="w-full flex my-2 -mt-4 text-center truncate before:(content-none relative top-50% w-50% translate-y-50% h-0 b-t-1 b-gray-2 dark:b-gray-7) after:(content-none relative top-50% w-50% translate-y-50% h-0 b-t-1 b-gray-2 dark:b-gray-7)"
+            class="w-full flex my-2 -mt-4 text-center truncate
+            before:content-[''] before:relative before:top-1/2 before:w-1/2 before:translate-y-1/2 before:h-0 before:border-t-[1px] before:border-gray-200 dark:border-gray-700
+            after:content-[''] after:relative after:top-1/2 after:w-1/2 after:translate-y-1/2 after:h-0 after:border-t-[1px] after:border-gray-200 dark:border-gray-700"
           >
-            <span px-2 text-gray-4 text-sm>or</span>
+            <span class="px-2 text-gray-4 text-sm">or</span>
           </div>
           <div class="space-y-4 w-full">
             <n-button v-if="providers.github" class="w-full flex" @click="signIn('github')">
-              <i i-ri-github-line text-md mr-1 />
+              <i class="i-ri-github-line text-md mr-1" />
               Sign in with Github
             </n-button>
             <n-button class="w-full flex" @click="goToRegister()">
-              <i i-ri-login-box-line text-md mr-1 />
+              <i class="i-ri-login-box-line text-md mr-1" />
               Register
             </n-button>
           </div>

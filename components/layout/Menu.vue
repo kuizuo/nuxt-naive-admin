@@ -44,7 +44,6 @@ function buildMenuList(routes: Readonly<RouteRecordRaw[]>, parentPath = ''): Men
 }
 
 menus.value = buildMenuList(router.options.routes) as any
-console.log (menus)
 function renderIcon(icon: string) {
   return () => h(Icon, { name: icon })
 }

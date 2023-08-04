@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const color = useColorMode()
 
+const isDark = computed(() => color.value === 'dark')
 function toggleDark() {
   color.preference = color.value === 'dark' ? 'light' : 'dark'
 }
@@ -8,6 +9,7 @@ function toggleDark() {
 
 <template>
   <button class="!outline-none" @click="toggleDark">
-    <div class="dark:i-ri-moon-line i-ri-sun-line" />
+    <Icon v-if="isDark" name="ri:moon-line" />
+    <Icon v-else name="ri:sun-line" />
   </button>
 </template>

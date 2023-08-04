@@ -1,15 +1,14 @@
 <script setup lang="ts">
-interface Props {
+const props = defineProps<{
   user: API.Github.User
-}
+}>()
 
-const props = defineProps<Props>()
-
-const { data: repos, pending, execute } = await useAsyncData(async () => {
-  return (await request(`/api/github/repo/${props.user?.login}`)).data
-}, { watch: [() => props.user?.login] })
-
-
+const { data: repos, pending, execute } = await useAsyncData(
+  async () => {
+    return (await request(`/api/github/repo/${props.user?.login}`)).data
+  },
+  { watch: [() => props.user?.login] },
+)
 </script>
 
 <template>
@@ -19,18 +18,18 @@ const { data: repos, pending, execute } = await useAsyncData(async () => {
         <n-list-item v-for="repo in repos" :key="repo.id">
           <n-thing content-style="margin-top: 10px;">
             <template #header>
-              <div inline-flex items-center font-sans>
-                <h2 text-xl>
+              <div class="inline-flex items-center font-sans">
+                <h2 class="text-xl">
                   {{ repo.name }}
                 </h2>
-                <a :href="repo.html_url" target="_blank" ml-1 inline-flex items-center>
-                  <i i-ri-star-s-fill inline-block cursor-pointer text-amber-400 mr-1 />
+                <a :href="repo.html_url" target="_blank" class="ml-1 inline-flex items-center">
+                  <i class="i-ri-star-s-fill inline-block cursor-pointer text-amber-400 mr-1" />
                   {{ repo.stargazers_count }}
                 </a>
               </div>
             </template>
             <template #description>
-              <n-space size="small" mt-1>
+              <n-space size="small" class="mt-1">
                 <n-tag v-for="topic in repo.topics" :key="topic" :bordered="false" type="info" size="small">
                   {{ topic }}
                 </n-tag>
