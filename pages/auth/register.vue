@@ -34,11 +34,16 @@ async function register() {
 
     message.success('注册成功')
 
-    return navigateTo('/login', { external: true })
+    return navigateTo('/auth/login', { external: true })
   }
   finally {
     loading.value = false
   }
+}
+
+
+async function goToLogin() {
+  await navigateTo('/auth/login', { external: true })
 }
 
 definePageMeta({
@@ -66,10 +71,8 @@ definePageMeta({
               </n-input>
             </n-form-item>
             <n-form-item label="密码" path="form.password">
-              <n-input
-                v-model:value="form.password" type="password" show-password-on="mousedown" placeholder="密码"
-                :maxlength="16" @keyup.enter="register()"
-              >
+              <n-input v-model:value="form.password" type="password" show-password-on="mousedown" placeholder="密码"
+                :maxlength="16" @keyup.enter="register()">
                 <template #prefix>
                   <Icon name="ri:lock-2-line" size="16" />
                 </template>
@@ -86,9 +89,14 @@ definePageMeta({
               </n-input>
             </n-form-item> -->
             <n-form-item>
-              <n-button type="primary" w-full @click="register()">
-                注册
-              </n-button>
+              <div class="space-y-4 w-full">
+                <n-button type="primary" class="w-full" @click="register()">
+                  Register
+                </n-button>
+                <n-button class="w-full flex" @click="goToLogin()">
+                  go to Login
+                </n-button>
+              </div>
             </n-form-item>
           </n-form>
         </div>

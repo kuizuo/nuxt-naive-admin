@@ -39,7 +39,7 @@ async function login() {
 
 async function goToRegister() {
   emit('success')
-  await navigateTo('/register', { external: true })
+  await navigateTo('/auth/register', { external: true })
 }
 </script>
 
@@ -58,17 +58,15 @@ async function goToRegister() {
             <n-form-item label="账号" path="form.username">
               <n-input v-model:value="form.username" placeholder="账号">
                 <template #prefix>
-                  <i i-ri:user-3-line />
+                  <Icon name="ri:user-3-line" size="16" />
                 </template>
               </n-input>
             </n-form-item>
             <n-form-item label="密码" path="form.password">
-              <n-input
-                v-model:value="form.password" type="password" show-password-on="mousedown" placeholder="密码"
-                :maxlength="16" @keyup.enter="login()"
-              >
+              <n-input v-model:value="form.password" type="password" show-password-on="mousedown" placeholder="密码"
+                :maxlength="16" @keyup.enter="login()">
                 <template #prefix>
-                  <i i-ri:lock-2-line />
+                  <Icon name="ri:lock-2-line" size="16" />
                 </template>
               </n-input>
             </n-form-item>
@@ -81,8 +79,7 @@ async function goToRegister() {
           <div
             class="w-full flex my-2 -mt-4 text-center truncate
             before:content-[''] before:relative before:top-1/2 before:w-1/2 before:translate-y-1/2 before:h-0 before:border-t-[1px] before:border-gray-200 dark:border-gray-700
-            after:content-[''] after:relative after:top-1/2 after:w-1/2 after:translate-y-1/2 after:h-0 after:border-t-[1px] after:border-gray-200 dark:border-gray-700"
-          >
+            after:content-[''] after:relative after:top-1/2 after:w-1/2 after:translate-y-1/2 after:h-0 after:border-t-[1px] after:border-gray-200 dark:border-gray-700">
             <span class="px-2 text-gray-4 text-sm">or</span>
           </div>
           <div class="space-y-4 w-full">
@@ -91,7 +88,6 @@ async function goToRegister() {
               Sign in with Github
             </n-button>
             <n-button class="w-full flex" @click="goToRegister()">
-              <i class="i-ri-login-box-line text-md mr-1" />
               Register
             </n-button>
           </div>
@@ -101,6 +97,4 @@ async function goToRegister() {
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
