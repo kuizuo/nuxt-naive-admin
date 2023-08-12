@@ -9,7 +9,6 @@ const contentHeight = computed(() => {
 })
 
 const refreshing = computed(() => useTabStore().refreshing)
-
 </script>
 
 <template>
@@ -21,11 +20,12 @@ const refreshing = computed(() => useTabStore().refreshing)
         <LayoutHeader />
         <LayoutTabs v-if="headerSetting.showTabs" />
       </n-layout-header>
-      <n-layout-content :style="{
-        height: contentHeight,
-      }" :native-scrollbar="false">
+      <n-layout-content
+        :style="{
+          height: contentHeight,
+        }" :native-scrollbar="false"
+      >
         <slot v-if="!refreshing" />
-
       </n-layout-content>
 
       <n-back-top :right="100" />

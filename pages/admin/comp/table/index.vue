@@ -96,7 +96,7 @@ const columns: BasicColumn<TableData>[] = [
   },
 ]
 
-const fetchData = async (params?) => {
+async function fetchData(params?) {
   const data = []
   for (let i = 0; i < 10; i++) {
     data.push({
@@ -127,15 +127,15 @@ const fetchData = async (params?) => {
 
 // const data = (await fetchData()).items
 
-const handleCreate = () => {
+function handleCreate() {
   message.success('新增数据')
 }
 
-const handleUpdate = () => {
+function handleUpdate() {
   message.success('更新数据')
 }
 
-const handleDelete = (record) => {
+function handleDelete(record) {
   message.success(`删除数据: ${record.id}`)
 }
 

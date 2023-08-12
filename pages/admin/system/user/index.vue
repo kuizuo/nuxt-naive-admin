@@ -3,7 +3,6 @@ import { NAvatar } from 'naive-ui'
 import TableAction from '~/components/basic/table/components/TableAction.vue'
 import type { BasicColumn } from '~~/components/basic/table/types/table'
 import type { Admin } from '~~/types/admin/user'
-import { createUser, deleteUser, getUserList, updateUser } from '~~/apis/admin/system/user'
 
 definePageMeta({
   layout: 'admin',
@@ -13,6 +12,9 @@ definePageMeta({
   keepalive: true,
 })
 
+async function getUserList(params: any) {
+  await request('/api/system/users', { method: 'GET', params })
+}
 const message = useMessage()
 
 const columns: BasicColumn<Admin.User>[] = [
@@ -44,25 +46,25 @@ const columns: BasicColumn<Admin.User>[] = [
   },
 ]
 
-const handleCreate = () => {
+function handleCreate() {
   message.success('新增数据')
-  createUser({
-    name: 'test',
-    email: 'hi@example.com',
-    password: 'a123456',
-  })
+  // createUser({
+  //   name: 'test',
+  //   email: 'hi@example.com',
+  //   password: 'a123456',
+  // })
 }
 
-const handleUpdate = () => {
+function handleUpdate() {
   message.success('更新数据')
-  updateUser('1', {
-    name: 'kuizuo',
-  })
+  // updateUser('1', {
+  //   name: 'kuizuo',
+  // })
 }
 
-const handleDelete = (record: Admin.User) => {
+function handleDelete(record: Admin.User) {
   message.success(`删除数据: ${record.id}`)
-  deleteUser('1')
+  // deleteUser('1')
 }
 
 const actionColumn = reactive<BasicColumn<Admin.User>>({

@@ -1,16 +1,12 @@
 <script setup lang="ts">
-definePageMeta({ auth: false })
-
-const message = useMessage()
 const username = ref('kuizuo')
 
 const { data: user, pending, execute } = await useLazyAsyncData(async () => {
   return (await request(`/api/github/user/${username.value}`)).data
 })
 
-function handleQuery() {
-  message.success('查询成功')
-  execute()
+async function handleQuery() {
+  await execute()
 }
 
 function reset() {
@@ -27,11 +23,6 @@ function reset() {
           <n-alert title="演示说明" type="info">
             <div class="flex items-center">
               使用 github api 获取用户信息
-              <a class="ml-1" href="https://docs.github.com/cn/rest/users" target="_blank">
-                <n-button type="info" size="small">
-                  点我查看文档
-                </n-button>
-              </a>
             </div>
           </n-alert>
           <div class="my-4">
@@ -48,7 +39,7 @@ function reset() {
 
           <div v-if="user?.login">
             <DemoInfo :user="user" />
-            <DemoRepos :user="user" />
+            <DemoRepos :repos="user.repos" />
           </div>
         </n-card>
       </div>

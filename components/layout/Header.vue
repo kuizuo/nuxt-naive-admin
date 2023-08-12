@@ -12,7 +12,7 @@ const getShowHeaderLogo = computed(() => {
   return !isMobile.value && !menuMode
 })
 
-const generator = (routerMap: any[]) => {
+function generator(routerMap: any[]) {
   return routerMap.map((item: any) => {
     const currentMenu = {
       ...item,
@@ -33,7 +33,7 @@ const generator = (routerMap: any[]) => {
 
 const breadcrumbList = computed(() => generator(route.matched))
 
-const dropdownSelect = (key: string) => {
+function dropdownSelect(key: string) {
   router.push({ name: key })
 }
 </script>
@@ -51,24 +51,14 @@ const dropdownSelect = (key: string) => {
       <n-breadcrumb v-if="headerSetting.showBreadCrumb">
         <template v-for="routeItem in breadcrumbList" :key="routeItem.name === 'Redirect' ? void 0 : routeItem.name">
           <n-breadcrumb-item v-if="routeItem.meta.title">
-            <n-dropdown
-              v-if="routeItem.children?.length"
-              :options="routeItem.children"
-              @select="dropdownSelect"
-            >
+            <n-dropdown v-if="routeItem.children?.length" :options="routeItem.children" @select="dropdownSelect">
               <span>
-                <Icon
-                  v-if="headerSetting.showBreadCrumbIcon && routeItem.meta.icon"
-                  :name="routeItem.meta.icon"
-                />
+                <Icon v-if="headerSetting.showBreadCrumbIcon && routeItem.meta.icon" :name="routeItem.meta.icon" />
                 {{ routeItem.meta.title }}
               </span>
             </n-dropdown>
             <span v-else>
-              <Icon
-                v-if="headerSetting.showBreadCrumbIcon && routeItem.meta.icon"
-                :name="routeItem.meta.icon"
-              />
+              <Icon v-if="headerSetting.showBreadCrumbIcon && routeItem.meta.icon" :name="routeItem.meta.icon" />
               {{ routeItem.meta.title }}
             </span>
           </n-breadcrumb-item>
@@ -81,8 +71,8 @@ const dropdownSelect = (key: string) => {
       <!-- 个人中心 -->
       <div class="flex items-center gap-4">
         <Fullscreen />
-        <AppThemeSwitcher/>
-        <UserDropdown />
+        <AppThemeSwitcher />
+        <UserButton />
       </div>
     </div>
   </div>

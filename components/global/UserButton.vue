@@ -1,9 +1,10 @@
 <script  setup lang="ts">
-const { status, data, signOut, signIn, getProviders } = useSession()
+const supbabase = useSupabaseClient()
+const user = useSupabaseUser()
+
 const router = useRouter()
 
 const showModal = ref(false)
-const user = computed(() => data.value?.user)
 
 const options = [
   {
@@ -18,13 +19,14 @@ const options = [
   },
 ]
 
-function handleSelect(key: string) {
+async function handleSelect(key: string) {
   switch (key) {
     case 'profile':
-      router.push({ name: 'me' })
+      router.push({ name: 'profile' })
       break
     case 'logout':
-      signOut()
+      await supbabase.auth.signOut()
+      router.push({ path: '/' })
       break
   }
 }
@@ -36,10 +38,10 @@ function handleSuccess() {
 
 <template>
   <div>
-    <div v-if="status === 'authenticated'" class="flex">
+    <div v-if="user" class="flex">
       <n-dropdown trigger="hover" :options="options" @select="handleSelect">
-        <n-avatar size="small" round :src="user?.image">
-          <span v-if="!user?.image">{{ user?.name }}</span>
+        <n-avatar size="small" round :src="user?.user_metadata?.avatar_url">
+          <span v-if="!user?.user_metadata?.avatar_url">{{ user?.user_metadata?.full_name ?? user.email }}</span>
         </n-avatar>
       </n-dropdown>
     </div>
@@ -49,19 +51,12 @@ function handleSuccess() {
       </n-button>
       <ClientOnly>
         <n-modal
-          v-model:show="showModal"
-          :mask-closable="true"
-          preset="card"
-          size="large"
-          :bordered="false"
-          :closable="false"
-          :style="{ 'max-width': '350px' }"
-          transform-origin="center"
+          v-model:show="showModal" :mask-closable="true" preset="card" size="large" :bordered="false"
+          :closable="false" :style="{ 'max-width': '350px' }" transform-origin="center"
         >
-          <LoginForm @success="handleSuccess" />
+          <LoginCard @success="handleSuccess" />
         </n-modal>
       </ClientOnly>
     </div>
   </div>
 </template>
-

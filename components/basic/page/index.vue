@@ -34,7 +34,7 @@ const contentHeight = computed(() => {
 
   const wrapperHeight = wrapperRef.value?.offsetHeight || 0
   const headerHeight = headerRef.value?.offsetHeight || 0
-  const upward = typeof upwardSpace === 'number' ? upwardSpace : parseInt(upwardSpace)
+  const upward = typeof upwardSpace === 'number' ? upwardSpace : Number.parseInt(upwardSpace)
 
   return wrapperHeight - headerHeight - upward
 })

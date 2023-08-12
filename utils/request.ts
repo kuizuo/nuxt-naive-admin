@@ -25,4 +25,3 @@ const _fetch = $fetch.create({
 const request = _fetch
 
 export default request
-

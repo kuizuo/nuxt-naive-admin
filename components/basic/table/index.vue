@@ -129,4 +129,3 @@ createTableContext({ ...tableAction, wrapRef, getBindValues })
     </n-data-table>
   </div>
 </template>
-

@@ -11,8 +11,6 @@ export class Github {
   }
 
   static async getRepos(username: string) {
-    const data = await api.get(`users/${username}/repos`).json<API.Github.Repo[]>()
-    return data
+    return await api.get(`users/${username}/repos`).json<API.Github.Repo[]>()
   }
 }
-
