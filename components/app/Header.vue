@@ -4,6 +4,6 @@
 
     <AppNav />
 
-    <UserDropdown />
+    <UserButton />
   </div>
 </template>

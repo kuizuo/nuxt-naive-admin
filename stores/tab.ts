@@ -4,8 +4,8 @@ import type { RouteLocationNormalized, RouteRecordNormalized, Router } from 'vue
 const whiteList = ['Redirect']
 
 export interface ITabsState {
-  tabList: RouteLocationNormalized[],
-  refreshing: boolean,
+  tabList: RouteLocationNormalized[]
+  refreshing: boolean
 }
 
 export function getRawRoute(route: RouteLocationNormalized): RouteLocationNormalized {

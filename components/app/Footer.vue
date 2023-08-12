@@ -24,7 +24,7 @@ const { author } = useAppConfig()
         </div>
         <div class="inline-flex">
           <div class="flex items-center gap-1">
-            <i class="i-ri-building-2-line "/>
+            <i class="i-ri-building-2-line " />
             <NuxtLink :to="pkg.repository.url" target="_blank" class="text-xs font-semibold self-end">
               构建于: Protocol
             </NuxtLink>
@@ -35,7 +35,7 @@ const { author } = useAppConfig()
         </div>
         <div class="flex-auto" />
         <div class="flex items-center gap-3">
-          <AppThemeSwitcher/>
+          <AppThemeSwitcher />
           <NuxtLink class="i-ri-github-line icon-btn" :to="pkg.repository.url" target="_blank" />
         </div>
       </div>

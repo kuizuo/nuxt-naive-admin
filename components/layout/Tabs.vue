@@ -22,7 +22,7 @@ function handleClose(fullPath: string) {
   tabStore.closeTab(tab!, router)
 }
 
-const handleUpdateValue = (fullPath: string) => {
+function handleUpdateValue(fullPath: string) {
   const tab = tabList.value.find(item => item.fullPath === fullPath)
   if (tab)
     router.replace(tab.fullPath)

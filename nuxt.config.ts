@@ -3,6 +3,11 @@ export default defineNuxtConfig({
     pageTransition: { name: 'page', mode: 'out-in' },
     layoutTransition: { name: 'layout', mode: 'out-in' },
   },
+  runtimeConfig: {
+    public: {
+      baseUrl: process.env.BASE_URL || 'http://localhost:8010',
+    },
+  },
   modules: [
     '@vueuse/nuxt',
     '@nuxtjs/color-mode',
@@ -12,7 +17,9 @@ export default defineNuxtConfig({
       autoImports: ['defineStore', 'definePiniaStore'],
     }],
     '@pinia-plugin-persistedstate/nuxt',
-    '@sidebase/nuxt-auth',
+    ['@nuxtjs/supabase', {
+      autoImports: ['serverSupabaseClient'],
+    }],
     '@huntersofbook/naive-ui-nuxt',
     'nuxt-icon',
     '@nuxt/devtools',
@@ -46,6 +53,13 @@ export default defineNuxtConfig({
       ],
     },
   },
+  supabase: {
+    redirectOptions: {
+      login: '/auth/login',
+      callback: '/auth/confirm',
+      exclude: ['/', '/auth/register', '/changelog', '/help'],
+    },
+  },
   content: {
     highlight: {
       theme: {
@@ -62,14 +76,8 @@ export default defineNuxtConfig({
     '/admin/**': { swr: false },
     '/api/**': { cors: true },
   },
-  auth: {
-    enableGlobalAppMiddleware: true,
-    globalMiddlewareOptions: {
-      allow404WithoutAuth: true,
-    },
-  },
-  typescript: {
-    shim: false,
+  experimental: {
+    componentIslands: true,
   },
   devtools: {
     enabled: true,

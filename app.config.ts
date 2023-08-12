@@ -7,8 +7,6 @@ export default defineAppConfig({
   author: {
     name: 'kuizuo',
     link: 'https://github.com/kuizuo',
-    qq: 'https://im.qq.com/',
-    wx: 'https://wx.qq.com/',
   },
   nuxtIcon: {
     size: '20px',

@@ -29,4 +29,3 @@ export const useSettingsStore = defineStore('app-settings', {
     key: 'app-settings',
   },
 })
-

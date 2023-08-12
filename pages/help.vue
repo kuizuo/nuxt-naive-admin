@@ -10,4 +10,3 @@ definePageMeta({
     <ContentDoc class="prose text-left" path="/help" />
   </div>
 </template>
-
