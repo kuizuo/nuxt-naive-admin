@@ -1,9 +1,5 @@
 <script setup lang="ts">
 const router = useRouter()
-
-definePageMeta({
-  auth: false,
-})
 </script>
 
 <template>

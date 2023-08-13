@@ -2,10 +2,6 @@
 const user = useSupabaseUser()
 
 const { auth } = useSupabaseClient()
-
-definePageMeta({
-  auth: false,
-})
 </script>
 
 <template>
