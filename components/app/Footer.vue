@@ -35,7 +35,6 @@ const { author } = useAppConfig()
         </div>
         <div class="flex-auto" />
         <div class="flex items-center gap-3">
-          <AppThemeSwitcher />
           <NuxtLink class="i-ri-github-line icon-btn" :to="pkg.repository.url" target="_blank" />
         </div>
       </div>
