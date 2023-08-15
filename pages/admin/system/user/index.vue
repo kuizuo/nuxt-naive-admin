@@ -2,6 +2,7 @@
 import type { User } from '@supabase/supabase-js'
 import { NAvatar } from 'naive-ui'
 import TableAction from '~/components/basic/table/components/TableAction.vue'
+import { useModal } from '~/components/basic/modal/hooks/useModal'
 import type { BasicColumn, TableActionType } from '~~/components/basic/table/types/table'
 
 definePageMeta({
@@ -14,6 +15,10 @@ definePageMeta({
 
 const tableRef = ref<TableActionType>()
 const message = useMessage()
+
+const [register, { openModal, closeModal, setProps: setModalProps }] = useModal()
+
+const modalTitle = ref('新增用户')
 
 const columns: BasicColumn<User>[] = [
   {
@@ -60,18 +65,17 @@ async function handleRequest(params: Record<string, any>) {
 }
 
 async function handleCreate() {
-  await request('/api/system/users', {
-    method: 'POST',
-    body: JSON.stringify({
-      name: 'test',
-      email: '',
-    }),
+  openModal()
+  setModalProps({
+    title: '新增用户',
   })
-
-  message.success('新增数据')
 }
 
 async function handleUpdate(record: User) {
+  openModal()
+  setModalProps({
+    title: '编辑用户',
+  })
 }
 
 async function handleDelete(record: User) {
@@ -107,6 +111,11 @@ const actionColumn = reactive<BasicColumn<User>>({
     })
   },
 })
+
+function handleSuccess() {
+  message.success('操作成功')
+  tableRef.value?.reload()
+}
 </script>
 
 <template>
@@ -124,5 +133,8 @@ const actionColumn = reactive<BasicColumn<User>>({
         </n-button>
       </template>
     </BasicTable>
+    <BasicModal :title="modalTitle" @register="register" @success="handleSuccess">
+      test
+    </BasicModal>
   </BasicPage>
 </template>
