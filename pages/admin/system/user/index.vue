@@ -1,8 +1,8 @@
 <script setup lang="ts">
+import type { User } from '@supabase/supabase-js'
 import { NAvatar } from 'naive-ui'
 import TableAction from '~/components/basic/table/components/TableAction.vue'
-import type { BasicColumn } from '~~/components/basic/table/types/table'
-import type { Admin } from '~~/types/admin/user'
+import type { BasicColumn, TableActionType } from '~~/components/basic/table/types/table'
 
 definePageMeta({
   layout: 'admin',
@@ -12,20 +12,30 @@ definePageMeta({
   keepalive: true,
 })
 
-async function getUserList(params: any) {
-  await request('/api/system/users', { method: 'GET', params })
-}
+const tableRef = ref<TableActionType>()
 const message = useMessage()
 
-const columns: BasicColumn<Admin.User>[] = [
+const columns: BasicColumn<User>[] = [
   {
     title: 'id',
     key: 'id',
     width: 100,
+    ellipsis: true,
+  },
+  {
+    title: '头像',
+    key: 'user_metadata.avatar_url',
+    width: 100,
+    render(row) {
+      return h(NAvatar, {
+        size: 48,
+        src: row.user_metadata?.avatar_url,
+      })
+    },
   },
   {
     title: '名称',
-    key: 'name',
+    key: 'user_metadata.user_name',
     width: 100,
   },
   {
@@ -34,40 +44,44 @@ const columns: BasicColumn<Admin.User>[] = [
     width: 150,
   },
   {
-    title: '头像',
-    key: 'avatar',
-    width: 100,
-    render(row) {
-      return h(NAvatar, {
-        size: 48,
-        src: row.image,
-      })
-    },
+    title: '角色',
+    key: 'role',
+    width: 150,
   },
 ]
 
-function handleCreate() {
+async function handleRequest(params: Record<string, any>) {
+  const data = await request('/api/system/users', {
+    method: 'GET',
+    params,
+  })
+
+  return data.users
+}
+
+async function handleCreate() {
+  await request('/api/system/users', {
+    method: 'POST',
+    body: JSON.stringify({
+      name: 'test',
+      email: '',
+    }),
+  })
+
   message.success('新增数据')
-  // createUser({
-  //   name: 'test',
-  //   email: 'hi@example.com',
-  //   password: 'a123456',
-  // })
 }
 
-function handleUpdate() {
-  message.success('更新数据')
-  // updateUser('1', {
-  //   name: 'kuizuo',
-  // })
+async function handleUpdate(record: User) {
 }
 
-function handleDelete(record: Admin.User) {
-  message.success(`删除数据: ${record.id}`)
-  // deleteUser('1')
+async function handleDelete(record: User) {
+  await request(`/api/system/users/${record.id}`, {
+    method: 'DELETE',
+  })
+  tableRef.value?.reload()
 }
 
-const actionColumn = reactive<BasicColumn<Admin.User>>({
+const actionColumn = reactive<BasicColumn<User>>({
   width: 80,
   title: '操作',
   key: 'actions',
@@ -98,10 +112,11 @@ const actionColumn = reactive<BasicColumn<Admin.User>>({
 <template>
   <BasicPage>
     <BasicTable
+      ref="tableRef"
       title="用户列表"
       :columns="columns"
       :action-column="actionColumn"
-      :request="getUserList"
+      :request="handleRequest"
     >
       <template #toolbar>
         <n-button type="primary" size="small" @click="handleCreate">

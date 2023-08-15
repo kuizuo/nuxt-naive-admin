@@ -55,7 +55,6 @@ const getBindValues = computed(() => {
 
   const propsData: any = {
     ...attrs,
-    // customRow,
     ...unref(getProps),
     // ...unref(getHeaderProps),
     'loading': unref(getLoading),
@@ -91,6 +90,8 @@ const tableAction: TableActionType | any = {
 }
 
 createTableContext({ ...tableAction, wrapRef, getBindValues })
+
+defineExpose(tableAction)
 </script>
 
 <template>
