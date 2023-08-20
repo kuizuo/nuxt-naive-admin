@@ -59,7 +59,7 @@ watchEffect(() => {
 <template>
   <div class="text-left">
     <n-spin :show="loading">
-      <h2 class="my-6 text-center text-3xl font-extrabold u-text-white">
+      <h2 class="my-6 text-center text-2xl font-extrabold u-text-white">
         登录你的账号
       </h2>
       <div class="flex bg-cover">

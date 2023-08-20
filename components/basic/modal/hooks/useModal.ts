@@ -31,8 +31,8 @@ export function useModal(): UseModalReturnType {
     closeModal: () => {
       getInstance()?.closeModal()
     },
-    setLoading: (status: boolean) => {
-      getInstance()?.setLoading(status)
+    setConfirmLoading: (status: boolean) => {
+      getInstance()?.setConfirmLoading(status)
     },
   }
 

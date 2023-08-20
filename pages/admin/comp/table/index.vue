@@ -6,7 +6,7 @@ import type { BasicColumn } from '~~/components/basic/table/types/table'
 definePageMeta({
   layout: 'admin',
   title: '表格',
-  order: 1,
+  order: 2,
   icon: 'mdi:table-large',
   keepalive: true,
 })
@@ -125,8 +125,6 @@ async function fetchData(params?) {
   }
 }
 
-// const data = (await fetchData()).items
-
 function handleCreate() {
   message.success('新增数据')
 }
@@ -185,7 +183,7 @@ const actionColumn = reactive({
 </script>
 
 <template>
-  <BasicPage>
+  <BasicPage content-full-height>
     <BasicTable
       title="基础表格"
       :columns="columns"
@@ -193,9 +191,9 @@ const actionColumn = reactive({
       :request="fetchData"
     >
       <template #toolbar>
-        <n-button type="primary" size="small" @click="handleCreate">
+        <NButton type="primary" size="small" @click="handleCreate">
           新增数据
-        </n-button>
+        </NButton>
       </template>
     </BasicTable>
   </BasicPage>

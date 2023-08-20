@@ -215,7 +215,7 @@ function handleVisibleChange() {
 </script>
 
 <template>
-  <n-tooltip trigger="hover">
+  <NTooltip trigger="hover">
     列设置
     <template #trigger>
       <div class="cursor-pointer">
@@ -267,5 +267,5 @@ function handleVisibleChange() {
         </n-popover>
       </div>
     </template>
-  </n-tooltip>
+  </NTooltip>
 </template>

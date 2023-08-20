@@ -109,7 +109,7 @@ defineExpose(tableAction)
       <div class="flex justify-end items-center flex-1">
         <slot name="toolbar" />
 
-        <n-divider vertical />
+        <NDivider vertical />
         <div class="flex justify-center items-center gap-2">
           <!-- 刷新 -->
           <RedoSetting />
@@ -120,13 +120,13 @@ defineExpose(tableAction)
         </div>
       </div>
     </div>
-    <n-data-table
+    <NDataTable
       ref="tableElRef"
       v-bind="getBindValues"
     >
       <template v-for="item in Object.keys($slots)" #[item]="data" :key="item">
         <slot :name="item" v-bind="data" />
       </template>
-    </n-data-table>
+    </NDataTable>
   </div>
 </template>

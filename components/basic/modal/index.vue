@@ -31,7 +31,7 @@ const getBindValue = computed(() => {
   }
 })
 
-function setLoading(status: boolean) {
+function setConfirmLoading(status: boolean) {
   loading.value = status
 }
 
@@ -59,7 +59,7 @@ const modalMethods: ModalMethods = {
   setProps,
   openModal,
   closeModal,
-  setLoading,
+  setConfirmLoading,
 }
 
 const instance = getCurrentInstance()
@@ -71,7 +71,7 @@ defineExpose(modalMethods)
 </script>
 
 <template>
-  <n-modal v-bind="getBindValue" v-model:show="showModal" @close="onCloseModal">
+  <NModal v-bind="getBindValue" v-model:show="showModal" @close="onCloseModal">
     <template #header>
       <div class="w-full">
         {{ getBindValue.title }}
@@ -79,17 +79,17 @@ defineExpose(modalMethods)
     </template>
     <slot />
     <template v-if="!$slots.action" #action>
-      <n-space>
-        <n-button @click="closeModal">
+      <NSpace>
+        <NButton @click="closeModal">
           取消
-        </n-button>
-        <n-button type="primary" :loading="Loading" @click="handleSubmit">
+        </NButton>
+        <NButton type="primary" :loading="loading" @click="handleSubmit">
           {{ okText }}
-        </n-button>
-      </n-space>
+        </NButton>
+      </NSpace>
     </template>
     <template v-else #action>
       <slot name="action" />
     </template>
-  </n-modal>
+  </NModal>
 </template>
