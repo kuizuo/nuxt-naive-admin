@@ -28,7 +28,7 @@ function onSelect(e: SizeType) {
 </script>
 
 <template>
-  <n-tooltip trigger="hover">
+  <NTooltip trigger="hover">
     <template #trigger>
       <div class="table-toolbar-right-icon">
         <n-dropdown
@@ -42,5 +42,5 @@ function onSelect(e: SizeType) {
       </div>
     </template>
     <span>密度</span>
-  </n-tooltip>
+  </NTooltip>
 </template>

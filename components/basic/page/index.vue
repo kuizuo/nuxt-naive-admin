@@ -1,4 +1,4 @@
-<script lang="ts" setup inheritAttrs="false">
+<script setup lang="ts" inheritAttrs="false">
 import type { CSSProperties } from 'vue'
 
 import { omit } from 'lodash-es'
@@ -81,7 +81,7 @@ const getContentClass = computed(() => {
 
 <template>
   <div ref="wrapperRef" :class="getClass" class="h-full relative">
-    <n-page-header v-if="getShowHeader" v-bind="omit($attrs, 'class')" ref="headerRef" class="p-4" :title="title">
+    <NPageHeader v-if="getShowHeader" v-bind="omit($attrs, 'class')" ref="headerRef" class="p-4" :title="title">
       <template #default>
         <template v-if="content">
           {{ content }}
@@ -92,7 +92,7 @@ const getContentClass = computed(() => {
       <template v-for="(item, index) in getHeaderSlots" #[item]="data" :key="index">
         <slot :name="item" v-bind="data || {}" />
       </template>
-    </n-page-header>
+    </NPageHeader>
 
     <div ref="contentRef" class="overflow-hidden" :class="getContentClass" :style="getContentStyle">
       <slot />

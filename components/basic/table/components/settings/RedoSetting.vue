@@ -9,10 +9,10 @@ function redo() {
 </script>
 
 <template>
-  <n-tooltip trigger="hover">
+  <NTooltip trigger="hover">
     <template #trigger>
       <Icon name="ant-design:redo-outlined" cursor-pointer @click="redo" />
     </template>
     刷新
-  </n-tooltip>
+  </NTooltip>
 </template>

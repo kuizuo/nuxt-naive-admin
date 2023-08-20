@@ -3,7 +3,7 @@ definePageMeta({
   layout: 'admin',
   title: '关于',
   order: 100,
-  icon: 'simple-icons:about-dot-me',
+  icon: 'ant-design:info-outlined',
 })
 </script>
 

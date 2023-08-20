@@ -1,9 +1,8 @@
-import type { PropType } from 'vue'
 import { NDataTable } from 'naive-ui'
 import type { TableBaseColumn } from 'naive-ui/es/data-table/src/interface'
 import type { BasicTableProps } from './types/table'
 
-export const basicProps: BasicTableProps = {
+export const basicProps: BasicTableProps | any = {
   ...NDataTable.props,
   title: {
     type: String,
@@ -50,5 +49,4 @@ export const basicProps: BasicTableProps = {
     type: Object as PropType<TableBaseColumn>,
     default: null,
   },
-
 }

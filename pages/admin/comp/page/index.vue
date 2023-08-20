@@ -2,18 +2,22 @@
 definePageMeta({
   layout: 'admin',
   title: '页面',
-  order: 2,
+  order: 1,
   icon: 'mdi:arrange-bring-forward',
   keepalive: true,
 })
 </script>
 
 <template>
-  <BasicPage title="基本页面" content-full-height>
+  <BasicPage title="基础页面" content-full-height>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
+    <p>test</p>
     <p>test</p>
   </BasicPage>
 </template>
-
-<style scoped>
-
-</style>

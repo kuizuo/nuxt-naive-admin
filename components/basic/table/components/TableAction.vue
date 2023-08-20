@@ -86,37 +86,37 @@ const getDropdownList = computed((): any[] => {
   <div class="tableAction">
     <div class="flex items-center justify-center">
       <template v-for="(action, index) in getActions" :key="`${index}-${action.label}`">
-        <n-tooltip v-if="action.tooltip">
+        <NTooltip v-if="action.tooltip">
           <template #trigger>
-            <n-button v-bind="action" class="mx-2">
+            <NButton v-bind="action" class="mx-2">
               <template v-if="action.icon" #icon>
                 <Icon :name="action.icon" class="ml-1" />
               </template>
               <span v-if="action.label">{{ action.label }}</span>
-            </n-button>
+            </NButton>
           </template>
           {{ action.tooltip }}
-        </n-tooltip>
-        <n-button v-else v-bind="action" class="mx-2">
+        </NTooltip>
+        <NButton v-else v-bind="action" class="mx-2">
           <template v-if="action.icon" #icon>
             <Icon :name="action.icon" class="ml-1" />
           </template>
           <span v-if="action.label">{{ action.label }}</span>
-        </n-button>
+        </NButton>
       </template>
 
-      <n-dropdown
+      <NDropdown
         v-if="props.dropDownActions && getDropdownList.length"
         trigger="hover"
         :options="getDropdownList"
       >
         <slot name="more" />
-        <n-button v-if="!$slots.more" class="mx-2">
+        <NButton v-if="!$slots.more" class="mx-2">
           <div class="flex items-center">
             <Icon name="ant-design:more-outlined" class="ml-1" />
           </div>
-        </n-button>
-      </n-dropdown>
+        </NButton>
+      </NDropdown>
     </div>
   </div>
 </template>

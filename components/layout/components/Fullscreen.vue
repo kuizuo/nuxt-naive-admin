@@ -7,7 +7,7 @@ const title = computed(() => {
 </script>
 
 <template>
-  <n-tooltip class="flex justify-center items-center" placement="bottom" trigger="click">
+  <NTooltip class="flex justify-center items-center" placement="bottom" trigger="click">
     <template #trigger>
       <span class="flex cursor-pointer" @click="toggle">
         <Icon v-if="!isFullscreen" name="ant-design:fullscreen-outlined" />
@@ -15,5 +15,5 @@ const title = computed(() => {
       </span>
     </template>
     <span>{{ title }}</span>
-  </n-tooltip>
+  </NTooltip>
 </template>
