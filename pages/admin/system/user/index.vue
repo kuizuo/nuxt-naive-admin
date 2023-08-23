@@ -11,6 +11,7 @@ import type { BasicColumn, TableActionType } from '~~/components/basic/table/typ
 
 definePageMeta({
   layout: 'admin',
+  middleware: 'admin',
   title: '用户管理',
   order: 1,
   icon: 'carbon:user',
