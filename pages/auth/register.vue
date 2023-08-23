@@ -49,50 +49,50 @@ watchEffect(() => {
 
 <template>
   <div class="text-left">
-    <n-spin :show="loading">
+    <NSpin :show="loading">
       <div class="flex bg-cover">
         <div class="flex flex-col gap-2 justify-center items-center mx-auto">
-          <n-form :model="form" :show-label="false">
-            <n-form-item label="邮箱" path="form.email">
-              <n-input v-model:value="form.email" placeholder="邮箱">
+          <NForm :model="form" :show-label="false">
+            <NFormItem label="邮箱" path="form.email">
+              <NInput v-model:value="form.email" placeholder="邮箱">
                 <template #prefix>
                   <Icon name="ri:mail-line" size="16" />
                 </template>
-              </n-input>
-            </n-form-item>
-            <n-form-item label="密码" path="form.password">
-              <n-input
+              </NInput>
+            </NFormItem>
+            <NFormItem label="密码" path="form.password">
+              <NInput
                 v-model:value="form.password" type="password" show-password-on="mousedown" placeholder="密码"
                 :maxlength="16"
               >
                 <template #prefix>
                   <Icon name="ri:lock-2-line" size="16" />
                 </template>
-              </n-input>
-            </n-form-item>
-            <!-- <n-form-item label="验证码" path="form.code">
-              <n-input
+              </NInput>
+            </NFormItem>
+            <!-- <NFormItem label="验证码" path="form.code">
+              <NInput
                 v-model:value="form.code" placeholder="验证码"
                 :maxlength="4"
               >
                 <template #prefix>
                   <Icon name="material-symbols:123" size="16" />
                 </template>
-              </n-input>
-            </n-form-item> -->
-            <n-form-item>
+              </NInput>
+            </NFormItem> -->
+            <NFormItem>
               <div class="space-y-4 w-full">
-                <n-button type="primary" class="w-full" @click="signUp()">
+                <NButton type="primary" class="w-full" @click="signUp()">
                   注册
-                </n-button>
-                <n-button class="w-full flex" @click="goToLogin()">
+                </NButton>
+                <NButton class="w-full flex" @click="goToLogin()">
                   返回登录
-                </n-button>
+                </NButton>
               </div>
-            </n-form-item>
-          </n-form>
+            </NFormItem>
+          </NForm>
         </div>
       </div>
-    </n-spin>
+    </NSpin>
   </div>
 </template>

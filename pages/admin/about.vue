@@ -10,8 +10,8 @@ definePageMeta({
 
 <template>
   <BasicPage title="关于">
-    <n-h2>平山道</n-h2>
-    <n-h2>平山道</n-h2>
-    <n-h2>平山道</n-h2>
+    <NH2>平山道</NH2>
+    <NH2>平山道</NH2>
+    <NH2>平山道</NH2>
   </BasicPage>
 </template>

@@ -181,9 +181,9 @@ onMounted(() => {
             {{ schema.label }}
             <NTooltip trigger="hover" :style="schema.labelMessageStyle">
               <template #trigger>
-                <n-icon size="18" class="text-gray-400 cursor-pointer">
+                <NIcon size="18" class="text-gray-400 cursor-pointer">
                   <Icon name="ant-design:question-circle-outlined" />
-                </n-icon>
+                </NIcon>
               </template>
               {{ schema.labelMessage }}
             </NTooltip>
@@ -295,12 +295,12 @@ onMounted(() => {
             @click="unfoldToggle"
           >
             <template #icon>
-              <n-icon v-if="overflow" size="14" class="unfold-icon">
+              <NIcon v-if="overflow" size="14" class="unfold-icon">
                 <Icon name="ant-design:down-outlined" />
-              </n-icon>
-              <n-icon v-else size="14" class="unfold-icon">
+              </NIcon>
+              <NIcon v-else size="14" class="unfold-icon">
                 <Icon name="ant-design:up-outlined" />
-              </n-icon>
+              </NIcon>
             </template>
             {{ overflow ? '展开' : '收起' }}
           </NButton>

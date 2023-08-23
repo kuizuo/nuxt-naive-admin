@@ -21,13 +21,13 @@ const show = ref(false)
       <UserButton />
       <Icon name="ant-design:menu-outlined" @click="show = true" />
     </div>
-    <n-drawer v-model:show="show" :width="240">
-      <n-drawer-content closable>
+    <NDrawer v-model:show="show" :width="240">
+      <NDrawerContent closable>
         <template #header>
           <AppLogo :show-title="false" />
         </template>
         <AppNav class="flex-col w-full" />
-      </n-drawer-content>
-    </n-drawer>
+      </NDrawerContent>
+    </NDrawer>
   </div>
 </template>

@@ -19,29 +19,29 @@ function reset() {
   <div>
     <Suspense>
       <div class="flex justify-center">
-        <n-card class="max-w-5xl">
-          <n-alert title="演示说明" type="info">
+        <NCard class="max-w-5xl">
+          <NAlert title="演示说明" type="info">
             <div class="flex items-center">
               使用 github api 获取用户信息
             </div>
-          </n-alert>
+          </NAlert>
           <div class="my-4">
-            <n-space justify="center">
-              <n-input v-model:value="username" placeholder="请输入要查询github账号" />
-              <n-button type="primary" :loading="pending" :disabled="!username" @click="handleQuery()">
+            <NSpace justify="center">
+              <NInput v-model:value="username" placeholder="请输入要查询github账号" />
+              <NButton type="primary" :loading="pending" :disabled="!username" @click="handleQuery()">
                 查询
-              </n-button>
-              <n-button v-if="user?.login" type="warning" @click="reset()">
+              </NButton>
+              <NButton v-if="user?.login" type="warning" @click="reset()">
                 重置
-              </n-button>
-            </n-space>
+              </NButton>
+            </NSpace>
           </div>
 
           <div v-if="user?.login">
             <DemoInfo :user="user" />
             <DemoRepos :repos="user.repos" />
           </div>
-        </n-card>
+        </NCard>
       </div>
       <template #fallback>
         <div class="opacity-50 italic">

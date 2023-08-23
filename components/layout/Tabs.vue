@@ -61,7 +61,7 @@ onMounted(() => {
 
 <template>
   <div>
-    <n-tabs
+    <NTabs
       v-model:value="activeKey"
       type="card"
       size="small"
@@ -69,18 +69,18 @@ onMounted(() => {
       @update:value="handleUpdateValue"
       @close="handleClose"
     >
-      <n-tab
+      <NTab
         v-for="item in tabList" :key="item.fullPath"
         :name="item.fullPath"
         :closable="!(item && item.meta && item.meta.affix)"
       >
         <TabContent :tab-item="item" is-tab />
-      </n-tab>
+      </NTab>
       <template #suffix>
         <TabRedo />
         <TabContent :tab-item="$route" />
       </template>
-    </n-tabs>
+    </NTabs>
   </div>
 </template>
 

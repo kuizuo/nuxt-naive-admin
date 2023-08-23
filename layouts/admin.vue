@@ -12,24 +12,24 @@ const refreshing = computed(() => useTabStore().refreshing)
 </script>
 
 <template>
-  <n-layout class="flex flex-col max-h-screen" position="absolute" has-sider>
+  <NLayout class="flex flex-col max-h-screen" position="absolute" has-sider>
     <LayoutSider />
 
-    <n-layout class="min-h-screen" :native-scrollbar="false">
-      <n-layout-header ref="headerRef">
+    <NLayout class="min-h-screen" :native-scrollbar="false">
+      <NLayoutHeader ref="headerRef">
         <LayoutHeader />
         <LayoutTabs v-if="headerSetting.showTabs" />
-      </n-layout-header>
-      <n-layout-content
+      </NLayoutHeader>
+      <NLayoutContent
         :style="{
           height: contentHeight,
         }" :native-scrollbar="false"
       >
         <slot v-if="!refreshing" />
-      </n-layout-content>
+      </NLayoutContent>
 
-      <n-back-top :right="100" />
+      <NBackTop :right="100" />
       <!-- <LayoutFooter /> -->
-    </n-layout>
-  </n-layout>
+    </NLayout>
+  </NLayout>
 </template>

@@ -31,7 +31,7 @@ function buildMenuList(routes: Readonly<RouteRecordRaw[]>, parentPath = ''): Men
         label: title,
         key: path.startsWith('http') ? path : `${parentPath}${parentPath ? '/' : ''}${path}`,
         name,
-        icon: renderIcon(icon!),
+        icon: renderIcon(icon as string),
       }
 
       if (children && children.length > 0)
@@ -100,8 +100,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <n-menu
-    ref="menuInstRef"
+  <NMenu
     mode="vertical"
     :options="menus"
     :collapsed="collapsed"
