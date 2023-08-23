@@ -47,9 +47,9 @@ export interface FormProps {
 export interface FormActionType {
   submit: () => Promise<any>
   setProps: (formProps: Partial<FormProps>) => Promise<void>
-  setSchema: (schemaProps: Partial<FormSchema[]>) => Promise<void>
+  updateSchema: (data: Partial<FormSchema> | Partial<FormSchema[]>) => Promise<void>
   setFieldsValue: (values: Record<string, any> | any) => void
-  clearValidate: (name?: string | string[]) => Promise<void>
+  restoreValidation: (name?: string | string[]) => Promise<void>
   getFieldsValue: () => Record<string, any>
   resetFields: () => Promise<void>
   validate: (nameList?: any[]) => Promise<any>

@@ -13,7 +13,7 @@ const props = defineProps(basicProps)
 const emit = defineEmits(['reset', 'submit', 'register'])
 const attrs = useAttrs()
 
-const defaultFormModel = ref<Record<string, any>>({})
+const defaultValueRef = ref<Record<string, any>>({})
 const formModel = reactive<Record<string, any>>({})
 const propsRef = ref<Partial<FormProps> | null>(null)
 const schemaRef = ref<FormSchema[] | null>(null)
@@ -95,18 +95,18 @@ const getSchema = computed((): FormSchema[] => {
 })
 
 const { handleFormValues, initDefault } = useFormValues({
-  defaultFormModel,
+  defaultValueRef,
   getSchema,
   formModel,
 })
 
-const { handleSubmit, validate, resetFields, getFieldsValue, clearValidate, setFieldsValue } = useFormEvents({
+const { handleSubmit, validate, resetFields, getFieldsValue, restoreValidation, setFieldsValue } = useFormEvents({
   emit,
   getProps,
   formModel,
   getSchema,
   formElRef: formElRef as Ref<FormActionType>,
-  defaultFormModel,
+  defaultValueRef,
   loadingSub,
   handleFormValues,
 })
@@ -129,7 +129,7 @@ const formActionType: Partial<FormActionType> = {
   setFieldsValue,
   resetFields,
   validate,
-  clearValidate,
+  restoreValidation,
   setProps,
   submit: handleSubmit,
 }

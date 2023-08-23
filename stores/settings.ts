@@ -1,4 +1,3 @@
-import type { DeepPartial } from 'unocss'
 import { MenuModeEnum } from '~~/constants/menu'
 import type { ProjectSetting } from '~~/types/config'
 
@@ -20,7 +19,7 @@ export const defaultSettings: ProjectSetting = {
 export const useSettingsStore = defineStore('app-settings', {
   state: (): ProjectSetting => defaultSettings,
   actions: {
-    setSetting(setting: DeepPartial<ProjectSetting>): void {
+    setSetting(setting: ProjectSetting): void {
       this.$state = deepMerge(this.$state || {}, setting)
     },
 

@@ -1,9 +1,10 @@
 import { serverSupabaseServiceRole } from '#supabase/server'
-import { Role } from '~~/constants/role'
 import type { Database } from '~~/types/database.types'
 
+const { public: { adminUid } } = useRuntimeConfig()
+
 export default defineEventHandler(async (event) => {
-  if (event.context._user?.role !== Role.Admin)
+  if (event.context._user?.id !== adminUid)
     throw createError({ statusMessage: '无权限' })
 
   const { page, pageSize } = getQuery(event) as { page: number; pageSize: number }

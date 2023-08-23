@@ -48,9 +48,9 @@ export function useForm(props?: Props): UseFormReturnType {
       })
     },
 
-    clearValidate: async (name?: string | string[]) => {
+    restoreValidation: async (name?: string | string[]) => {
       const form = await getForm()
-      await form.clearValidate(name)
+      await form.restoreValidation(name)
     },
 
     getFieldsValue: <T>() => {
@@ -76,9 +76,9 @@ export function useForm(props?: Props): UseFormReturnType {
       loadedRef.value = value
     },
 
-    setSchema: async (values) => {
+    updateSchema: async (values) => {
       const form = await getForm()
-      form.setSchema(values)
+      form.updateSchema(values)
     },
   }
 

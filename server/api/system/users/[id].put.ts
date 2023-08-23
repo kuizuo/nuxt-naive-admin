@@ -1,31 +1,35 @@
-import { Role } from '~~/constants/role'
 import { serverSupabaseServiceRole } from '#supabase/server'
 import type { Database } from '~~/types/database.types'
 
 interface Body {
-  id: string
   email: string
-  username: string
-  avatar_url: string
+  password?: string
+  user_metadata: Record<string, any>
 }
 
+const { public: { adminUid } } = useRuntimeConfig()
+
 export default defineEventHandler(async (event) => {
-  if (event.context._user?.role !== Role.Admin)
+  if (event.context._user?.id !== adminUid)
     throw createError({ statusMessage: '无权限' })
 
-  const { id, email, username, avatar_url } = await readBody<Body>(event)
+  const id = getRouterParam(event, 'id')
+  if (!id)
+    throw createError({ statusMessage: '无效的用户 ID' })
+
+  const { email, password, user_metadata } = await readBody<Body>(event)
 
   const { auth } = await serverSupabaseServiceRole<Database>(event)
 
   const { data, error } = await auth.admin.updateUserById(id,
     {
       email,
-      user_metadata: {
-        user_name: username,
-        avatar_url,
-      },
+      ...(password && { password }),
+      user_metadata,
     })
 
   if (error)
     throw createError({ statusMessage: error.message })
+
+  return data
 })

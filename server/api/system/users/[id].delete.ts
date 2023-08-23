@@ -1,9 +1,10 @@
-import { Role } from '~~/constants/role'
 import { serverSupabaseServiceRole } from '#supabase/server'
 import type { Database } from '~~/types/database.types'
 
+const { public: { adminUid } } = useRuntimeConfig()
+
 export default defineEventHandler(async (event) => {
-  if (event.context._user?.role !== Role.Admin)
+  if (event.context._user?.id !== adminUid)
     throw createError({ statusMessage: '无权限' })
 
   const id = getRouterParam(event, 'id')

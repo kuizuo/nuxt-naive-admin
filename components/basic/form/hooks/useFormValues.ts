@@ -5,11 +5,11 @@ import type { FormSchema } from '../types/form'
 import { isArray, isFunction, isNullOrUnDef, isObject, isString } from '~/utils/is'
 
 interface UseFormValuesContext {
-  defaultFormModel: Ref<any>
+  defaultValueRef: Ref<any>
   getSchema: ComputedRef<FormSchema[]>
   formModel: Record<string, any>
 }
-export function useFormValues({ defaultFormModel, getSchema, formModel }: UseFormValuesContext) {
+export function useFormValues({ defaultValueRef, getSchema, formModel }: UseFormValuesContext) {
   // 加工 form values
   function handleFormValues(values: Record<string, any>) {
     if (!isObject(values))
@@ -47,7 +47,7 @@ export function useFormValues({ defaultFormModel, getSchema, formModel }: UseFor
         formModel[item.field] = defaultValue
       }
     })
-    defaultFormModel.value = obj
+    defaultValueRef.value = obj
   }
 
   return { handleFormValues, initDefault }

@@ -1,16 +1,18 @@
+import { cloneDeep, isEqual, mergeWith, unionWith } from 'lodash'
 import { Icon } from '#components'
 
-// 深度合并
-export function deepMerge<T = any>(src: any = {}, target: any = {}): T {
-  const result = Object.assign({}, src)
-  Object.keys(target).forEach((key) => {
-    if (result[key] && typeof result[key] === 'object')
-      result[key] = deepMerge(result[key], target[key])
-
-    else
-      result[key] = target[key]
+export function deepMerge<T extends object | null | undefined, U extends object | null | undefined>(
+  target: T,
+  source: U,
+): T & U {
+  return mergeWith(cloneDeep(target), source, (objValue, srcValue) => {
+    if (isObject(objValue) && isObject(srcValue)) {
+      return mergeWith(cloneDeep(objValue), srcValue, (prevValue, nextValue) => {
+        // 如果是数组，合并数组(去重) If it is an array, merge the array (remove duplicates)
+        return isArray(prevValue) ? unionWith(prevValue, nextValue, isEqual) : undefined
+      })
+    }
   })
-  return result
 }
 
 export function renderIcon(icon: string) {
