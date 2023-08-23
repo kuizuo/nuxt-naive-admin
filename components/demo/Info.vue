@@ -5,7 +5,7 @@ defineProps<{
 </script>
 
 <template>
-  <n-avatar :size="100" :src="user!.avatar_url" />
+  <NAvatar :size="100" :src="user!.avatar_url" />
   <h2 class="text-xl font-bold">
     <a v-if="user!.blog" :href="user!.blog" target="_blank" class="transition hover:text-green-500">{{ user!.name }}</a>
     <a v-else>{{ user!.name }}</a>

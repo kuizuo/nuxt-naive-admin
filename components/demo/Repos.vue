@@ -6,9 +6,9 @@ defineProps<{
 
 <template>
   <div v-if="repos?.length! > 0" class="mt-2">
-    <n-list hoverable clickable bordered>
-      <n-list-item v-for="repo in repos" :key="repo.id">
-        <n-thing content-style="margin-top: 10px;">
+    <NList hoverable clickable bordered>
+      <NListItem v-for="repo in repos" :key="repo.id">
+        <NThing content-style="margin-top: 10px;">
           <template #header>
             <div class="inline-flex items-center font-sans">
               <h2 class="text-xl">
@@ -21,25 +21,25 @@ defineProps<{
             </div>
           </template>
           <template #description>
-            <n-space size="small" class="mt-1">
-              <n-tag v-for="topic in repo.topics" :key="topic" :bordered="false" type="info" size="small">
+            <NSpace size="small" class="mt-1">
+              <NTag v-for="topic in repo.topics" :key="topic" :bordered="false" type="info" size="small">
                 {{ topic }}
-              </n-tag>
-            </n-space>
+              </NTag>
+            </NSpace>
           </template>
           <p class="text-left">
             {{ repo.description }}
           </p>
-        </n-thing>
+        </NThing>
         <template #suffix>
           <a :href="repo.html_url" target="_blank">
-            <n-button type="primary">查看仓库</n-button>
+            <NButton type="primary">查看仓库</NButton>
           </a>
         </template>
-      </n-list-item>
-    </n-list>
+      </NListItem>
+    </NList>
   </div>
   <div v-else>
-    <n-empty description="暂无仓库" />
+    <NEmpty description="暂无仓库" />
   </div>
 </template>

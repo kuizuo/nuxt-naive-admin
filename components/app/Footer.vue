@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import pkg from '~/package.json'
-
-const { author } = useAppConfig()
 </script>
 
 <template>
@@ -11,13 +9,13 @@ const { author } = useAppConfig()
         <div class="inline-flex gap-4">
           <NuxtLink :to="pkg.author.url" target="_blank" class="flex items-center gap-1">
             <i class="i-ri-user-star-line" />
-            <p class="text-xs font-semibold self-end">
+            <p class="text-xs font-semibold">
               作者: {{ pkg.author.name }}
             </p>
           </NuxtLink>
           <NuxtLink target="_blank" class="flex items-center gap-1">
             <i class="i-ri-file-code-line" />
-            <p class="text-xs font-semibold self-end">
+            <p class="text-xs font-semibold">
               版本: {{ pkg.version }}
             </p>
           </NuxtLink>
@@ -25,7 +23,7 @@ const { author } = useAppConfig()
         <div class="inline-flex">
           <div class="flex items-center gap-1">
             <i class="i-ri-building-2-line " />
-            <NuxtLink :to="pkg.repository.url" target="_blank" class="text-xs font-semibold self-end">
+            <NuxtLink :to="pkg.repository.url" target="_blank" class="text-xs font-semibold">
               构建于: Protocol
             </NuxtLink>
             <NuxtLink to="https://nuxt.com/" class="block bg-emerald-400 rounded px-1 py-0.5 text-white text-xs" target="_blank">

@@ -8,15 +8,15 @@ const handleError = () => clearError({ redirect: '/' })
 
 <template>
   <div class="page justify-center items-center">
-    <n-result
+    <NResult
       :status="error.statusCode?.toString()" :builtin-theme-overrides="{ titleFontSizeMedium: '24px' }"
       :title="error.statusMessage || 'Oops, something went wrong'" :description="error.message"
     >
       <template #footer>
-        <n-button @click="handleError">
+        <NButton @click="handleError">
           Back home
-        </n-button>
+        </NButton>
       </template>
-    </n-result>
+    </NResult>
   </div>
 </template>

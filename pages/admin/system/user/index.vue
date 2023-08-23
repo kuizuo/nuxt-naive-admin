@@ -290,9 +290,9 @@ async function handleSuccess() {
       :request="handleRequest"
     >
       <template #toolbar>
-        <n-button type="primary" size="small" @click="handleCreate">
+        <NButton type="primary" size="small" @click="handleCreate">
           新增数据
-        </n-button>
+        </NButton>
       </template>
     </BasicTable>
     <BasicModal :title="modalTitle" @register="registerModal" @success="handleSuccess">

@@ -13,6 +13,6 @@ const inputValue = ref('')
 <template>
   <div>
     Menu1-1
-    <n-input v-model:value="inputValue" />
+    <NInput v-model:value="inputValue" />
   </div>
 </template>

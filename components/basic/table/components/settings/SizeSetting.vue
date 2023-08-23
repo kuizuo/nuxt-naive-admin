@@ -31,14 +31,14 @@ function onSelect(e: SizeType) {
   <NTooltip trigger="hover">
     <template #trigger>
       <div class="table-toolbar-right-icon">
-        <n-dropdown
+        <NDropdown
           v-model:value="tableSize"
           trigger="click"
           :options="options"
           @select="onSelect"
         >
           <Icon name="ant-design:column-height-outlined" cursor-pointer />
-        </n-dropdown>
+        </NDropdown>
       </div>
     </template>
     <span>密度</span>

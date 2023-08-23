@@ -219,29 +219,29 @@ function handleVisibleChange() {
     列设置
     <template #trigger>
       <div class="cursor-pointer">
-        <n-popover trigger="click" :width="230" placement="bottom-end" @update:show="handleVisibleChange">
+        <NPopover trigger="click" :width="230" placement="bottom-end" @update:show="handleVisibleChange">
           <template #trigger>
             <Icon name="ant-design:setting-outlined" />
           </template>
           <template #header>
-            <n-space>
-              <n-checkbox v-model:checked="state.checkAll" :indeterminate="indeterminate" @update:checked="onCheckAllChange">
+            <NSpace>
+              <NCheckbox v-model:checked="state.checkAll" :indeterminate="indeterminate" @update:checked="onCheckAllChange">
                 列展示
-              </n-checkbox>
-              <n-checkbox v-model:checked="defaultRowSelection" @update:checked="onSelection">
+              </NCheckbox>
+              <NCheckbox v-model:checked="defaultRowSelection" @update:checked="onSelection">
                 勾选列
-              </n-checkbox>
-              <n-button text type="info" size="small" class="mt-1" @click="resetColumns">
+              </NCheckbox>
+              <NButton text type="info" size="small" class="mt-1" @click="resetColumns">
                 重置
-              </n-button>
-            </n-space>
+              </NButton>
+            </NSpace>
           </template>
           <div>
-            <n-checkbox-group ref="columnListRef" v-model:value="state.checkedList" @update:value="onChange">
+            <NCheckboxGroup ref="columnListRef" v-model:value="state.checkedList" @update:value="onChange">
               <template v-for="item in plainOptions" :key="item.key">
                 <div class="flex items-center gap-2">
                   <Icon name="ant-design:drag-outlined" class="cursor-move table-column-drag-icon" />
-                  <n-checkbox :value="item.key" :label="item.title" />
+                  <NCheckbox :value="item.key" :label="item.title" />
                   <div class="flex items-center justify-end flex-1">
                     <Icon
                       name="ant-design:vertical-right-outlined"
@@ -251,7 +251,7 @@ function handleVisibleChange() {
                       @click="handleColumnFixed(item, 'left')"
                     />
 
-                    <n-divider vertical />
+                    <NDivider vertical />
                     <Icon
                       size="18"
                       name="ant-design:vertical-left-outlined"
@@ -262,9 +262,9 @@ function handleVisibleChange() {
                   </div>
                 </div>
               </template>
-            </n-checkbox-group>
+            </NCheckboxGroup>
           </div>
-        </n-popover>
+        </NPopover>
       </div>
     </template>
   </NTooltip>

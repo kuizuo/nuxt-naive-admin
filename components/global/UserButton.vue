@@ -39,23 +39,23 @@ function handleSuccess() {
 <template>
   <div>
     <div v-if="user" class="flex">
-      <n-dropdown trigger="hover" :options="options" @select="handleSelect">
-        <n-avatar size="small" round :src="user?.user_metadata?.avatar_url">
+      <NDropdown trigger="hover" :options="options" @select="handleSelect">
+        <NAvatar size="small" round :src="user?.user_metadata?.avatar_url">
           <span v-if="!user?.user_metadata?.avatar_url">{{ user?.user_metadata?.full_name ?? user.email }}</span>
-        </n-avatar>
-      </n-dropdown>
+        </NAvatar>
+      </NDropdown>
     </div>
     <div v-else>
-      <n-button size="small" type="primary" @click="showModal = true">
+      <NButton size="small" type="primary" @click="showModal = true">
         登录
-      </n-button>
+      </NButton>
       <ClientOnly>
-        <n-modal
+        <NModal
           v-model:show="showModal" :mask-closable="true" preset="card" size="large" :bordered="false"
           :closable="false" :style="{ 'max-width': '350px' }" transform-origin="center"
         >
           <LoginCard @success="handleSuccess" />
-        </n-modal>
+        </NModal>
       </ClientOnly>
     </div>
   </div>

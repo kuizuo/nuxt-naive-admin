@@ -27,15 +27,15 @@ useHead({
 </script>
 
 <template>
-  <n-config-provider :locale="zhCN" :date-locale="dateZhCN" :theme="colorMode.preference === 'dark' ? darkTheme : lightTheme">
-    <n-global-style />
+  <NConfigProvider :locale="zhCN" :date-locale="dateZhCN" :theme="colorMode.preference === 'dark' ? darkTheme : lightTheme">
+    <NGlobalStyle />
     <NuxtLayout>
-      <n-message-provider>
+      <NMessageProvider>
         <NuxtLoadingIndicator />
         <NuxtPage />
-      </n-message-provider>
+      </NMessageProvider>
     </NuxtLayout>
-  </n-config-provider>
+  </NConfigProvider>
 </template>
 
 <style>

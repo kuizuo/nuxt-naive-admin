@@ -135,7 +135,7 @@ function handleContext(e: MouseEvent) {
       <div @contextmenu="handleContext">
         <span class="select-none">{{ title }}</span>
       </div>
-      <n-dropdown
+      <NDropdown
         placement="bottom-start"
         trigger="manual"
         :show="showDropdown"
@@ -147,7 +147,7 @@ function handleContext(e: MouseEvent) {
         @select="handleSelect"
       />
     </div>
-    <n-dropdown
+    <NDropdown
       v-else
       placement="bottom"
       trigger="click"
@@ -162,6 +162,6 @@ function handleContext(e: MouseEvent) {
           class="w-8 inline-block cursor-pointer"
         />
       </span>
-    </n-dropdown>
+    </NDropdown>
   </span>
 </template>

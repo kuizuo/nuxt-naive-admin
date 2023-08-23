@@ -48,22 +48,22 @@ function dropdownSelect(key: string) {
         <Icon v-if="collapsed" name="ant-design:menu-unfold-outlined" />
         <Icon v-else name="ant-design:menu-fold-outlined" />
       </div>
-      <n-breadcrumb v-if="headerSetting.showBreadCrumb">
+      <NBreadcrumb v-if="headerSetting.showBreadCrumb">
         <template v-for="routeItem in breadcrumbList" :key="routeItem.name === 'Redirect' ? void 0 : routeItem.name">
-          <n-breadcrumb-item v-if="routeItem.meta.title">
-            <n-dropdown v-if="routeItem.children?.length" :options="routeItem.children" @select="dropdownSelect">
+          <NBreadcrumbItem v-if="routeItem.meta.title">
+            <NDropdown v-if="routeItem.children?.length" :options="routeItem.children" @select="dropdownSelect">
               <span>
                 <Icon v-if="headerSetting.showBreadCrumbIcon && routeItem.meta.icon" :name="routeItem.meta.icon" />
                 {{ routeItem.meta.title }}
               </span>
-            </n-dropdown>
+            </NDropdown>
             <span v-else>
               <Icon v-if="headerSetting.showBreadCrumbIcon && routeItem.meta.icon" :name="routeItem.meta.icon" />
               {{ routeItem.meta.title }}
             </span>
-          </n-breadcrumb-item>
+          </NBreadcrumbItem>
         </template>
-      </n-breadcrumb>
+      </NBreadcrumb>
     </div>
 
     <div class="flex-auto" />
