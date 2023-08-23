@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 definePageMeta({
   layout: 'admin',
+  middleware: 'admin',
   title: '关于',
   order: 100,
   icon: 'ant-design:info-outlined',
