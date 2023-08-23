@@ -25,7 +25,7 @@ export default defineEventHandler(async (event) => {
     {
       email,
       ...(password && { password }),
-      user_metadata,
+      ...(user_metadata && { user_metadata }),
     })
 
   if (error)

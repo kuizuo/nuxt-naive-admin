@@ -10,7 +10,6 @@ interface UseFormValuesContext {
   formModel: Record<string, any>
 }
 export function useFormValues({ defaultValueRef, getSchema, formModel }: UseFormValuesContext) {
-  // 加工 form values
   function handleFormValues(values: Record<string, any>) {
     if (!isObject(values))
       return {}

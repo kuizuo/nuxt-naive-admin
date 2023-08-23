@@ -1,5 +1,7 @@
 import type { CSSProperties } from 'vue'
 import type { GridItemProps, GridProps } from 'naive-ui/lib/grid'
+import type { FormItemRule } from 'naive-ui'
+
 import type { ButtonProps } from 'naive-ui/lib/button'
 import type { ComponentType } from './index'
 
@@ -12,7 +14,7 @@ export interface FormSchema {
   component?: ComponentType
   componentProps?: Record<string, any>
   slot?: string
-  rules?: object | object[]
+  rules?: FormItemRule | FormItemRule[]
   giProps?: GridItemProps
   isFull?: boolean
   suffix?: string
@@ -47,12 +49,13 @@ export interface FormProps {
 export interface FormActionType {
   submit: () => Promise<any>
   setProps: (formProps: Partial<FormProps>) => Promise<void>
-  updateSchema: (data: Partial<FormSchema> | Partial<FormSchema[]>) => Promise<void>
+  updateSchema: (data: Partial<FormSchema> | Partial<FormSchema>[]) => Promise<void>
+  resetSchema: (data: Partial<FormSchema> | Partial<FormSchema>[]) => Promise<void>
   setFieldsValue: (values: Record<string, any> | any) => void
   restoreValidation: (name?: string | string[]) => Promise<void>
   getFieldsValue: () => Record<string, any>
   resetFields: () => Promise<void>
-  validate: (nameList?: any[]) => Promise<any>
+  validate: () => Promise<any>
   setLoading: (status: boolean) => void
 }
 

@@ -72,7 +72,7 @@ const columns: BasicColumn<User>[] = [
   {
     title: '是否认证',
     key: 'email_confirmed_at',
-    width: 150,
+    width: 80,
     render(row) {
       return h(NTag, {
         size: 'small',
@@ -120,7 +120,7 @@ const schemas: FormSchema[] = [
         onError,
         onProgress,
       }: UploadCustomRequestOptions) => {
-        onProgress({ percent: 0 })
+        onProgress({ percent: 50 })
 
         const filePath = `${Date.now()}-${file.name}`
         const { data, error } = await storage.from('avatars').upload(filePath, file.file!, {
@@ -136,13 +136,12 @@ const schemas: FormSchema[] = [
           onFinish()
           message.success('上传成功')
 
-          const { data, error } = await storage
+          const { data: { publicUrl } } = await storage
             .from('avatars')
-            .download(filePath)
+            .getPublicUrl(filePath)
 
-          const avatar_url = URL.createObjectURL(data!)
           // eslint-disable-next-line @typescript-eslint/no-use-before-define
-          setFieldsValue({ 'user_metadata.avatar_url': avatar_url })
+          setFieldsValue({ 'user_metadata.avatar_url': publicUrl })
         }
       },
     },
@@ -156,7 +155,7 @@ const schemas: FormSchema[] = [
   },
 ]
 
-const [registerModal, { openModal, closeModal, setProps: setModalProps, setConfirmLoading }] = useModal()
+const [registerModal, { openModal, closeModal, setConfirmLoading }] = useModal()
 
 const [registerForm, { validate, getFieldsValue, setFieldsValue, updateSchema }] = useForm({
   showActionButtonGroup: false,
@@ -183,11 +182,35 @@ async function handleUpdate(record: User) {
 
   await nextTick()
   setFieldsValue(record)
-  await nextTick()
-  updateSchema({
+
+  console.log(record)
+  if (record?.email_confirmed_at)
+    setFieldsValue({ email_confirm: true })
+  else
+    setFieldsValue({ email_confirm: false })
+
+  // if (record.user_metadata.avatar_url) {
+  //   fileList.value = [{
+  //     id: record.id,
+  //     name: 'avatar',
+  //     status: 'finished',
+  //     url: record.user_metadata.avatar_url,
+  //   }]
+  // }
+  // else {
+  //   fileList.value = []
+  // }
+
+  updateSchema([{
     field: 'password',
     rules: [{ required: false }],
-  })
+  }, {
+    field: 'email',
+    componentProps: { disabled: true },
+  }])
+
+  await nextTick()
+
   rowId.value = record.id
 }
 

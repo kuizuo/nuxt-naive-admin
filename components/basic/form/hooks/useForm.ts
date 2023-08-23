@@ -1,4 +1,4 @@
-import type { FormActionType, FormProps, UseFormReturnType } from '../types/form'
+import type { FormActionType, FormProps, FormSchema, UseFormReturnType } from '../types/form'
 
 type Props = Partial<FormProps>
 
@@ -67,9 +67,9 @@ export function useForm(props?: Props): UseFormReturnType {
       return form.submit()
     },
 
-    validate: async (nameList?: any[]): Promise<Record<string, any>> => {
+    validate: async (): Promise<Record<string, any>> => {
       const form = await getForm()
-      return form.validate(nameList)
+      return form.validate()
     },
 
     setLoading: (value: boolean) => {
@@ -79,6 +79,11 @@ export function useForm(props?: Props): UseFormReturnType {
     updateSchema: async (values) => {
       const form = await getForm()
       form.updateSchema(values)
+    },
+
+    resetSchema: async (data: Partial<FormSchema> | Partial<FormSchema>[]) => {
+      const form = await getForm()
+      form.resetSchema(data)
     },
   }
 
