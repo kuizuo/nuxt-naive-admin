@@ -7,10 +7,14 @@ import {
   NColorPicker,
   NDatePicker,
   NDivider,
+  NDynamicInput,
+  NDynamicTags,
   NInput,
   NInputGroup,
   NInputNumber,
   NMention,
+  NRadio,
+  NRadioButton,
   NRadioGroup,
   NRate,
   NSelect,
@@ -34,6 +38,8 @@ componentMap.set('NColorPicker', NColorPicker)
 componentMap.set('NSelect', NSelect)
 componentMap.set('NTreeSelect', NTreeSelect)
 componentMap.set('NSwitch', NSwitch)
+componentMap.set('NRadio', NRadio)
+componentMap.set('NRadioButton', NRadioButton)
 componentMap.set('NRadioGroup', NRadioGroup)
 componentMap.set('NCheckbox', NCheckbox)
 componentMap.set('NCheckboxGroup', NCheckboxGroup)
@@ -45,6 +51,8 @@ componentMap.set('NDatePicker', NDatePicker)
 componentMap.set('NTimePicker', NTimePicker)
 
 componentMap.set('NUpload', NUpload)
+componentMap.set('NDynamicInput', NDynamicInput)
+componentMap.set('NDynamicTags', NDynamicTags)
 componentMap.set('NDivider', NDivider)
 
 export { componentMap }

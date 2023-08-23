@@ -1,10 +1,10 @@
-import { cloneDeep, get, isEmpty, set, uniqBy } from 'lodash'
+import { cloneDeep, get, isEmpty, merge, set, uniqBy } from 'lodash'
 import dayjs from 'dayjs'
 import type { FormActionType, FormProps, FormSchema } from '../types/form'
 import { dateItemType } from '../helper'
 import { isDef, isFunction } from '~~/utils/is'
 
-declare type EmitType = (event: string, ...args: any[]) => void
+declare type EmitType = (event: string | any, ...args: any[]) => void
 
 interface UseFormActionContext {
   emit: EmitType
@@ -67,21 +67,16 @@ export function useFormEvents({
   loadingSub,
   handleFormValues,
 }: UseFormActionContext) {
-  // 验证
   async function validate() {
     return unref(formElRef)?.validate()
   }
 
-  /**
-   * @description: Is it time
-   */
   function itemIsDateType(key: string) {
     return unref(getSchema).some((item) => {
       return item.field === key ? dateItemType.includes(item.component!) : false
     })
   }
 
-  // 提交
   async function handleSubmit(e?: Event): Promise<void> {
     e && e.preventDefault()
     loadingSub.value = true
@@ -179,14 +174,14 @@ export function useFormEvents({
 
     const schema: FormSchema[] = []
     unref(getSchema).forEach((val) => {
-      let _val
+      let _val: any
       updateData.forEach((item) => {
         if (val.field === item.field)
           _val = item
       })
       if (_val !== undefined && val.field === _val.field) {
-        const newSchema = deepMerge(val, _val)
-        schema.push(newSchema as FormSchema)
+        merge(val, _val) // const newSchema = deepMerge(val, _val) 会丢失 val 原有的响应式
+        schema.push(val as FormSchema)
       }
       else {
         schema.push(val)
@@ -195,6 +190,24 @@ export function useFormEvents({
     _setDefaultValue(schema)
 
     schemaRef.value = uniqBy(schema, 'field')
+  }
+
+  async function resetSchema(data: Partial<FormSchema> | Partial<FormSchema>[]) {
+    let updateData: Partial<FormSchema>[] = []
+    if (isObject(data))
+      updateData.push(data as FormSchema)
+
+    if (isArray(data))
+      updateData = [...data]
+
+    const hasField = updateData.every(
+      item => item.component === 'NDivider' || (Reflect.has(item, 'field') && item.field),
+    )
+
+    if (!hasField)
+      throw new Error('All children of the form Schema array that need to be updated must contain the `field` field')
+
+    schemaRef.value = updateData as FormSchema[]
   }
 
   async function setFieldsValue(values: Record<string, any>): Promise<void> {
@@ -264,7 +277,8 @@ export function useFormEvents({
         })
       }
     })
-    validate(validKeys).catch((_) => {})
+    // validKeys 在 naive-ui 中没用到
+    // validate().catch((_) => {})
   }
 
   function setLoading(value: boolean): void {
@@ -276,6 +290,7 @@ export function useFormEvents({
     validate,
     getFieldsValue,
     updateSchema,
+    resetSchema,
     resetFields,
     restoreValidation,
     setFieldsValue,

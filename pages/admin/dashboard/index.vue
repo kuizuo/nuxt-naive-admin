@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 definePageMeta({
   layout: 'admin',
+  middleware: 'admin',
   title: '仪表盘',
   order: 1,
   icon: 'ant-design:dashboard-outlined',

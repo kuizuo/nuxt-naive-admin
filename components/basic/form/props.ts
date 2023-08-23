@@ -60,8 +60,8 @@ export const basicProps = {
   },
   gridProps: {
     type: Object as PropType<GridProps>,
-    default(rawProps) {
-      return { cols: 1, gap: 8 }
+    default(rawProps: GridProps) {
+      return { cols: 1, xGap: 8 }
     },
   },
   giProps: Object as PropType<GridItemProps>,

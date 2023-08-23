@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import type { GridProps } from 'naive-ui/lib/grid'
-import { createPlaceholderMessage } from './helper'
 import { useFormEvents } from './hooks/useFormEvents'
 import { useFormValues } from './hooks/useFormValues'
 import { componentMap } from './componentMap'
@@ -44,10 +43,7 @@ const getResetBtnOptions = computed(() => {
 
 function getComponentProps(schema: any) {
   const compProps = schema.componentProps ?? {}
-  const component = schema.component
   return {
-    clearable: true,
-    placeholder: createPlaceholderMessage(unref(component)),
     ...compProps,
   }
 }
@@ -90,6 +86,11 @@ const getSchema = computed((): FormSchema[] => {
 
     if (defaultValue)
       schema.defaultValue = defaultValue
+
+    schema.giProps = {
+      ...(unref(getProps).giProps),
+      ...(schema.giProps),
+    }
   }
   return schemas as FormSchema[]
 })
@@ -100,12 +101,22 @@ const { handleFormValues, initDefault } = useFormValues({
   formModel,
 })
 
-const { handleSubmit, validate, resetFields, getFieldsValue, restoreValidation, setFieldsValue } = useFormEvents({
+const {
+  handleSubmit,
+  validate,
+  resetFields,
+  getFieldsValue,
+  restoreValidation,
+  setFieldsValue,
+  updateSchema,
+  resetSchema,
+} = useFormEvents({
   emit,
   getProps,
   formModel,
   getSchema,
   formElRef: formElRef as Ref<FormActionType>,
+  schemaRef: schemaRef as Ref<FormSchema[]>,
   defaultValueRef,
   loadingSub,
   handleFormValues,
@@ -128,9 +139,11 @@ const formActionType: Partial<FormActionType> = {
   getFieldsValue,
   setFieldsValue,
   resetFields,
+  updateSchema,
+  resetSchema,
+  setProps,
   validate,
   restoreValidation,
-  setProps,
   submit: handleSubmit,
 }
 
@@ -146,6 +159,12 @@ watch(
     }
   },
 )
+watch(
+  () => unref(getProps).schemas,
+  (schemas) => {
+    resetSchema(schemas ?? [])
+  },
+)
 
 onMounted(() => {
   initDefault()
@@ -154,7 +173,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <n-form v-bind="getBindValue" ref="formElRef" :model="formModel">
+  <NForm v-bind="getBindValue" ref="formElRef" :model="formModel">
     <NGrid v-bind="getGrid">
       <NGi v-for="schema in getSchema" v-bind="schema.giProps" :key="schema.field">
         <NFormItem :label="schema.label" :path="schema.field">
@@ -198,13 +217,28 @@ onMounted(() => {
           <template v-else-if="schema.component === 'NRadioGroup'">
             <NRadioGroup v-model:value="formModel[schema.field]">
               <NSpace>
-                <n-radio
+                <NRadio
                   v-for="item in schema.componentProps?.options"
                   :key="item.value"
                   :value="item.value"
                 >
                   {{ item.label }}
-                </n-radio>
+                </NRadio>
+              </NSpace>
+            </NRadioGroup>
+          </template>
+
+          <!-- NRadioButtonGroup -->
+          <template v-else-if="schema.component === 'NRadioButtonGroup'">
+            <NRadioGroup v-model:value="formModel[schema.field]">
+              <NSpace>
+                <NRadioButton
+                  v-for="item in schema.componentProps?.options"
+                  :key="item.value"
+                  :value="item.value"
+                >
+                  {{ item.label }}
+                </NRadioButton>
               </NSpace>
             </NRadioGroup>
           </template>
@@ -273,5 +307,5 @@ onMounted(() => {
         </NSpace>
       </NGi>
     </NGrid>
-  </n-form>
+  </NForm>
 </template>

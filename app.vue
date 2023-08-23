@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { darkTheme, lightTheme } from 'naive-ui'
+import { darkTheme, dateZhCN, lightTheme, zhCN } from 'naive-ui'
 
 const colorMode = useColorMode()
 const { title, keywords, description } = useAppConfig()
@@ -27,7 +27,7 @@ useHead({
 </script>
 
 <template>
-  <n-config-provider :theme="colorMode.preference === 'dark' ? darkTheme : lightTheme">
+  <n-config-provider :locale="zhCN" :date-locale="dateZhCN" :theme="colorMode.preference === 'dark' ? darkTheme : lightTheme">
     <n-global-style />
     <NuxtLayout>
       <n-message-provider>
