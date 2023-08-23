@@ -6,6 +6,8 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       baseUrl: process.env.BASE_URL || 'http://localhost:8010',
+      supabaseUrl: process.env.SUPABASE_URL,
+      adminUid: process.env.ADMIN_UID,
     },
   },
   modules: [

@@ -1,31 +1,32 @@
-import { Role } from '~~/constants/role'
 import { serverSupabaseServiceRole } from '#supabase/server'
 import type { Database } from '~~/types/database.types'
 
 interface Body {
   email: string
   password: string
-  username: string
-  avatar_url: string
+  user_metadata: Record<string, any>
+  email_confirm: boolean
 }
 
+const { public: { adminUid } } = useRuntimeConfig()
+
 export default defineEventHandler(async (event) => {
-  if (event.context._user?.role !== Role.Admin)
+  if (event.context._user?.id !== adminUid)
     throw createError({ statusMessage: '无权限' })
 
-  const { email, username, password, avatar_url } = await readBody<Body>(event)
+  const { email, password, user_metadata, email_confirm } = await readBody<Body>(event)
 
   const { auth } = await serverSupabaseServiceRole<Database>(event)
 
   const { data, error } = await auth.admin.createUser({
     email,
     password,
-    user_metadata: {
-      user_name: username,
-      avatar_url,
-    },
+    user_metadata,
+    email_confirm,
   })
 
   if (error)
     throw createError({ statusMessage: error.message })
+
+  return data
 })

@@ -10,7 +10,10 @@ declare module 'h3' {
 const whitelist: string[] = []
 
 export default defineEventHandler(async (event) => {
-  const { node: { req } } = event
+  const { context, node: { req } } = event
+
+  if (!req.url.startsWith('/api/system'))
+    return
 
   try {
     const user = await serverSupabaseUser(event)
@@ -21,9 +24,9 @@ export default defineEventHandler(async (event) => {
     if (user?.aud !== 'authenticated')
       throw createError({ statusMessage: '请登录后再操作', statusCode: 401 })
 
-    context._user = user
+    // context._user = user
   }
   catch (err) {
-
+    throw createError({ statusMessage: err.message })
   }
 })

@@ -1,6 +1,7 @@
 {
   "extends": "@antfu",
   "rules": {
-    "@typescript-eslint/ban-types": "off"
+    "@typescript-eslint/ban-types": "off",
+    "n/prefer-global/process": "off"
   }
 }

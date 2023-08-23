@@ -28,7 +28,8 @@
     "start": "node -r dotenv/config .output/server/index.mjs dotenv_config_path=.env.production",
     "start:pm2": "pm2 start ecosystem.config.js --env production",
     "lint": "eslint .",
-    "release": "bumpp --commit --push --tag"
+    "release": "bumpp --commit --push --tag",
+    "genTypes": "supabase gen types typescript --project-id '$PROJECT_REF' --schema public > types/database.types.ts"
   },
   "devDependencies": {
     "@antfu/eslint-config": "^0.40.0",
@@ -48,6 +49,7 @@
     "@vueuse/integrations": "^10.3.0",
     "@vueuse/nuxt": "^10.3.0",
     "bumpp": "^8.2.1",
+    "dayjs": "^1.11.9",
     "eslint": "^8.46.0",
     "got": "^12.6.0",
     "lodash": "^4.17.21",

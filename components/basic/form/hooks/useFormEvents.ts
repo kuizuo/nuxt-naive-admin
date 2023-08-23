@@ -1,7 +1,8 @@
-import { cloneDeep, get } from 'lodash'
+import { cloneDeep, get, isEmpty, set, uniqBy } from 'lodash'
+import dayjs from 'dayjs'
 import type { FormActionType, FormProps, FormSchema } from '../types/form'
 import { dateItemType } from '../helper'
-import { isFunction } from '~~/utils/is'
+import { isDef, isFunction } from '~~/utils/is'
 
 declare type EmitType = (event: string, ...args: any[]) => void
 
@@ -11,23 +12,13 @@ interface UseFormActionContext {
   getSchema: ComputedRef<FormSchema[]>
   formModel: Record<string, any>
   formElRef: Ref<FormActionType>
-  defaultFormModel: Record<string, any>
+  schemaRef: Ref<FormSchema[]>
+  defaultValueRef: Ref<Record<string, any>>
   loadingSub: Ref<boolean>
   handleFormValues: Function
 }
 
-interface UseFormActionContext {
-  emit: EmitType
-  getProps: ComputedRef<FormProps>
-  getSchema: ComputedRef<FormSchema[]>
-  formModel: Recordable
-  defaultValueRef: Ref<Recordable>
-  formElRef: Ref<FormActionType>
-  schemaRef: Ref<FormSchema[]>
-  handleFormValues: Fn
-}
-
-function tryConstructArray(field: string, values: Recordable = {}): any[] | undefined {
+function tryConstructArray(field: string, values: Record<string, any> = {}): any[] | undefined {
   const pattern = /^\[(.+)\]$/
   if (pattern.test(field)) {
     const match = field.match(pattern)
@@ -36,7 +27,7 @@ function tryConstructArray(field: string, values: Recordable = {}): any[] | unde
       if (!keys.length)
         return undefined
 
-      const result = []
+      const result: any[] | undefined = []
       keys.forEach((k, index) => {
         set(result, index, values[k.trim()])
       })
@@ -46,7 +37,7 @@ function tryConstructArray(field: string, values: Recordable = {}): any[] | unde
   }
 }
 
-function tryConstructObject(field: string, values: Recordable = {}): Recordable | undefined {
+function tryConstructObject(field: string, values: Record<string, any> = {}): Record<string, any> | undefined {
   const pattern = /^\{(.+)\}$/
   if (pattern.test(field)) {
     const match = field.match(pattern)
@@ -70,8 +61,9 @@ export function useFormEvents({
   getProps,
   formModel,
   getSchema,
+  defaultValueRef,
   formElRef,
-  defaultFormModel,
+  schemaRef,
   loadingSub,
   handleFormValues,
 }: UseFormActionContext) {
@@ -85,12 +77,8 @@ export function useFormEvents({
    */
   function itemIsDateType(key: string) {
     return unref(getSchema).some((item) => {
-      return item.field === key ? dateItemType.includes(item.component) : false
+      return item.field === key ? dateItemType.includes(item.component!) : false
     })
-  }
-
-  async function validateFields(nameList?: NamePath[] | undefined) {
-    return unref(formElRef)?.validateFields(nameList)
   }
 
   // 提交
@@ -101,28 +89,26 @@ export function useFormEvents({
     if (submitFunc && isFunction(submitFunc)) {
       await submitFunc()
       loadingSub.value = false
-      return false
+      return
     }
     const formEl = unref(formElRef)
     if (!formEl)
-      return false
+      return
     try {
       await validate()
       const values = getFieldsValue()
       loadingSub.value = false
       emit('submit', values)
-      return values
     }
     catch (error: any) {
       emit('submit', false)
       loadingSub.value = false
       console.error(error)
-      return false
     }
   }
 
   // 清空校验
-  async function clearValidate() {
+  async function restoreValidation() {
     await unref(formElRef)?.restoreValidation()
   }
 
@@ -135,12 +121,37 @@ export function useFormEvents({
     if (!formEl)
       return
     Object.keys(formModel).forEach((key) => {
-      formModel[key] = unref(defaultFormModel)[key] || null
+      formModel[key] = unref(defaultValueRef)[key] || null
     })
-    await clearValidate()
+    await restoreValidation()
     const fromValues = handleFormValues(toRaw(unref(formModel)))
     emit('reset', fromValues)
     submitOnReset && (await handleSubmit())
+  }
+
+  function _setDefaultValue(data: FormSchema | FormSchema[]) {
+    let schemas: FormSchema[] = []
+    if (isObject(data))
+      schemas.push(data as FormSchema)
+
+    if (isArray(data))
+      schemas = [...data]
+
+    const obj: Record<string, any> = {}
+    const currentFieldsValue = getFieldsValue()
+    schemas.forEach((item) => {
+      if (
+        item.component !== 'NDivider'
+        && Reflect.has(item, 'field')
+        && item.field
+        && !isNullOrUnDef(item.defaultValue)
+        && (!(item.field in currentFieldsValue)
+          || isNullOrUnDef(currentFieldsValue[item.field])
+          || isEmpty(currentFieldsValue[item.field]))
+      )
+        obj[item.field] = item.defaultValue
+    })
+    setFieldsValue(obj)
   }
 
   // 获取表单值
@@ -151,7 +162,42 @@ export function useFormEvents({
     return handleFormValues(toRaw(unref(formModel)))
   }
 
-  async function setFieldsValue(values: Recordable): Promise<void> {
+  async function updateSchema(data: Partial<FormSchema> | Partial<FormSchema>[]) {
+    let updateData: Partial<FormSchema>[] = []
+    if (isObject(data))
+      updateData.push(data as FormSchema)
+
+    if (isArray(data))
+      updateData = [...data]
+
+    const hasField = updateData.every(
+      item => item.component === 'NDivider' || (Reflect.has(item, 'field') && item.field),
+    )
+
+    if (!hasField)
+      throw new Error('All children of the form Schema array that need to be updated must contain the `field` field')
+
+    const schema: FormSchema[] = []
+    unref(getSchema).forEach((val) => {
+      let _val
+      updateData.forEach((item) => {
+        if (val.field === item.field)
+          _val = item
+      })
+      if (_val !== undefined && val.field === _val.field) {
+        const newSchema = deepMerge(val, _val)
+        schema.push(newSchema as FormSchema)
+      }
+      else {
+        schema.push(val)
+      }
+    })
+    _setDefaultValue(schema)
+
+    schemaRef.value = uniqBy(schema, 'field')
+  }
+
+  async function setFieldsValue(values: Record<string, any>): Promise<void> {
     const fields = unref(getSchema)
       .map(item => item.field)
       .filter(Boolean)
@@ -218,7 +264,7 @@ export function useFormEvents({
         })
       }
     })
-    validateFields(validKeys).catch((_) => {})
+    validate(validKeys).catch((_) => {})
   }
 
   function setLoading(value: boolean): void {
@@ -228,9 +274,10 @@ export function useFormEvents({
   return {
     handleSubmit,
     validate,
-    resetFields,
     getFieldsValue,
-    clearValidate,
+    updateSchema,
+    resetFields,
+    restoreValidation,
     setFieldsValue,
     setLoading,
   }
