@@ -4,7 +4,7 @@ import pkg from '~/package.json'
 
 <template>
   <footer class="border-y border-gray-100 dark:border-gray-800">
-    <div class="mx-auto w-full px-4 sm:px-6 lg:px-8 max-w-6xl">
+    <div class="container mx-auto w-full px-4">
       <div class="flex flex-col items-center h-full gap-2 py-4 sm:flex-row sm:justify-between sm:gap-x-4">
         <div class="inline-flex gap-4">
           <NuxtLink :to="pkg.author.url" target="_blank" class="flex items-center gap-1">
