@@ -7,7 +7,7 @@ const user = useSupabaseUser()
     <div class="flex flex-col justify-center items-center gap-4">
       <img v-if="user?.image" class="w-12 h-12 rounded-full" :src="user.image" alt="User Avatar">
       <h1 class="text-lg">
-        {{ user?.user_metadata?.full_name }}
+        {{ user?.user_metadata?.user_name }}
       </h1>
       <h2>
         email: {{ user?.email }}
