@@ -5,30 +5,32 @@
 <p align="center">
   <i>Artwork from <a href="https://nuxt.com/">Nuxt</a></i>
 </p>
-
-<h1 align="center">Protocol</h1>
-<p align="center">🧪 一个用于快速复现请求协议的 Web 开发模板。</p>
+<h1 align="center">Nuxt-Naive-Admin</h1>
+<p align="center">使用 Nuxt 框架, 基于 Naive UI 组件库, 以及 Supabase 服务所开发的管理系统</p>
 
 <p align="center">
-<a href="https://protocol.kuizuo.cn">🖥 Online Preview</a>
+<a href="https://nuxt-naive-admin.vercel.app">🖥 Online Preview</a>
 <br><br>
-<a href="https://stackblitz.com/github/kuizuo/protocol"><img src="https://developer.stackblitz.com/img/open_in_stackblitz.svg" alt=""></a>
+<a href="https://stackblitz.com/github/kuizuo/nuxt-naive-admin"><img src="https://developer.stackblitz.com/img/open_in_stackblitz.svg" alt=""></a>
 </p>
 <p align="center">
-  <a href="https://www.npmjs.com/package/nuxt/v/rc"><img alt="size" src="https://img.shields.io/github/package-json/dependency-version/kuizuo/protocol/dev/nuxt?style=flat&colorA=002438&colorB=28CF8D"></a>
-  <a href="https://img.shields.io/github/languages/code-size/kuizuo/protocol"><img alt="size" src="https://img.shields.io/github/languages/code-size/kuizuo/protocol"></a>
-  <a href="https://github.com/kuizuo/protocol/actions/workflows/ci.yml"><img alt="CI" src="https://img.shields.io/github/workflow/status/kuizuo/protocol/ci?label=ci&logo=github"></a>
-  <a href="https://github.com/kuizuo/protocol/tree/HEAD/LICENSE"><img alt="License" src="https://img.shields.io/github/license/kuizuo/protocol?style=flat&colorA=002438&colorB=28CF8D" /></a>
-</p>
-<p align="center">
-  <a href="https://kuizuo.cn/protocol-template" alt="protocol-template" >
-    <img src="https://img.shields.io/badge/protocol--template--blog-brightgreen?style=for-the-badge&logo=read-the-docs&logoColor=white" />
-  </a>
+  <a href="https://www.npmjs.com/package/nuxt/v/rc"><img alt="size" src="https://img.shields.io/github/package-json/dependency-version/kuizuo/nuxt-naive-admin/dev/nuxt?style=flat&colorA=002438&colorB=28CF8D"></a>
+  <a href="https://img.shields.io/github/languages/code-size/kuizuo/nuxt-naive-admin"><img alt="size" src="https://img.shields.io/github/languages/code-size/kuizuo/nuxt-naive-admin"></a>
+  <a href="https://github.com/kuizuo/nuxt-naive-admin/actions/workflows/ci.yml"><img alt="CI" src="https://img.shields.io/github/workflow/status/kuizuo/nuxt-naive-admin/ci?label=ci&logo=github"></a>
+  <a href="https://github.com/kuizuo/nuxt-naive-admin/tree/HEAD/LICENSE"><img alt="License" src="https://img.shields.io/github/license/kuizuo/nuxt-naive-admin?style=flat&colorA=002438&colorB=28CF8D" /></a>
 </p>
 
-## ✨ 目的
+## ✨ 特性
 
-如果你恰好使用 Node.js 来请求api接口或者爬虫，并且部署在 Web 上，那么基于本模板将会特别容易做到。
+- 一个完整的 Nuxt 全栈项目
+- 使用 naive-ui 组件
+- 集成 supabase 服务
+
+## 🖥️ 演示
+
+- [nuxt-naive-admin.vercel.app](https://nuxt-naive-admin.vercel.app)
+
+管理员账号：admin@kuizuo.cn 密码：Aa123456
 
 ## 🚀 快速开始
 
@@ -38,13 +40,6 @@ cd protocol
 pnpm i
 pnpm run dev
 ```
-
-- 将 public/logo.svg 换成你想要展示的 logo
-- 修改 [app.config.ts](https://v3.nuxtjs.org/guide/directory-structure/app.config/) 中的配置（标题，描述），并通过 `useConfig()` 获取配置
-- 在 content 目录下修改 `help.md` 与 `changelog.md` 以更新使用说明与更新日志。支持 [MDC Syntax](https://content.nuxtjs.org/guide/writing/mdc/)
-- 在 server/api 下编写你的后端请求接口。在 server/protocol 下编写协议请求核心逻辑便于调用
-- 在 [nitro.config.ts](https://nitro.unjs.io/guide/introduction/storage) 配置数据存储位置，并使用 `useStorage()` 来存取数据，得益于[unjs/unstorage](https://github.com/unjs/unstorage)
-- 前端使用 [ohmyfetch](https://github.com/unjs/ohmyfetch) 来请求后端接口，有完善的接口类型提示
 
 ## 🎉 部署
 
@@ -56,7 +51,7 @@ pnpm run dev
 module.exports = {
   apps: [
     {
-      name: 'Protocol',
+      name: 'Nuxt-Naive-Admin',
       exec_mode: 'cluster',
       instances: '1',
       env: {
@@ -70,26 +65,24 @@ module.exports = {
 }
 ```
 
-接着执行 `pm2 start ecosystem.config.js` 即可。
+执行 `pm2 start ecosystem.config.js` 即可。
 
-### Vercel
+## 一些话
 
-转到 [Vercel](https://vercel.com/new) 并选择你的项目，点击  "Deploy"，您的应用程序将在一分钟内上线。
+起初这个项目是我用于做 Node.js 来请求api接口或者爬虫，并且部署在 Web 上，所编写的一个模版，名 Protocol（即用于协议复现的）。
 
-### Netlify
+有次使用该模块的时候需要管理用户数据，与其搭建一个 vben + nest 的管理网站，不如直接在 nuxt 的 page 下创建 admin 目录，将管理端的页面都写在该目录下，故这个项目便改名为 nuxt-naive-admin。
 
-转到 [Netlify](https://app.netlify.com/start) 并选择您的项目，点击 "Deploy site"，您的应用程序将在一分钟内上线。
+于是我开始使用 nitro 来实现后端服务，如身份效验，数据库查询等等。期间用到了 [nuxt-auth](https://nuxt.com/modules/nuxt-auth) 与 [prisma](https://www.prisma.io/)，相信使用 ts 全栈框架肯定不陌生。
 
-## 🖥️ 演示
+但后来我思考到，既然要自己实现后端服务，为何不考虑使用更全面的 [nest.js](https://nestjs.com/) 框架。可这样违背了我一开始所想要编写这个项目的初心，即我只希望**所有的代码都在全栈框架体系下**。这不同于 monorepo，就仅仅只是一个 nuxt 或 next 仓库。
 
-![preview](./public/img/preview.png)
+加之在开发期间受 serverless 影响较重，与其自己在 server 目录下实现后端服务接口，不如直接使用一些第三方平台，综合考量下选用 supabase。
 
-## 
+虽然本项目使用 supabase cloud，但 supabase 支持[私有化部署](https://supabase.com/docs/guides/self-hosting)（会阉割许多功能）。后续可能会考虑私有化部署，这样你就能通过 [supabase.kuizuo.cn](http://supabase.kuizuo.cn/) 来访问 supabase 后台。
 
-## 🤝 免责声明
-
-**本模板仅仅是web模板，任何开发者用该模板编写任何站点都与本人无关。本项目仅作为个人技术专研，仅供学习参考。**
+使用 supabase 肯定也是有一些缺点的，后续或许会根据实际业务该用其他baas 平台或者自行编写相关服务。
 
 ## 📝 License 
 
-[MIT](./LICENSE) License &copy; 2022-PRESENT [Kuizuo](https://github.com/kuizuo)
+[MIT](./LICENSE) License &copy; 2023-PRESENT [Kuizuo](https://github.com/kuizuo)

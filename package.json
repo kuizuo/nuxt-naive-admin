@@ -1,9 +1,9 @@
 {
-  "name": "protocol",
-  "version": "0.3.5",
+  "name": "nuxt-naive-admin",
+  "version": "0.4.0",
   "private": true,
-  "packageManager": "pnpm@7.14.0",
-  "description": "一个用于快速复现请求协议的 Web 开发模板。",
+  "packageManager": "pnpm@8.3.1",
+  "description": "使用 Nuxt 框架, 基于 Naive UI 组件库, 以及 Supabase 服务所开发的管理系统",
   "author": {
     "url": "https://kuizuo.cn",
     "email": "hi@kuizuo.cn",
@@ -11,16 +11,16 @@
   },
   "license": "MIT",
   "repository": {
-    "url": "https://github.com/kuizuo/protocol",
+    "url": "https://github.com/kuizuo/nuxt-naive-admin",
     "type": "git"
   },
   "keywords": [
     "template",
-    "protocol",
     "web",
     "nuxt",
     "naive-ui",
-    "http"
+    "admin",
+    "supabase"
   ],
   "scripts": {
     "build": "nuxi build",
