@@ -1,7 +1,7 @@
 module.exports = {
   apps: [
     {
-      name: 'Protocol',
+      name: 'nuxt-naive-admin',
       script: './.output/server/index.mjs',
       exec_mode: 'cluster',
       instances: '1',

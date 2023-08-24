@@ -18,7 +18,7 @@ jobs:
       - name: Set node
         uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 18.x
           cache: pnpm
 
       - name: Setup
@@ -38,7 +38,7 @@ jobs:
           SOURCE: '.output'
           REMOTE_HOST: ${{ secrets.REMOTE_HOST }}
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
-          TARGET: '/www/wwwroot/NodeProject/protocol'
+          TARGET: '/www/wwwroot/NodeProject/nuxt-naive-admin'
 
       - name: SSH Commands
         uses: appleboy/ssh-action@master
@@ -46,4 +46,4 @@ jobs:
           host: ${{ secrets.REMOTE_HOST }}
           username: ${{ secrets.REMOTE_USER }}
           key: ${{ secrets.PRIVATE_KEY }}
-          script: pm2 restart Protocol
+          script: pm2 restart nuxt-naive-admin
