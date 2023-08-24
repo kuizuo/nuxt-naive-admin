@@ -50,6 +50,11 @@ async function goToRegister() {
   await navigateTo('/auth/register', { external: true })
 }
 
+async function goToResetPassword() {
+  await navigateTo('/auth/reset-password', { external: true })
+  emit('success')
+}
+
 watchEffect(() => {
   if (user.value)
     navigateTo('/')
@@ -87,7 +92,9 @@ watchEffect(() => {
                 <NCheckbox class="text-sm">
                   记住我
                 </NCheckbox>
-                <span>忘记密码</span>
+                <NButton text tag="a" type="primary" @click="goToResetPassword()">
+                  忘记密码
+                </NButton>
               </NSpace>
             </NFormItem>
             <NFormItem>

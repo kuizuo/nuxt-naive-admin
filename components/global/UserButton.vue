@@ -22,7 +22,7 @@ const options = [
 async function handleSelect(key: string) {
   switch (key) {
     case 'profile':
-      router.push({ name: 'profile' })
+      router.push({ path: '/account/profile' })
       break
     case 'logout':
       await supbabase.auth.signOut()
