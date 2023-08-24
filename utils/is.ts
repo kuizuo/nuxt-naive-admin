@@ -10,7 +10,7 @@ export function is(val: unknown, type: string) {
 /**
  * @description:  是否为函数
  */
-// eslint-disable-next-line @typescript-eslint/ban-types
+
 export function isFunction<T = Function>(val: unknown): val is T {
   return is(val, 'Function') || is(val, 'AsyncFunction')
 }
@@ -116,4 +116,9 @@ export function isNullAndUnDef(val: unknown): val is null | undefined {
 
 export function isNullOrUnDef(val: unknown): val is null | undefined {
   return isUnDef(val) || isNull(val)
+}
+
+export function isEmail(str: string) {
+  const reg = /^([a-zA-Z]|[0-9])(\w|-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/
+  return reg.test(str)
 }

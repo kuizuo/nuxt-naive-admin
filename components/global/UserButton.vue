@@ -41,7 +41,7 @@ function handleSuccess() {
     <div v-if="user" class="flex">
       <NDropdown trigger="hover" :options="options" @select="handleSelect">
         <NAvatar size="small" round :src="user?.user_metadata?.avatar_url">
-          <span v-if="!user?.user_metadata?.avatar_url">{{ user?.user_metadata?.full_name ?? user.email }}</span>
+          <span v-if="!user?.user_metadata?.avatar_url">{{ user?.user_metadata?.user_name ?? user.email }}</span>
         </NAvatar>
       </NDropdown>
     </div>
@@ -51,7 +51,7 @@ function handleSuccess() {
       </NButton>
       <ClientOnly>
         <NModal
-          v-model:show="showModal" :mask-closable="true" preset="card" size="large" :bordered="false"
+          v-model:show="showModal" :mask-closable="true" size="large" :bordered="false"
           :closable="false" :style="{ 'max-width': '350px' }" transform-origin="center"
         >
           <LoginCard @success="handleSuccess" />
