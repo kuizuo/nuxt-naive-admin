@@ -27,7 +27,10 @@
     "dev": "nuxi dev -o",
     "start": "node -r dotenv/config .output/server/index.mjs dotenv_config_path=.env.production",
     "start:pm2": "pm2 start ecosystem.config.js --env production",
+    "typecheck": "nuxi typecheck --noEmit",
     "lint": "eslint .",
+    "postinstall": "nuxi prepare",
+    "generate": "nuxi generate",
     "release": "bumpp --commit --push --tag",
     "genTypes": "supabase gen types typescript --project-id '$PROJECT_REF' --schema public > types/database.types.ts"
   },
