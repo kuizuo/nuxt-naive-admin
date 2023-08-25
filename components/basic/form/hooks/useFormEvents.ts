@@ -1,4 +1,4 @@
-import { cloneDeep, get, isEmpty, merge, set, uniqBy } from 'lodash'
+import { cloneDeep, get, isEmpty, merge, set, uniqBy } from 'lodash-es'
 import dayjs from 'dayjs'
 import type { FormActionType, FormProps, FormSchema } from '../types/form'
 import { dateItemType } from '../helper'

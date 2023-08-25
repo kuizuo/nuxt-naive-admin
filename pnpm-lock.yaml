@@ -61,7 +61,7 @@ devDependencies:
   got:
     specifier: ^12.6.0
     version: 12.6.0
-  lodash:
+  lodash-es:
     specifier: ^4.17.21
     version: 4.17.21
   naive-ui:

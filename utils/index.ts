@@ -1,4 +1,4 @@
-import { cloneDeep, isEqual, mergeWith, unionWith } from 'lodash'
+import { cloneDeep, isEqual, mergeWith, unionWith } from 'lodash-es'
 import { Icon } from '#components'
 
 export function deepMerge<T extends object | null | undefined, U extends object | null | undefined>(

@@ -2,7 +2,7 @@
 import Sortablejs from 'sortablejs'
 import type Sortable from 'sortablejs'
 
-import { cloneDeep } from 'lodash'
+import { cloneDeep } from 'lodash-es'
 import { useTableContext } from '../../hooks/useTableContext'
 import type { BasicColumn } from '../../types/table'
 
