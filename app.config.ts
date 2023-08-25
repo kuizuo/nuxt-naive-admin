@@ -2,7 +2,7 @@ export default defineAppConfig({
   logo: 'carbon:api',
   title: 'nuxt-naive-admin',
   image: '/img/cover.png',
-  description: '这是一套使用 Nuxt 框架, 基于 Naive UI 组件库, 以及 Supabase 服务所开发的管理系统',
+  description: '一站式管理系统，融合 Nuxt、Naive UI 和 Supabase。',
   keywords:
     'nuxt, naive-ui, supabase, template, web',
   author: {

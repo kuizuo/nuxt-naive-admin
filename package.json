@@ -3,7 +3,7 @@
   "version": "0.4.0",
   "private": true,
   "packageManager": "pnpm@8.3.1",
-  "description": "使用 Nuxt 框架, 基于 Naive UI 组件库, 以及 Supabase 服务所开发的管理系统",
+  "description": "一站式管理系统，融合 Nuxt、Naive UI 和 Supabase",
   "author": {
     "url": "https://kuizuo.cn",
     "email": "hi@kuizuo.cn",
@@ -15,11 +15,11 @@
     "type": "git"
   },
   "keywords": [
+    "admin",
     "template",
     "web",
     "nuxt",
     "naive-ui",
-    "admin",
     "supabase"
   ],
   "scripts": {

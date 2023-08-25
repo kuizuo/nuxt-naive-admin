@@ -23,6 +23,13 @@ export default defineAppConfig({
     header: {
       logo: true,
       exclude: [],
-    }
+    },
+    github: {
+      owner: "kuizuo",
+      repo: "nuxt-naive-admin",
+      branch: "main",
+      dir: "docs/content",
+      edit: true,
+    },
   }
 })
