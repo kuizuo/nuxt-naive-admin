@@ -8,17 +8,25 @@
 <h1 align="center">Nuxt-Naive-Admin</h1>
 <p align="center">使用 Nuxt 框架, 基于 Naive UI 组件库, 以及 Supabase 服务所开发的管理系统</p>
 
-<p align="center">
-<a href="https://nuxt-naive-admin.vercel.app">🖥 Online Preview</a>
-<br><br>
+<p align="center"
 <a href="https://stackblitz.com/github/kuizuo/nuxt-naive-admin"><img src="https://developer.stackblitz.com/img/open_in_stackblitz.svg" alt=""></a>
 </p>
 <p align="center">
   <a href="https://www.npmjs.com/package/nuxt/v/rc"><img alt="size" src="https://img.shields.io/github/package-json/dependency-version/kuizuo/nuxt-naive-admin/dev/nuxt?style=flat&colorA=002438&colorB=28CF8D"></a>
   <a href="https://img.shields.io/github/languages/code-size/kuizuo/nuxt-naive-admin"><img alt="size" src="https://img.shields.io/github/languages/code-size/kuizuo/nuxt-naive-admin"></a>
-  <a href="https://github.com/kuizuo/nuxt-naive-admin/actions/workflows/ci.yml"><img alt="CI" src="https://img.shields.io/github/workflow/status/kuizuo/nuxt-naive-admin/ci?label=ci&logo=github"></a>
   <a href="https://github.com/kuizuo/nuxt-naive-admin/tree/HEAD/LICENSE"><img alt="License" src="https://img.shields.io/github/license/kuizuo/nuxt-naive-admin?style=flat&colorA=002438&colorB=28CF8D" /></a>
 </p>
+
+<p>
+  <a href="##一些话">🗺️ Project Introduce</a> |
+  <a href="https://docs.nuxt-naive-admin.vercel.app/">📚 Documentation</a>
+</p>
+
+<br>
+
+> **Warning**: 本项目还处于开发阶段, 暂不建议用于生产环境。
+
+<br>
 
 ## ✨ 特性
 
@@ -35,8 +43,8 @@
 ## 🚀 快速开始
 
 ```
-git clone https://github.com/kuizuo/protocol
-cd protocol
+git clone https://github.com/kuizuo/nuxt-naive-admin
+cd nuxt-naive-admin
 pnpm i
 pnpm run dev
 ```

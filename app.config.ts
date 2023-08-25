@@ -1,9 +1,10 @@
 export default defineAppConfig({
   logo: 'carbon:api',
-  title: 'Protocol',
-  description: '一个用于快速复现请求协议的 Web 开发模板。基于 nuxt + naive-ui',
+  title: 'nuxt-naive-admin',
+  image: '/img/cover.png',
+  description: '这是一套使用 Nuxt 框架, 基于 Naive UI 组件库, 以及 Supabase 服务所开发的管理系统',
   keywords:
-    'nuxt, naive-ui, protocol, template, web, spider, http',
+    'nuxt, naive-ui, supabase, template, web',
   author: {
     name: 'kuizuo',
     link: 'https://github.com/kuizuo',
