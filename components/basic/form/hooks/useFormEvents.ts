@@ -4,8 +4,6 @@ import type { FormActionType, FormProps, FormSchema } from '../types/form'
 import { dateItemType } from '../helper'
 import { isDef, isFunction } from '~~/utils/is'
 
-declare type EmitType = (event: string | any, ...args: any[]) => void
-
 interface UseFormActionContext {
   emit: EmitType
   getProps: ComputedRef<FormProps>

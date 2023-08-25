@@ -6,8 +6,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       baseUrl: process.env.BASE_URL || 'http://localhost:8010',
-      supabaseUrl: process.env.SUPABASE_URL,
-      adminUid: process.env.ADMIN_UID,
+      adminUid: process.env.NUXT_PUBLIC_ADMIN_UID,
     },
   },
   modules: [
@@ -30,7 +29,6 @@ export default defineNuxtConfig({
     dirs: [
       'composables/**/*',
       'stores/**/*',
-      // 'api/**/*',
     ],
   },
   components: [

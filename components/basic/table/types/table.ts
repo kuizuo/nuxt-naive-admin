@@ -2,12 +2,6 @@ import type { VNodeChild } from 'vue'
 import type { DataTableBaseColumn, FormProps } from 'naive-ui'
 import type { PaginationProps } from './pagination'
 
-interface Fn<T = any, R = T> {
-  (...arg: T[]): R
-}
-
-declare type EmitType = (event: string | any, ...args: any[]) => void
-
 export declare type SortOrder = 'ascend' | 'descend'
 
 export interface TableCurrentDataSource<T = Record<string, any>> {

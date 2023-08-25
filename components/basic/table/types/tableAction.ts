@@ -1,4 +1,3 @@
-import type { Fn } from '@vueuse/core'
 import type { NButton } from 'naive-ui'
 import type { Component } from 'vue'
 
