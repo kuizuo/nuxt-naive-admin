@@ -83,7 +83,7 @@ const getContentClass = computed(() => {
 
 <template>
   <div ref="wrapperRef" :class="getClass" class="h-full relative">
-    <NPageHeader v-if="getShowHeader" v-bind="omit($attrs, 'class')" ref="headerRef" class="p-4" :title="title" :class="{ 'bg-white': !ghost }">
+    <NPageHeader v-if="getShowHeader" v-bind="omit($attrs, 'class')" ref="headerRef" class="p-4" :title="title" :class="{ 'bg-white dark:bg-zinc-900': !ghost }">
       <template #default>
         <template v-if="content">
           {{ content }}
