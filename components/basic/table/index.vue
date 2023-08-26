@@ -19,10 +19,12 @@ const emits = defineEmits([
 ])
 const attrs = useAttrs()
 
-const wrapRef = ref(null)
-const tableElRef = ref(null)
+const wrapRef = ref<HTMLElement | null>(null)
+const tableElRef = ref<ComponentRef>(null)
 const tableData = ref<Record<string, any>[]>([])
 const innerPropsRef = ref<Partial<BasicTableProps>>()
+
+const contentHeight = ref(0)
 
 const getProps = computed(() => {
   return { ...props, ...unref(innerPropsRef) } as BasicTableProps
@@ -50,10 +52,44 @@ function setProps(props: Partial<BasicTableProps>) {
 const { getViewColumns, setColumns, getColumns, getCacheColumns, setCacheColumnsByField }
         = useColumns(getProps, getPaginationInfo)
 
+const pagination = computed(() => toRaw(unref(getPaginationInfo)))
+
+function computeTableHeight() {
+  const table = unref(tableElRef)
+  if (!table)
+    return
+  contentHeight.value = wrapRef.value?.clientHeight || 0
+
+  const tableEl: any = table?.$el
+  const headEl = tableEl.querySelector('.n-data-table-thead')
+  const { bottomIncludeBody } = getViewportOffset(headEl)
+  const headerH = 64
+  let paginationH = 2
+  const marginH = 16
+
+  if (!isBoolean(unref(pagination))) {
+    const paginationEl: HTMLElement | null = tableEl.querySelector('.n-data-table__pagination')
+    if (paginationEl) {
+      const offsetHeight = paginationEl.offsetHeight
+      paginationH += offsetHeight || 0
+    }
+    else {
+      paginationH += 28
+    }
+  }
+  let height
+          = bottomIncludeBody - (headerH + paginationH + marginH + (props.resizeHeightOffset || 0))
+  const maxHeight = props.maxHeight
+  height = maxHeight && maxHeight < height ? maxHeight : height
+  contentHeight.value = height
+}
+
 const getBindValues = computed(() => {
   const dataSource = unref(getDataSourceRef)
 
-  const propsData: any = {
+  const maxHeight = dataSource.length ? `${unref(contentHeight)}px` : 'auto'
+
+  const propsData: Record<string, any> = {
     ...attrs,
     ...unref(getProps),
     // ...unref(getHeaderProps),
@@ -64,6 +100,7 @@ const getBindValues = computed(() => {
     'pagination': toRaw(unref(getPaginationInfo)),
     'data': dataSource,
     'remote': !!unref(getProps).request,
+    'max-height': maxHeight,
     // footer: unref(getFooterProps),
     'on-update:page': (page: number) => {
       setPagination({ page })
@@ -77,6 +114,23 @@ const getBindValues = computed(() => {
 
   return propsData
 })
+
+onMounted(() => {
+  nextTick(() => {
+    computeTableHeight()
+  })
+})
+
+const { height } = useWindowSize()
+
+const debouncedComputeTableHeight = useDebounceFn(computeTableHeight, 300)
+
+watch(
+  () => unref(height),
+  () => {
+    debouncedComputeTableHeight()
+  },
+)
 
 const tableAction: TableActionType | any = {
   reload,
@@ -95,7 +149,7 @@ defineExpose(tableAction)
 </script>
 
 <template>
-  <div ref="wrapRef">
+  <div ref="wrapRef" class="h-full">
     <div class="flex items-center min-h-[36px] mb-2">
       <div class="flex items-center">
         <template v-if="title">
@@ -111,11 +165,8 @@ defineExpose(tableAction)
 
         <NDivider vertical />
         <div class="flex justify-center items-center gap-2">
-          <!-- 刷新 -->
           <RedoSetting />
-          <!-- 密度 -->
           <SizeSetting />
-          <!-- 列设置 -->
           <ColumnSetting />
         </div>
       </div>

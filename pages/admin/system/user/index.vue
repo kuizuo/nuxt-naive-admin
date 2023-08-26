@@ -255,11 +255,12 @@ async function handleSuccess() {
 </script>
 
 <template>
-  <BasicPage>
+  <BasicPage content-full-height>
     <BasicTable
       ref="tableRef"
       title="用户列表"
       :columns="columns"
+      :scroll-x="1000"
       :action-column="{
         width: 80,
         title: '操作',

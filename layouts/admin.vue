@@ -4,11 +4,14 @@ const headerRef = ref<any>(null)
 const { headerSetting } = useHeaderSetting()
 
 const headerHeight = ref(headerRef.value?.$el.offsetHeight || 0)
-const contentHeight = computed(() => {
-  return `calc(100vh - ${headerHeight}px)`
-})
 
 const refreshing = computed(() => useTabStore().refreshing)
+
+onMounted(() => {
+  nextTick(() => {
+    headerHeight.value = headerRef.value?.$el.offsetHeight || 0
+  })
+})
 </script>
 
 <template>
@@ -22,10 +25,16 @@ const refreshing = computed(() => useTabStore().refreshing)
       </NLayoutHeader>
       <NLayoutContent
         :style="{
-          height: contentHeight,
-        }" :native-scrollbar="false"
+          height: `calc(100vh - ${headerHeight}px)`,
+        }"
+        :content-style="{
+          height: `calc(100vh - ${headerHeight}px - ${16}px)`,
+        }"
+        :native-scrollbar="false"
       >
-        <slot v-if="!refreshing" />
+        <slot
+          v-if="!refreshing"
+        />
       </NLayoutContent>
 
       <NBackTop :right="100" />

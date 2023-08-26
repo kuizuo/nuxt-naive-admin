@@ -96,7 +96,7 @@ const columns: BasicColumn<TableData>[] = [
   },
 ]
 
-async function fetchData(params?) {
+async function fetchData(params?: any) {
   const data = []
   for (let i = 0; i < 10; i++) {
     data.push({
@@ -117,11 +117,9 @@ async function fetchData(params?) {
 
   return {
     items: data,
-    meta: {
-      total: 20,
-      page: 1,
-      pageSize: 10,
-    },
+    total: 200,
+    page: 1,
+    pageSize: 10,
   }
 }
 
@@ -133,7 +131,7 @@ function handleUpdate() {
   message.success('更新数据')
 }
 
-function handleDelete(record) {
+function handleDelete(record: any) {
   message.success(`删除数据: ${record.id}`)
 }
 
@@ -189,6 +187,7 @@ const actionColumn = reactive({
       :columns="columns"
       :action-column="actionColumn"
       :request="fetchData"
+      :scroll-x="1600"
     >
       <template #toolbar>
         <NButton type="primary" size="small" @click="handleCreate">

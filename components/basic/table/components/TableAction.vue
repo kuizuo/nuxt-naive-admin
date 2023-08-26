@@ -3,13 +3,11 @@ import { computed, toRaw } from 'vue'
 import { isBoolean, isFunction } from 'lodash-es'
 import type { ActionItem } from '../types/tableAction'
 
-interface Props {
+const props = withDefaults(defineProps<{
   actions?: ActionItem[] | null
   dropDownActions?: ActionItem[] | null
   style?: 'button' | 'text'
-}
-
-const props = withDefaults(defineProps<Props>(), {
+}>(), {
   actions: null,
   dropDownActions: null,
   style: 'button',

@@ -36,6 +36,14 @@ declare global {
   declare type EmitType = (event: string | any, ...args: any[]) => void;
 
   // vue
+  declare interface ComponentElRef<T extends HTMLElement = HTMLDivElement> {
+    $el: T;
+  }
+  
+  declare type ComponentRef<T extends HTMLElement = HTMLDivElement> = ComponentElRef<T> | null;
+  
+  declare type ElRef<T extends HTMLElement = HTMLDivElement> = Nullable<T>;
+  
   declare type VueNode = VNodeChild | JSX.Element;
 
   export type Writable<T> = {
