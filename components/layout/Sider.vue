@@ -14,7 +14,7 @@ const showSideDrawder = computed({
   <NLayoutSider
     v-if="!isMobile" bordered show-trigger="bar" :collapsed="collapsed" collapse-mode="width"
     :collapsed-width="64" :width="menuWidth" :native-scrollbar="false"
-    class="min-h-screen relative z-20 transition-all duration-200 ease-in-out" @collapse="toggleCollapsed"
+    class="min-h-screen relative z-20 transition-all duration-200 ease-in-out shadow-md" @collapse="toggleCollapsed"
     @expand="toggleCollapsed"
   >
     <AppLogo :show-title="!(collapsed || isMobile)" class="flex h-12" />
@@ -22,7 +22,7 @@ const showSideDrawder = computed({
   </NLayoutSider>
   <NDrawer
     v-else v-model:show="showSideDrawder" :width="menuWidth" placement="left"
-    class="min-h-screen relative z-20 transition-all duration-200 ease-in-out"
+    class="min-h-screen relative z-20 transition-all duration-200 ease-in-out "
   >
     <AppLogo class="flex h-12" />
     <LayoutMenu @clickMenuItem="toggleCollapsed" />

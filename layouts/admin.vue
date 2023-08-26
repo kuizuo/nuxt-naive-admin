@@ -5,6 +5,7 @@ const { headerSetting } = useHeaderSetting()
 
 const headerHeight = ref(headerRef.value?.$el.offsetHeight || 0)
 
+const isDark = computed(() => useColorMode().value === 'dark')
 const refreshing = computed(() => useTabStore().refreshing)
 
 onMounted(() => {
@@ -25,6 +26,7 @@ onMounted(() => {
       </NLayoutHeader>
       <NLayoutContent
         :style="{
+          backgroundColor: isDark ? '#141414' : '#f9fafb',
           height: `calc(100vh - ${headerHeight}px)`,
         }"
         :content-style="{
@@ -36,9 +38,9 @@ onMounted(() => {
           v-if="!refreshing"
         />
       </NLayoutContent>
+      <!-- <LayoutFooter /> -->
 
       <NBackTop :right="100" />
-      <!-- <LayoutFooter /> -->
     </NLayout>
   </NLayout>
 </template>

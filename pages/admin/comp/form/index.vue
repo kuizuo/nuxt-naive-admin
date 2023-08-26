@@ -202,7 +202,7 @@ const [register, { getFieldsValue }] = useForm({
 </script>
 
 <template>
-  <BasicPage title="基础表单" content-full-height>
+  <BasicPage title="基础表单" content-full-height content-class="p-4">
     <BasicForm @register="register">
       <template #cunstom="{ model, field }">
         <NInput v-model:value="model[field]" />

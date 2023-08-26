@@ -181,7 +181,7 @@ const actionColumn = reactive({
 </script>
 
 <template>
-  <BasicPage content-full-height>
+  <BasicPage content-class="p-4" content-full-height>
     <BasicTable
       title="基础表格"
       :columns="columns"

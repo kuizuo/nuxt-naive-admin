@@ -8,6 +8,7 @@ interface Props {
   subtitle?: string
   content?: string
   dense?: boolean
+  ghost?: boolean
   contentStyle?: CSSProperties
   contentBackground?: boolean
   contentFullHeight?: boolean
@@ -17,8 +18,9 @@ interface Props {
 }
 
 const props = withDefaults(defineProps<Props>(), {
-  contentBackground: false,
+  contentBackground: true,
   contentFullHeight: false,
+  ghost: false,
   upwardSpace: 0,
 })
 
@@ -81,7 +83,7 @@ const getContentClass = computed(() => {
 
 <template>
   <div ref="wrapperRef" :class="getClass" class="h-full relative">
-    <NPageHeader v-if="getShowHeader" v-bind="omit($attrs, 'class')" ref="headerRef" class="p-4" :title="title">
+    <NPageHeader v-if="getShowHeader" v-bind="omit($attrs, 'class')" ref="headerRef" class="p-4" :title="title" :class="{ 'bg-white': !ghost }">
       <template #default>
         <template v-if="content">
           {{ content }}
@@ -100,7 +102,7 @@ const getContentClass = computed(() => {
   </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 :deep(.n-page-header-content:empty) {
   margin-top: 0;
 }
@@ -114,6 +116,6 @@ const getContentClass = computed(() => {
 }
 
 .content-bg {
-  background-color: #f0f2f5;
+  @apply bg-white dark:bg-zinc-900;
 }
 </style>

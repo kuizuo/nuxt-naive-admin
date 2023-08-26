@@ -255,7 +255,7 @@ async function handleSuccess() {
 </script>
 
 <template>
-  <BasicPage content-full-height>
+  <BasicPage content-class="p-4" content-full-height>
     <BasicTable
       ref="tableRef"
       title="用户列表"

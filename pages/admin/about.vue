@@ -9,7 +9,7 @@ definePageMeta({
 </script>
 
 <template>
-  <BasicPage title="关于">
+  <BasicPage title="关于" content-class="p-4">
     <NH2>平山道</NH2>
     <NH2>平山道</NH2>
     <NH2>平山道</NH2>

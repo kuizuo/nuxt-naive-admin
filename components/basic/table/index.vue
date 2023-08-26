@@ -65,7 +65,7 @@ function computeTableHeight() {
   const { bottomIncludeBody } = getViewportOffset(headEl)
   const headerH = 64
   let paginationH = 2
-  const marginH = 16
+  const marginH = 16 * 2
 
   if (!isBoolean(unref(pagination))) {
     const paginationEl: HTMLElement | null = tableEl.querySelector('.n-data-table__pagination')
