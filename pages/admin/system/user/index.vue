@@ -184,7 +184,6 @@ async function handleUpdate(record: User) {
   await nextTick()
   setFieldsValue(record)
 
-  console.log(record)
   if (record?.email_confirmed_at)
     setFieldsValue({ email_confirm: true })
   else
@@ -291,7 +290,7 @@ async function handleSuccess() {
     >
       <template #toolbar>
         <NButton type="primary" size="small" @click="handleCreate">
-          新增数据
+          新增用户
         </NButton>
       </template>
     </BasicTable>

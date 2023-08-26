@@ -6,7 +6,6 @@ import type { FormSchema } from './types/form'
 export const basicProps = {
   labelWidth: {
     type: [Number, String] as PropType<number | string>,
-    default: 'auto',
   },
   schemas: {
     type: [Array] as PropType<FormSchema[]>,

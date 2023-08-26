@@ -33,7 +33,7 @@ declare global {
     [key: string]: string | number | boolean;
   }[];
 
-  declare type EmitType = (event: string, ...args: any[]) => void;
+  declare type EmitType = (event: string | any, ...args: any[]) => void;
 
   // vue
   declare type VueNode = VNodeChild | JSX.Element;
