@@ -31,7 +31,7 @@
     "lint": "eslint .",
     "postinstall": "nuxi prepare",
     "generate": "nuxi generate",
-    "release": "bumpp --commit --push --tag",
+    "release": "bumpp --commit --tag --no-push",
     "genTypes": "supabase gen types typescript --project-id '$PROJECT_REF' --schema public > types/database.types.ts"
   },
   "devDependencies": {
