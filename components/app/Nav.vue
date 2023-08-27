@@ -10,11 +10,7 @@ const { public: { adminUid } } = useRuntimeConfig()
         仪表盘
       </div>
     </NuxtLink>
-    <NuxtLink to="/changelog" class="w-full md:w-auto">
-      <div class="font-medium text-sm text-green-600">
-        更新公告
-      </div>
-    </NuxtLink>
+
     <NuxtLink to="/help" class="w-full md:w-auto">
       <div class="font-medium text-sm text-green-600">
         帮助说明
