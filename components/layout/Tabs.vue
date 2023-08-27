@@ -105,7 +105,7 @@ onMounted(() => {
       &.n-tabs-tab--active {
         border-bottom: 1px solid var(--n-tab-border-color);
         background-color: var(--n-tab-text-color-active) !important;
-        color: var(--n-color) !important;
+        color: #fff !important;
       }
     }
   }

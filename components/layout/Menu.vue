@@ -7,14 +7,19 @@ const emit = defineEmits(['update:collapsed', 'clickMenuItem'])
 
 const route = useRoute()
 const router = useRouter()
-const { collapsed } = useMenuSetting()
+const { collapsed, menuType } = useMenuSetting()
+
+const hoverColor = computed(() => menuType.value === 'dark' && '#fff')
+const color = computed(() => menuType.value === 'dark' && '#d4d4d8')
+const isTransparent = computed(() => menuType.value === 'dark' ? 'transparent' : 'rgba(46, 51, 56, .09)')
+
 const menus = ref<MenuOption[]>([])
 const matched = route.matched
 const selectedKey = ref<string>(route.path as string)
 const openKeys = ref(matched && matched.length ? matched.map(item => item.path) : [])
 
-const color = useColorMode()
-const inverted = computed(() => color.value === 'dark')
+const colorMode = useColorMode()
+const inverted = computed(() => colorMode.value === 'dark')
 
 function buildMenuList(routes: Readonly<RouteRecordRaw[]>, parentPath = ''): MenuOption[] {
   const menuList: MenuOption[] = []
@@ -115,4 +120,26 @@ onMounted(() => {
   />
 </template>
 
-<style scoped></style>
+<style lang="scss" scoped>
+:deep(.n-menu-item-content) {
+  --n-item-color-hover: v-bind('isTransparent');
+
+  --n-text-color-hover: v-bind('hoverColor');
+  --n-item-icon-color-hover: v-bind('hoverColor');
+  --n-item-text-color-hover: v-bind('hoverColor');
+
+  .n-menu-item-content__icon {
+    --n-item-icon-color: v-bind('color');
+    --n-item-icon-color-collapsed: v-bind('color');
+  }
+
+  .n-menu-item-content-header {
+    --n-item-text-color: v-bind('color');
+  }
+
+  .n-menu-item-content__arrow {
+    --n-arrow-color: v-bind('color');
+    --n-arrow-color-hover: v-bind('color');
+  }
+}
+</style>

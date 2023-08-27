@@ -11,14 +11,12 @@ export function useMenuSetting() {
 
   const menuMode = computed(() => settingsStore.menuSetting.mode)
 
-  const showMenu = computed(() => settingsStore.menuSetting.show)
-
   const menuWidth = computed(() => settingsStore.menuSetting.menuWidth)
 
   const menuSetting = computed(() => settingsStore.menuSetting)
 
   // Set menu configuration
-  function setMenuSetting(menuSetting: Partial<MenuSetting>): void {
+  function setMenuSetting(menuSetting: DeepPartial<MenuSetting>): void {
     settingsStore.setSetting({ menuSetting })
   }
 
@@ -28,13 +26,16 @@ export function useMenuSetting() {
     })
   }
 
+  function setMenuType(type: MenuType['type']) {
+    setMenuSetting({ type })
+  }
+
   return {
     setMenuSetting,
-
     toggleCollapsed,
+    setMenuType,
     menuType,
     menuMode,
-    showMenu,
     collapsed,
     menuWidth,
     menuSetting,

@@ -68,11 +68,11 @@ function dropdownSelect(key: string) {
 
     <div class="flex-auto" />
     <div class="flex justify-center items-center">
-      <!-- 个人中心 -->
       <div class="flex items-center gap-4">
         <Fullscreen />
-        <AppThemeSwitcher />
+        <!-- <AppThemeSwitcher /> -->
         <UserButton />
+        <ThemeSetting />
       </div>
     </div>
   </div>

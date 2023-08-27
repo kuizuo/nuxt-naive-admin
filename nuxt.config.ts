@@ -37,6 +37,10 @@ export default defineNuxtConfig({
       extensions: ['vue'],
     },
     {
+      path: '~/components/layout/components',
+      pathPrefix: false,
+    },
+    {
       path: '~/components/global',
       global: true,
     },
@@ -71,7 +75,6 @@ export default defineNuxtConfig({
   },
   css: ['~/assets/css/main.css'],
   routeRules: {
-    '/changelog': { static: true },
     '/help': { static: true },
     '/admin/**': { swr: false },
     '/api/**': { cors: true },

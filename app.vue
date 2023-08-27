@@ -4,6 +4,20 @@ import { darkTheme, dateZhCN, lightTheme, zhCN } from 'naive-ui'
 const colorMode = useColorMode()
 const { title, keywords, description } = useAppConfig()
 
+const { themeColor } = useAppSetting()
+
+const themeOverrides = computed(() => {
+  const lightenStr = lighten(themeColor.value, 6)
+  return {
+    common: {
+      primaryColor: themeColor.value,
+      primaryColorHover: lightenStr,
+      primaryColorPressed: lightenStr,
+      primaryColorSuppl: themeColor.value,
+    },
+  }
+})
+
 useHead({
   title,
   link: [
@@ -27,7 +41,7 @@ useHead({
 </script>
 
 <template>
-  <NConfigProvider :locale="zhCN" :date-locale="dateZhCN" :theme="colorMode.preference === 'dark' ? darkTheme : lightTheme">
+  <NConfigProvider :locale="zhCN" :date-locale="dateZhCN" :theme="colorMode.preference === 'dark' ? darkTheme : lightTheme" :theme-overrides="themeOverrides">
     <NGlobalStyle />
     <NuxtLayout>
       <NMessageProvider>
