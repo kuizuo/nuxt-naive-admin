@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const { menuWidth, collapsed, toggleCollapsed, menuType, setMenuSetting } = useMenuSetting()
 const { isMobile } = useDevice()
+const { showLogo } = useAppSetting()
 
 const showSideDrawder = computed({
   get: () => isMobile.value && !collapsed.value,
@@ -20,7 +21,9 @@ const showSideDrawder = computed({
     @expand="toggleCollapsed"
   >
     <AppLogo
-      :show-title="!(collapsed || isMobile)" class="flex h-12 "
+      :show-logo="showLogo"
+      :show-title="!(collapsed || isMobile)"
+      class="flex h-12"
       :class="{ 'text-white': menuType === 'dark' }"
     />
     <LayoutMenu />

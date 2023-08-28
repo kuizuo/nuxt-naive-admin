@@ -16,7 +16,8 @@ export const APP_PRESET_COLOR_LIST: string[] = [
 
 export const defaultSettings: ProjectSetting = {
   appSetting: {
-    themeColor: theme.colors.blue[500],
+    themeColor: theme.colors.emerald[500],
+    showLogo: true,
   },
   headerSetting: {
     showBreadCrumb: true,

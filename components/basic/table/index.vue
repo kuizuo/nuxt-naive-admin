@@ -115,15 +115,15 @@ const getBindValues = computed(() => {
   return propsData
 })
 
+const { height } = useWindowSize()
+
+const debouncedComputeTableHeight = useDebounceFn(computeTableHeight, 300)
+
 onMounted(() => {
   nextTick(() => {
     computeTableHeight()
   })
 })
-
-const { height } = useWindowSize()
-
-const debouncedComputeTableHeight = useDebounceFn(computeTableHeight, 300)
 
 watch(
   () => unref(height),

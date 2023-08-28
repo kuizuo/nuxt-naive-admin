@@ -5,11 +5,12 @@ const route = useRoute()
 const router = useRouter()
 
 const { isMobile } = useDevice()
+const { showLogo } = useAppSetting()
 const { collapsed, toggleCollapsed, menuMode } = useMenuSetting()
 const { headerSetting } = useHeaderSetting()
 
 const getShowHeaderLogo = computed(() => {
-  return !isMobile.value && !menuMode
+  return !isMobile.value && !menuMode && showLogo.value
 })
 
 function generator(routerMap: any[]) {
@@ -40,25 +41,30 @@ function dropdownSelect(key: string) {
 
 <template>
   <div
-    class="p-2 z-40 w-full h-12 flex justify-center items-center backdrop-filter backdrop-blur-md border-b-[1px] border-[--n-border-color]"
+    class="p-2 z-40 w-full h-12 flex justify-center items-center backdrop-filter backdrop-blur-md border-b border-[--n-border-color]"
   >
     <AppLogo v-if="getShowHeaderLogo || isMobile" :show-title="!isMobile" class="mr-2" />
     <div class="flex justify-center items-center gap-2">
-      <div class="ml-1 cursor-pointer flex justify-center items-center" @click="toggleCollapsed">
-        <Icon v-if="collapsed" name="ant-design:menu-unfold-outlined" />
-        <Icon v-else name="ant-design:menu-fold-outlined" />
+      <div class="ml-1 cursor-pointer inline-flex justify-center items-center" @click="toggleCollapsed">
+        <Icon :name="collapsed ? 'ant-design:menu-unfold-outlined' : 'ant-design:menu-fold-outlined'" />
       </div>
-      <NBreadcrumb v-if="headerSetting.showBreadCrumb">
+      <NBreadcrumb v-if="headerSetting.showBreadCrumb" class="inline-flex">
         <template v-for="routeItem in breadcrumbList" :key="routeItem.name === 'Redirect' ? void 0 : routeItem.name">
           <NBreadcrumbItem v-if="routeItem.meta.title">
             <NDropdown v-if="routeItem.children?.length" :options="routeItem.children" @select="dropdownSelect">
-              <span>
-                <Icon v-if="headerSetting.showBreadCrumbIcon && routeItem.meta.icon" :name="routeItem.meta.icon" />
+              <span class="inline-flex items-end gap-2">
+                <Icon
+                  v-if="headerSetting.showBreadCrumbIcon && routeItem.meta.icon" :name="routeItem.meta.icon"
+                  size="20px"
+                />
                 {{ routeItem.meta.title }}
               </span>
             </NDropdown>
-            <span v-else>
-              <Icon v-if="headerSetting.showBreadCrumbIcon && routeItem.meta.icon" :name="routeItem.meta.icon" />
+            <span v-else class="inline-flex items-end gap-2">
+              <Icon
+                v-if="headerSetting.showBreadCrumbIcon && routeItem.meta.icon" :name="routeItem.meta.icon"
+                size="20px"
+              />
               {{ routeItem.meta.title }}
             </span>
           </NBreadcrumbItem>
@@ -77,3 +83,11 @@ function dropdownSelect(key: string) {
     </div>
   </div>
 </template>
+
+<style lang="scss" scoped>
+:deep(.n-breadcrumb) {
+  .n-breadcrumb-item .n-breadcrumb-item__link {
+    padding: 0;
+  }
+}
+</style>

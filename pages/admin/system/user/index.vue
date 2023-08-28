@@ -14,7 +14,7 @@ definePageMeta({
   middleware: 'admin',
   title: '用户管理',
   order: 1,
-  icon: 'carbon:user',
+  icon: 'ant-design:user-outlined',
   keepalive: true,
 })
 

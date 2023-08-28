@@ -4,7 +4,7 @@ definePageMeta({
   middleware: 'admin',
   title: '多级菜单',
   order: 2,
-  icon: 'ion:menu-outline',
+  icon: 'ant-design:menu-outlined',
 })
 </script>
 

@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const headerRef = ref<any>(null)
 
-const { headerSetting } = useHeaderSetting()
+const { showTabs } = useHeaderSetting()
 
 const headerHeight = ref(headerRef.value?.$el.offsetHeight || 0)
 
@@ -22,25 +22,28 @@ onMounted(() => {
     <NLayout class="min-h-screen" :native-scrollbar="false">
       <NLayoutHeader ref="headerRef">
         <LayoutHeader />
-        <LayoutTabs v-if="headerSetting.showTabs" />
+        <LayoutTabs v-if="showTabs" />
       </NLayoutHeader>
-      <NLayoutContent
-        :style="{
-          backgroundColor: isDark ? '#141414' : '#f9fafb',
-          height: `calc(100vh - ${headerHeight}px)`,
-        }"
-        :content-style="{
-          height: `calc(100vh - ${headerHeight}px - ${16}px)`,
-        }"
-        :native-scrollbar="false"
-      >
-        <slot
-          v-if="!refreshing"
-        />
-      </NLayoutContent>
+      <ClientOnly>
+        <NLayoutContent
+          :style="{
+            backgroundColor: isDark ? '#141414' : '#f9fafb',
+            height: `calc(100vh - ${headerHeight}px)`,
+          }"
+          :content-style="{
+            height: `calc(100vh - ${headerHeight}px - ${16}px)`,
+          }"
+          :native-scrollbar="false"
+        >
+          <slot
+            v-if="!refreshing"
+          />
+        </NLayoutContent>
+      </ClientOnly>
+
       <!-- <LayoutFooter /> -->
 
-      <NBackTop :right="100" />
+      <!-- <NBackTop :right="100" /> -->
     </NLayout>
   </NLayout>
 </template>

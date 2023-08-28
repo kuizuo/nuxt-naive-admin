@@ -5,7 +5,7 @@ definePageMeta({
   title: '系统管理',
   name: 'system',
   order: 99,
-  icon: 'ion:settings-outline',
+  icon: 'ant-design:setting-outlined',
 })
 </script>
 

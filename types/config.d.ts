@@ -2,6 +2,7 @@ import { MenuModeEnum } from "~~/constants/menu";
 
 export interface AppSetting {
   themeColor: string;
+  showLogo: boolean
 }
 
 export interface HeaderSetting {

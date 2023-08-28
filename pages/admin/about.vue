@@ -4,7 +4,7 @@ definePageMeta({
   middleware: 'admin',
   title: '关于',
   order: 100,
-  icon: 'ant-design:info-outlined',
+  icon: 'simple-icons:aboutdotme',
 })
 </script>
 
