@@ -81,18 +81,16 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 :deep(.n-tabs) {
-  padding-top: 2px;
   border-bottom: 1px solid var(--n-tab-border-color);
   background-color: var(--n-color);
 
-  .n-tabs-tab-wrapper {
-    &:first-child {
-      margin-left: 2px;
-    }
+  .n-tabs-wrapper {
+    padding: 2px;
+  }
 
+  .n-tabs-tab-wrapper {
     .n-tabs-tab {
       --n-tab-padding: 6px 10px;
-      margin-bottom: 2px;
       background-color: var(--n-tab-background-color);
 
       border-bottom-left-radius: var(--n-tab-border-radius);

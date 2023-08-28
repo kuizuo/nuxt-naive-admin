@@ -1,8 +1,10 @@
 <script lang="ts" setup>
+import { useThemeVars } from 'naive-ui'
 import Fullscreen from './components/Fullscreen.vue'
 
 const route = useRoute()
 const router = useRouter()
+const themeVars = useThemeVars()
 
 const { isMobile } = useDevice()
 const { showLogo } = useAppSetting()
@@ -41,7 +43,8 @@ function dropdownSelect(key: string) {
 
 <template>
   <div
-    class="p-2 z-40 w-full h-12 flex justify-center items-center backdrop-filter backdrop-blur-md border-b border-[--n-border-color]"
+    class="p-2 pr-4 z-40 w-full h-12 flex justify-center items-center backdrop-filter backdrop-blur-md border-b"
+    :style="{ borderColor: themeVars.borderColor }"
   >
     <AppLogo v-if="getShowHeaderLogo || isMobile" :show-title="!isMobile" class="mr-2" />
     <div class="flex justify-center items-center gap-2">

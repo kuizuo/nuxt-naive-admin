@@ -37,26 +37,24 @@ function handleSuccess() {
 </script>
 
 <template>
-  <div>
-    <div v-if="user" class="flex">
-      <NDropdown trigger="hover" :options="options" @select="handleSelect">
-        <NAvatar size="small" round :src="user?.user_metadata?.avatar_url">
-          <span v-if="!user?.user_metadata?.avatar_url">{{ user?.user_metadata?.user_name ?? user.email }}</span>
-        </NAvatar>
-      </NDropdown>
-    </div>
-    <div v-else>
-      <NButton size="small" type="primary" @click="showModal = true">
-        登录
-      </NButton>
-      <ClientOnly>
-        <NModal
-          v-model:show="showModal" :mask-closable="true" size="large" :bordered="false"
-          :closable="false" :style="{ 'max-width': '350px' }" transform-origin="center"
-        >
-          <LoginCard @success="handleSuccess" />
-        </NModal>
-      </ClientOnly>
-    </div>
+  <div v-if="user" class="flex justify-center items-center">
+    <NDropdown trigger="hover" :options="options" @select="handleSelect">
+      <NAvatar size="small" round :src="user?.user_metadata?.avatar_url">
+        <span v-if="!user?.user_metadata?.avatar_url">{{ user?.user_metadata?.user_name ?? user.email }}</span>
+      </NAvatar>
+    </NDropdown>
+  </div>
+  <div v-else>
+    <NButton size="small" type="primary" @click="showModal = true">
+      登录
+    </NButton>
+    <ClientOnly>
+      <NModal
+        v-model:show="showModal" :mask-closable="true" size="large" :bordered="false"
+        :closable="false" :style="{ 'max-width': '350px' }" transform-origin="center"
+      >
+        <LoginCard @success="handleSuccess" />
+      </NModal>
+    </ClientOnly>
   </div>
 </template>

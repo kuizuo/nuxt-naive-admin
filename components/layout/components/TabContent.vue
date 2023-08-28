@@ -1,5 +1,6 @@
 <script setup lang="tsx">
 import type { RouteLocationNormalized } from 'vue-router'
+import { useThemeVars } from 'naive-ui'
 import { Icon } from '#components'
 
 const props = defineProps<{
@@ -7,6 +8,7 @@ const props = defineProps<{
   isTab?: boolean
 }>()
 
+const themeVars = useThemeVars()
 const tabStore = useTabStore()
 const route = useRoute()
 const router = useRouter()
@@ -130,7 +132,13 @@ function handleContext(e: MouseEvent) {
 </script>
 
 <template>
-  <span class="h-full flex items-center border-l-1 border-[var(--n-border-color)]">
+  <span
+    class="h-full flex items-center"
+    :style="{
+      borderLeft: !isTab ? '1px solid' : 'none',
+      borderColor: themeVars.borderColor,
+    }"
+  >
     <div v-if="isTab">
       <div @contextmenu="handleContext">
         <span class="select-none">{{ title }}</span>

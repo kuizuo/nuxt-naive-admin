@@ -1,7 +1,13 @@
 <script setup lang="ts">
+import { useThemeVars } from 'naive-ui'
+
+const colorMode = useColorMode()
+
 const { menuWidth, collapsed, toggleCollapsed, menuType, setMenuSetting } = useMenuSetting()
 const { isMobile } = useDevice()
 const { showLogo } = useAppSetting()
+
+const isDark = computed(() => colorMode.value === 'dark')
 
 const showSideDrawder = computed({
   get: () => isMobile.value && !collapsed.value,
@@ -9,14 +15,24 @@ const showSideDrawder = computed({
     setMenuSetting({ collapsed: !val })
   },
 })
+
+const themeVars = useThemeVars()
+
+const style = computed(() => {
+  return {
+    backgroundColor: isDark.value
+      ? unref(themeVars).bodyColor
+      : (menuType.value === 'dark' ? '#293350' : unref(themeVars).baseColor),
+  }
+})
 </script>
 
 <template>
   <NLayoutSider
     v-if="!isMobile" bordered show-trigger="bar" :collapsed="collapsed" collapse-mode="width"
     :collapsed-width="64" :width="menuWidth" :native-scrollbar="false"
-    class="min-h-screen relative z-20 transition-all duration-200 ease-in-out shadow-md dark:bg-[--n-color]"
-    :class="{ 'bg-[#293350]': menuType === 'dark' }"
+    class="min-h-screen relative z-20 transition-all duration-200 ease-in-out shadow-md"
+    :style="style"
     @collapse="toggleCollapsed"
     @expand="toggleCollapsed"
   >

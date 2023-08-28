@@ -1,17 +1,15 @@
 <script lang="ts" setup>
 import type { MenuOption } from 'naive-ui'
+import { useThemeVars } from 'naive-ui'
 import type { RouteRecordRaw } from 'vue-router'
 import { Icon } from '#components'
 
 const emit = defineEmits(['update:collapsed', 'clickMenuItem'])
 
+const themeVars = useThemeVars()
 const route = useRoute()
 const router = useRouter()
 const { collapsed, menuType } = useMenuSetting()
-
-const hoverColor = computed(() => menuType.value === 'dark' && '#fff')
-const color = computed(() => menuType.value === 'dark' && '#d4d4d8')
-const isTransparent = computed(() => menuType.value === 'dark' ? 'transparent' : 'rgba(46, 51, 56, .09)')
 
 const menus = ref<MenuOption[]>([])
 const matched = route.matched
@@ -20,6 +18,18 @@ const openKeys = ref(matched && matched.length ? matched.map(item => item.path) 
 
 const colorMode = useColorMode()
 const inverted = computed(() => colorMode.value === 'dark')
+
+const color = computed(() => {
+  const theme = unref(themeVars)
+
+  return {
+    'text': menuType.value === 'dark' && '#d4d4d8',
+    'text-hover': menuType.value === 'dark' ? '#fff' : theme.primaryColor,
+    'bg-hover': menuType.value === 'dark' ? theme.primaryColor : theme.hoverColor,
+    'text-active': menuType.value === 'dark' ? '#fff' : theme.primaryColor,
+    'text-active-hover': menuType.value === 'dark' ? '#fff' : theme.primaryColor,
+  }
+})
 
 function buildMenuList(routes: Readonly<RouteRecordRaw[]>, parentPath = ''): MenuOption[] {
   const menuList: MenuOption[] = []
@@ -122,24 +132,29 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 :deep(.n-menu-item-content) {
-  --n-item-color-hover: v-bind('isTransparent');
+  --n-item-color-hover: v-bind('color["bg-hover"]');
+  --n-item-icon-color-hover: v-bind('color["text-hover"]');
+  --n-item-text-color-hover: v-bind('color["text-hover"]');
 
-  --n-text-color-hover: v-bind('hoverColor');
-  --n-item-icon-color-hover: v-bind('hoverColor');
-  --n-item-text-color-hover: v-bind('hoverColor');
+  --n-item-color-active: v-bind('color["bg-hover"]');
+  --n-item-color-active-hover: v-bind('color["text-active"]');
 
   .n-menu-item-content__icon {
-    --n-item-icon-color: v-bind('color');
-    --n-item-icon-color-collapsed: v-bind('color');
+    --n-item-icon-color: v-bind('color.text');
+    --n-item-icon-color-collapsed: v-bind('color.text');
+    --n-item-icon-color-active: v-bind('color["text-active"]');
+    --n-item-icon-color-active-hover: v-bind('color["text-active-hover"]');
   }
 
   .n-menu-item-content-header {
-    --n-item-text-color: v-bind('color');
+    --n-item-text-color: v-bind('color.text');
+    --n-item-text-color-active: v-bind('color["text-active"]');
+    --n-item-text-color-active-hover: v-bind('color["text-active-hover"]');
   }
 
   .n-menu-item-content__arrow {
-    --n-arrow-color: v-bind('color');
-    --n-arrow-color-hover: v-bind('color');
+    --n-arrow-color: v-bind('color.text');
+    --n-arrow-color-hover: v-bind('color.text');
   }
 }
 </style>
