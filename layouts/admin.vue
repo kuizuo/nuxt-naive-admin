@@ -24,22 +24,20 @@ onMounted(() => {
         <LayoutHeader />
         <LayoutTabs v-if="showTabs" />
       </NLayoutHeader>
-      <ClientOnly>
-        <NLayoutContent
-          :style="{
-            backgroundColor: isDark ? '#141414' : '#f9fafb',
-            height: `calc(100vh - ${headerHeight}px)`,
-          }"
-          :content-style="{
-            height: `calc(100vh - ${headerHeight}px - ${16}px)`,
-          }"
-          :native-scrollbar="false"
-        >
-          <slot
-            v-if="!refreshing"
-          />
-        </NLayoutContent>
-      </ClientOnly>
+      <NLayoutContent
+        :style="{
+          backgroundColor: isDark ? '#141414' : '#f9fafb',
+          height: `calc(100vh - ${headerHeight}px)`,
+        }"
+        :content-style="{
+          height: `calc(100vh - ${headerHeight}px - ${16}px)`,
+        }"
+        :native-scrollbar="false"
+      >
+        <slot
+          v-if="!refreshing"
+        />
+      </NLayoutContent>
 
       <!-- <LayoutFooter /> -->
 

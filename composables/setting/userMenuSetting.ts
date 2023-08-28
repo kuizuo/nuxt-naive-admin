@@ -26,7 +26,7 @@ export function useMenuSetting() {
     })
   }
 
-  function setMenuType(type: MenuType['type']) {
+  function setMenuType(type: MenuSetting['type']) {
     setMenuSetting({ type })
   }
 

@@ -33,16 +33,16 @@ export default defineNuxtConfig({
   },
   components: [
     {
+      path: '~/components/global',
+      global: true,
+    },
+    {
       path: '~/components',
       extensions: ['vue'],
     },
     {
       path: '~/components/layout/components',
       pathPrefix: false,
-    },
-    {
-      path: '~/components/global',
-      global: true,
     },
   ],
   colorMode: {

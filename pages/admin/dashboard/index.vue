@@ -1,4 +1,10 @@
 <script lang="ts" setup>
+import GrowCard from '~/components/admin/dashboard/components/GrowCard.vue'
+
+const { data, pending } = await useLazyAsyncData(async () => {
+  return await request('/api/admin/dashboard/console')
+})
+
 definePageMeta({
   layout: 'admin',
   middleware: 'admin',
@@ -12,12 +18,6 @@ definePageMeta({
 
 <template>
   <div class="p-4">
-    <NGrid x-gap="12" y-gap="12" :cols="4" item-responsive responsive="screen">
-      <NGi v-for="i in 4" :key="i" span="4 m:2 l:1">
-        <NCard title="卡片">
-          内容
-        </NCard>
-      </NGi>
-    </NGrid>
+    <GrowCard :data="data" :loading="pending" />
   </div>
 </template>
