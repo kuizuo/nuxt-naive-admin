@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 import { NTag } from 'naive-ui'
 import pkg from '~/package.json'
+import { DOC_URL, GITHUB_URL, SITE_URL } from '~/constants/site'
 
 definePageMeta({
   layout: 'admin',
@@ -14,12 +15,6 @@ const { repository, name, version, devDependencies } = pkg
 
 const { themeColor } = useAppSetting()
 
-const infoData = {
-  doc: 'https://nuxt-naive-admin-docs.vercel.app',
-  preview: 'https://nuxt-naive-admin.vercel.app',
-  github: 'https://github.com/kuizuo/nuxt-naive-admin',
-}
-
 const commonTagRender = (type: string) => (val: string) => h(NTag as any, { type, size: 'small' }, () => val)
 const commonLinkRender = (text: string) => (href: string) => h('a', { href, target: '_blank' }, text)
 
@@ -32,17 +27,17 @@ const infoSchema = [
   {
     label: '文档地址',
     field: 'doc',
-    component: commonLinkRender('文档地址')(infoData.doc),
+    component: commonLinkRender('文档地址')(DOC_URL),
   },
   {
     label: '预览地址',
     field: 'preview',
-    component: commonLinkRender('预览地址')(infoData.preview),
+    component: commonLinkRender('预览地址')(SITE_URL),
   },
   {
     label: 'Github',
     field: 'github',
-    component: commonLinkRender('Github')(infoData.github),
+    component: commonLinkRender('Github')(GITHUB_URL),
   },
 ]
 
