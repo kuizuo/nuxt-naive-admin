@@ -228,8 +228,10 @@ watchEffect(() => {
               <span class="px-2 text-gray-4 text-sm">或者</span>
             </div>
             <div class="space-y-4 w-full">
-              <NButton class="w-full flex" @click="loginWithGithub()">
-                <i class="i-ri-github-line text-md mr-1" />
+              <NButton class="w-full flex" color="#2f3337" @click="loginWithGithub()">
+                <template #icon>
+                  <Icon name="ri:github-line" />
+                </template>
                 使用 Github 登录
               </NButton>
             </div>
