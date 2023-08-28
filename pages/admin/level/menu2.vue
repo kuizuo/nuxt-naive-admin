@@ -4,7 +4,7 @@ definePageMeta({
   keepalive: true,
   title: 'Menu2',
   order: 2,
-  icon: 'ion:menu-outline',
+  icon: 'ant-design:menu-outlined',
 })
 
 const inputValue = ref('')

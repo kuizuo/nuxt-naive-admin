@@ -3,7 +3,7 @@ definePageMeta({
   layout: 'admin',
   title: 'Menu1',
   order: 1,
-  icon: 'ion:menu-outline',
+  icon: 'ant-design:menu-outlined',
 })
 </script>
 
