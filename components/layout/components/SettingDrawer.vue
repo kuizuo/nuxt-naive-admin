@@ -1,7 +1,8 @@
 <script lang="ts" setup>
-import { APP_PRESET_COLOR_LIST } from '~/constants/theme'
+import colors from '#tailwind-config/theme/colors'
 
 const colorMode = useColorMode()
+
 const settingsStore = useSettingsStore()
 const { themeColor, setThemeColor } = useAppSetting()
 const { menuType, setMenuType } = useMenuSetting()
@@ -11,6 +12,12 @@ const isDark = computed({
   set: (val: any) => {
     colorMode.preference = val ? 'dark' : 'light'
   },
+})
+
+const primaryColors = computed(() => {
+  const excludeColors = ['inherit', 'current', 'transparent', 'white', 'black', 'gray', 'slate', 'cool', 'zinc', 'neutral', 'stone']
+
+  return Object.keys(colors).filter(key => !excludeColors.includes(key)).map(color => (colors as any)[color][isDark.value ? 400 : 500])
 })
 </script>
 
@@ -49,9 +56,9 @@ const isDark = computed({
         系统主题
       </NDivider>
 
-      <div class="flex justify-between gap-2">
+      <div class="flex flex-wrap justify-center gap-2">
         <span
-          v-for="(item, index) in APP_PRESET_COLOR_LIST" :key="index" class="theme__item"
+          v-for="(item, index) in primaryColors" :key="index" class="theme__item"
           :style="{ 'background-color': item }" @click="setThemeColor(item)"
         >
           <NIcon
