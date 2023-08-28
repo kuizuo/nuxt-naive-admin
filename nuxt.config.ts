@@ -12,7 +12,6 @@ export default defineNuxtConfig({
   modules: [
     '@vueuse/nuxt',
     '@nuxtjs/color-mode',
-    '@nuxt/content',
     '@nuxtjs/tailwindcss',
     ['@pinia/nuxt', {
       autoImports: ['defineStore', 'definePiniaStore'],
@@ -61,7 +60,7 @@ export default defineNuxtConfig({
     redirectOptions: {
       login: '/auth/login',
       callback: '/auth/confirm',
-      exclude: ['/', '/auth/reset-password', '/auth/update-password', '/help'],
+      exclude: ['/', '/auth/reset-password', '/auth/update-password'],
     },
   },
   content: {
@@ -75,7 +74,6 @@ export default defineNuxtConfig({
   },
   css: ['~/assets/css/main.css'],
   routeRules: {
-    '/help': { static: true },
     '/admin/**': { swr: false },
     '/api/**': { cors: true },
   },

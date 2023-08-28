@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { DOC_URL } from '~/constants/site'
+
 const user = useSupabaseUser()
 const { public: { adminUid } } = useRuntimeConfig()
 </script>
@@ -11,9 +13,9 @@ const { public: { adminUid } } = useRuntimeConfig()
       </NButton>
     </NuxtLink>
 
-    <NuxtLink to="/help" class="w-full md:w-auto">
+    <NuxtLink :to="DOC_URL" class="w-full md:w-auto">
       <NButton quaternary type="primary" size="small">
-        帮助说明
+        文档地址
       </NButton>
     </NuxtLink>
   </nav>
