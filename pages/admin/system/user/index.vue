@@ -164,7 +164,7 @@ const [registerForm, { validate, getFieldsValue, setFieldsValue, updateSchema }]
 })
 
 async function handleRequest(params: Record<string, any>) {
-  const data = await request('/api/system/users', {
+  const data = await request('/api/admin/system/users', {
     method: 'GET',
     params,
   })
@@ -215,7 +215,7 @@ async function handleUpdate(record: User) {
 }
 
 async function handleDelete(record: User) {
-  await request(`/api/system/users/${record.id}`, {
+  await request(`/api/admin/system/users/${record.id}`, {
     method: 'DELETE',
   })
   tableRef.value?.reload()
@@ -230,14 +230,14 @@ async function handleSuccess() {
     setConfirmLoading(true)
 
     if (!unref(isUpdate)) {
-      await request('/api/system/users', {
+      await request('/api/admin/system/users', {
         method: 'POST',
         body: JSON.stringify(values),
       })
       message.success('新增成功')
     }
     else {
-      await request(`/api/system/users/${rowId.value}`, {
+      await request(`/api/admin/system/users/${rowId.value}`, {
         method: 'PUT',
         body: JSON.stringify(values),
       })

@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import type { GrowCardItem } from '~/server/api/dashboard/console'
+import type { GrowCardItem } from '~/server/api/admin/dashboard/console'
 
 const props = defineProps({
   loading: {

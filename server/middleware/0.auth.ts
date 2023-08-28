@@ -12,7 +12,7 @@ const whitelist: string[] = []
 export default defineEventHandler(async (event) => {
   const { context, node: { req } } = event
 
-  if (!req.url.startsWith('/api/system'))
+  if (!req.url.startsWith('/api/admin'))
     return
 
   try {

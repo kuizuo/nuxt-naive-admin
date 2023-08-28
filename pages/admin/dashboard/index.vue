@@ -1,9 +1,5 @@
 <script lang="ts" setup>
-import GrowCard from '~/components/admin/dashboard/components/GrowCard.vue'
-
-const { data, pending } = await useLazyAsyncData(async () => {
-  return await request('/api/admin/dashboard/console')
-})
+import GrowCard from '~/components/admin/dashboard/GrowCard.vue'
 
 definePageMeta({
   layout: 'admin',
@@ -13,6 +9,10 @@ definePageMeta({
   icon: 'ant-design:dashboard-outlined',
   affix: true,
   keepalive: true,
+})
+
+const { data, pending } = await useLazyAsyncData(async () => {
+  return await request('/api/admin/dashboard/console')
 })
 </script>
 
