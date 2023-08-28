@@ -1,6 +1,6 @@
 {
   "name": "nuxt-naive-admin",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "private": true,
   "packageManager": "pnpm@8.3.1",
   "description": "一站式管理系统，融合 Nuxt、Naive UI 和 Supabase",
