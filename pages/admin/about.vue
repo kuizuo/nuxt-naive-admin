@@ -2,6 +2,14 @@
 import { NTag } from 'naive-ui'
 import pkg from '~/package.json'
 
+definePageMeta({
+  layout: 'admin',
+  middleware: 'admin',
+  title: '关于',
+  order: 100,
+  icon: 'simple-icons:aboutdotme',
+})
+
 const { repository, name, version, devDependencies } = pkg
 
 const { themeColor } = useAppSetting()
@@ -40,14 +48,6 @@ const infoSchema = [
 
 const devSchema: { label: string; value: string }[] = Object.entries(devDependencies).map(([key, value]) => ({ label: key, value }),
 )
-
-definePageMeta({
-  layout: 'admin',
-  middleware: 'admin',
-  title: '关于',
-  order: 100,
-  icon: 'simple-icons:aboutdotme',
-})
 </script>
 
 <template>

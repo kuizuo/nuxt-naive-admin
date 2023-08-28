@@ -3,7 +3,7 @@ definePageMeta({
   layout: 'admin',
   middleware: 'admin',
   title: '多级菜单',
-  order: 2,
+  order: 3,
   icon: 'ant-design:menu-outlined',
 })
 </script>
