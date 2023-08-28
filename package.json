@@ -48,7 +48,6 @@
     "@sidebase/nuxt-auth": "^0.4.4",
     "@tailwindcss/typography": "^0.5.9",
     "@types/sortablejs": "^1.15.1",
-    "@vueuse/integrations": "^10.3.0",
     "@vueuse/nuxt": "^10.3.0",
     "bumpp": "^8.2.1",
     "dayjs": "^1.11.9",

@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-import { useSortable } from '@vueuse/integrations/useSortable'
 import TabRedo from './components/TabRedo.vue'
 import TabContent from './components/TabContent.vue'
 
@@ -10,12 +9,6 @@ const tabStore = useTabStore()
 const activeKey = ref<string>('')
 
 const tabList = computed(() => tabStore.tabList)
-
-useSortable('.n-tabs-wrapper', tabStore.tabList, {
-  animation: 300,
-  delay: 400,
-  delayOnTouchOnly: true,
-})
 
 function handleClose(fullPath: string) {
   const tab = tabList.value.find(item => item.fullPath === fullPath)
@@ -37,25 +30,8 @@ watch(
   { immediate: true },
 )
 
-function updateTabPad() {
-  const wrappers = document.querySelectorAll('.n-tabs-tab-wrapper')
-
-  wrappers.forEach((wrapper) => {
-    if (!wrapper?.children?.[0].className.includes('n-tabs-tab-pad')) {
-      const pad = document.createElement('div')
-      pad.className = 'n-tabs-tab-pad'
-      wrapper.insertBefore(pad, wrapper.children[0])
-    }
-  })
-
-  const scrollPaddings = document.querySelectorAll('.n-tabs-scroll-padding')
-  scrollPaddings.forEach((scrollPadding) => {
-    scrollPadding.remove()
-  })
-}
-
 onMounted(() => {
-  updateTabPad()
+  document.querySelector('.n-tabs-wrapper')?.classList.add('n-tabs-scroll-padding')
 })
 </script>
 
@@ -85,7 +61,7 @@ onMounted(() => {
   background-color: var(--n-color);
 
   .n-tabs-wrapper {
-    padding: 2px;
+    padding: 2px 4px;
   }
 
   .n-tabs-tab-wrapper {
