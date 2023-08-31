@@ -1,8 +1,6 @@
 <script lang="ts" setup>
 import type { MenuOption } from 'naive-ui'
 import { useThemeVars } from 'naive-ui'
-import type { RouteRecordRaw } from 'vue-router'
-import { Icon } from '#components'
 
 const emit = defineEmits(['update:collapsed', 'clickMenuItem'])
 
@@ -31,37 +29,7 @@ const color = computed(() => {
   }
 })
 
-function buildMenuList(routes: Readonly<RouteRecordRaw[]>, parentPath = ''): MenuOption[] {
-  const menuList: MenuOption[] = []
-
-  routes
-    .filter(route => route.meta?.layout === 'admin')
-    .filter(route => !route.meta?.hideMenu)
-    .sort((a, b) => a.meta!.order as number - (b.meta!.order as number))
-    .forEach((route) => {
-      const { meta, path, children, name } = route
-      const { title, icon } = meta!
-
-      const menu: MenuOption = {
-        label: title,
-        key: path.startsWith('http') ? path : `${parentPath}${parentPath ? '/' : ''}${path}`,
-        name,
-        icon: renderIcon(icon as string),
-      }
-
-      if (children && children.length > 0)
-        menu.children = buildMenuList(children, menu.key as string)
-
-      menuList.push(menu)
-    })
-
-  return menuList
-}
-
 menus.value = buildMenuList(router.options.routes) as any
-function renderIcon(icon: string) {
-  return () => h(Icon, { name: icon })
-}
 
 function clickMenuItem(key: string) {
   if (/http(s)?:/.test(key))
@@ -110,7 +78,9 @@ watch(
 )
 
 onMounted(() => {
-  updateMenu()
+  nextTick(() => {
+    updateMenu()
+  })
 })
 </script>
 
@@ -137,7 +107,7 @@ onMounted(() => {
   --n-item-text-color-hover: v-bind('color["text-hover"]');
 
   --n-item-color-active: v-bind('color["bg-hover"]');
-  --n-item-color-active-hover: v-bind('color["text-active"]');
+  --n-item-color-active-hover: v-bind('color["bg-hover"]');
 
   .n-menu-item-content__icon {
     --n-item-icon-color: v-bind('color.text');

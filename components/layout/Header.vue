@@ -1,6 +1,5 @@
 <script lang="ts" setup>
 import { useThemeVars } from 'naive-ui'
-import Fullscreen from './components/Fullscreen.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -78,6 +77,7 @@ function dropdownSelect(key: string) {
     <div class="flex-auto" />
     <div class="flex justify-center items-center">
       <div class="flex items-center gap-4">
+        <Search />
         <Fullscreen />
         <!-- <AppThemeSwitcher /> -->
         <UserButton />

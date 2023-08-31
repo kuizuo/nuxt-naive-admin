@@ -7,9 +7,9 @@ const title = computed(() => {
 </script>
 
 <template>
-  <NTooltip class="flex justify-center items-center" placement="bottom" trigger="click">
+  <NTooltip class="flex justify-center items-center" placement="bottom" trigger="hover">
     <template #trigger>
-      <span class="flex cursor-pointer" @click="toggle">
+      <span class="flex cursor-pointer" @click="toggle()">
         <Icon v-if="!isFullscreen" name="ant-design:fullscreen-outlined" />
         <Icon v-else name="ant-design:fullscreen-outlined" />
       </span>
