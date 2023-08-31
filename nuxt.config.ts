@@ -39,10 +39,6 @@ export default defineNuxtConfig({
       path: '~/components',
       extensions: ['vue'],
     },
-    {
-      path: '~/components/layout/components',
-      pathPrefix: false,
-    },
   ],
   colorMode: {
     classSuffix: '',
@@ -61,15 +57,6 @@ export default defineNuxtConfig({
       login: '/auth/login',
       callback: '/auth/confirm',
       exclude: ['/', '/auth/reset-password', '/auth/update-password'],
-    },
-  },
-  content: {
-    highlight: {
-      theme: {
-        default: 'github-light',
-        dark: 'github-dark',
-        sepia: 'monokai',
-      },
     },
   },
   css: ['~/assets/css/main.css'],

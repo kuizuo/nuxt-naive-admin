@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import SettingDrawer from './SettingDrawer.vue'
+
 const show = ref(false)
 
 function toggle() {
