@@ -1,8 +1,8 @@
 {
   "name": "nuxt-naive-admin",
-  "version": "0.4.4",
+  "version": "0.4.5",
   "private": true,
-  "packageManager": "pnpm@8.3.1",
+  "packageManager": "pnpm@8.7.0",
   "description": "一站式管理系统，融合 Nuxt、Naive UI 和 Supabase",
   "author": {
     "url": "https://kuizuo.cn",
@@ -31,7 +31,7 @@
     "lint": "eslint .",
     "postinstall": "nuxi prepare",
     "generate": "nuxi generate",
-    "release": "bumpp --commit --tag --no-push",
+    "release": "bumpp --commit --tag --push",
     "genTypes": "supabase gen types typescript --project-id '$PROJECT_REF' --schema public > types/database.types.ts"
   },
   "devDependencies": {
