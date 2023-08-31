@@ -1,10 +1,5 @@
 lockfileVersion: '6.0'
 
-dependencies:
-  components:
-    specifier: link:@types/@vueuse/components
-    version: link:@types/@vueuse/components
-
 devDependencies:
   '@antfu/eslint-config':
     specifier: ^0.40.0
