@@ -24,12 +24,12 @@ const primaryColors = computed(() => {
 <template>
   <NDrawer :width="300" placement="right">
     <NDrawerContent
-      title="项目配置" closable :body-content-style="{
+      :title="$t('layout.setting.drawer_title')" closable :body-content-style="{
         padding: '4px 16px',
       }"
     >
       <NDivider title-placement="center">
-        主题
+        {{ $t('layout.setting.dark_mode') }}
       </NDivider>
 
       <div class="flex justify-center">
@@ -53,7 +53,7 @@ const primaryColors = computed(() => {
       </div>
 
       <NDivider title-placement="center">
-        系统主题
+        {{ $t('layout.setting.sys_theme') }}
       </NDivider>
 
       <div class="flex flex-wrap justify-center gap-2">
@@ -71,7 +71,7 @@ const primaryColors = computed(() => {
       </div>
 
       <NDivider title-placement="center">
-        导航栏风格
+        {{ $t('layout.setting.menu_type') }}
       </NDivider>
 
       <div class="flex justify-center gap-4">
@@ -82,7 +82,7 @@ const primaryColors = computed(() => {
               :class="{ 'menu-type-picker__item--active': menuType === 'light' }" @click="setMenuType('light')"
             />
           </template>
-          <span>亮色侧边栏</span>
+          <span>{{ $t('layout.setting.menu_type_light') }}</span>
         </NTooltip>
 
         <NTooltip placement="top">
@@ -92,22 +92,22 @@ const primaryColors = computed(() => {
               :class="{ 'menu-type-picker__item--active': menuType === 'dark' }" @click="setMenuType('dark')"
             />
           </template>
-          <span>暗色侧边栏</span>
+          <span>{{ $t('layout.setting.menu_type_dark') }}</span>
         </NTooltip>
       </div>
 
       <NDivider title-placement="center">
-        界面功能
+        {{ $t('layout.setting.interface_function') }}
       </NDivider>
 
       <div class="flex flex-col gap-2">
         <div class="flex justify-between items-center">
-          折叠菜单
+          {{ $t('layout.setting.menu_collapse') }}
           <NSwitch v-model:value="settingsStore.menuSetting.collapsed" size="small" />
         </div>
 
         <div class="flex justify-between items-center">
-          菜单展开宽度
+          {{ $t('layout.setting.menu_width') }}
           <NInputNumber v-model:value="settingsStore.menuSetting.menuWidth" size="small" :step="10" class="w-32">
             <template #suffix>
               px
@@ -117,22 +117,22 @@ const primaryColors = computed(() => {
       </div>
 
       <NDivider title-placement="center">
-        界面显示
+        {{ $t('layout.setting.interface_display') }}
       </NDivider>
 
       <div class="flex flex-col gap-2">
         <div class="flex justify-between items-center">
-          面包屑
+          {{ $t('layout.setting.breadcrumb') }}
           <NSwitch v-model:value="settingsStore.headerSetting.showBreadCrumb" size="small" />
         </div>
 
         <div class="flex justify-between items-center">
-          面包屑图标
+          {{ $t('layout.setting.breadcrumb_icon') }}
           <NSwitch v-model:value="settingsStore.headerSetting.showBreadCrumbIcon" size="small" />
         </div>
 
         <div class="flex justify-between items-center">
-          标签页
+          {{ $t('layout.setting.tabs') }}
           <NSwitch v-model:value="settingsStore.headerSetting.showTabs" size="small" />
         </div>
 

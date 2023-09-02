@@ -2,7 +2,7 @@
 definePageMeta({
   layout: 'admin',
   middleware: 'admin',
-  title: '多级菜单',
+  title: 'pages.level_menu.title',
   order: 3,
   icon: 'ant-design:menu-outlined',
 })

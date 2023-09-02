@@ -6,6 +6,7 @@ export const defaultSettings: ProjectSetting = {
   appSetting: {
     themeColor: theme.colors.emerald[500],
     showLogo: true,
+    locale: 'zh-CN',
   },
   headerSetting: {
     showBreadCrumb: true,

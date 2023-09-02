@@ -29,10 +29,6 @@ watch(
   },
   { immediate: true },
 )
-
-onMounted(() => {
-  document.querySelector('.n-tabs-wrapper')?.classList.add('n-tabs-scroll-padding')
-})
 </script>
 
 <template>

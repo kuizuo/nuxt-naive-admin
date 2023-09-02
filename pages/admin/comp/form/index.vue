@@ -1,11 +1,10 @@
-<!-- eslint-disable no-console -->
 <script setup lang="ts">
 import { useForm } from '~/components/basic/form/hooks/useForm'
 import type { FormSchema } from '~/components/basic/form/types/form'
 
 definePageMeta({
   layout: 'admin',
-  title: '表单',
+  title: 'pages.comp.form',
   order: 3,
   icon: 'mdi:form-select',
   keepalive: true,

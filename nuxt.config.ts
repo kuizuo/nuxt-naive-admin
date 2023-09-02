@@ -1,3 +1,5 @@
+import { i18n } from './config/i18n'
+
 export default defineNuxtConfig({
   app: {
     pageTransition: { name: 'page', mode: 'out-in' },
@@ -13,6 +15,7 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@nuxtjs/color-mode',
     '@nuxtjs/tailwindcss',
+    '@nuxtjs/i18n',
     ['@pinia/nuxt', {
       autoImports: ['defineStore', 'definePiniaStore'],
     }],
@@ -67,6 +70,7 @@ export default defineNuxtConfig({
   experimental: {
     componentIslands: true,
   },
+  i18n,
   devtools: {
     enabled: true,
   },

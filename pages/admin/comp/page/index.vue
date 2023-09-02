@@ -1,7 +1,7 @@
 <script setup lang="ts">
 definePageMeta({
   layout: 'admin',
-  title: '页面',
+  title: 'pages.comp.page',
   order: 1,
   icon: 'mdi:arrange-bring-forward',
   keepalive: true,

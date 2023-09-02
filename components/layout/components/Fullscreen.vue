@@ -1,8 +1,9 @@
 <script lang="ts" setup>
 const { toggle, isFullscreen } = useFullscreen()
+const { t } = useI18n()
 
 const title = computed(() => {
-  return isFullscreen.value ? '退出全屏' : '全屏'
+  return isFullscreen.value ? t('layout.header.tooltip_exit_full') : t('layout.header.tooltip_entry_full')
 })
 </script>
 

@@ -50,7 +50,7 @@ export const useTabStore = defineStore({
       if (whiteList.includes(name as string))
         return
 
-      if (meta.layout !== 'admin')
+      if (meta?.layout !== 'admin')
         return
 
       const tabHasExits = this.tabList.some((tab, index) => {
@@ -64,11 +64,11 @@ export const useTabStore = defineStore({
       const index = this.tabList.findIndex(item => item.fullPath === route.fullPath)
       this.tabList = this.tabList.filter((item, i) => i >= index || (item?.meta?.affix ?? false))
     },
-    closeRightTab(route: RouteLocationNormalized) {
+    close_rightTab(route: RouteLocationNormalized) {
       const index = this.tabList.findIndex(item => item.fullPath === route.fullPath)
       this.tabList = this.tabList.filter((item, i) => i <= index || (item?.meta?.affix ?? false))
     },
-    closeOtherTab(route: RouteLocationNormalized) {
+    close_otherTab(route: RouteLocationNormalized) {
       this.tabList = this.tabList.filter(item => item.fullPath === route.fullPath || (item?.meta?.affix ?? false))
     },
     async closeTab(route: RouteLocationNormalized, router: Router) {
@@ -94,7 +94,7 @@ export const useTabStore = defineStore({
       const toTarget = this.tabList[Math.max(0, this.tabList.length - 1)]
       await replace(toTarget)
     },
-    closeAllTab() {
+    close_allTab() {
       this.tabList = this.tabList.filter(item => item?.meta?.affix ?? false)
     },
 

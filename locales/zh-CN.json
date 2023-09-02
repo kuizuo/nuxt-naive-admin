@@ -1,0 +1,71 @@
+{
+  "layout": {
+    "header": {
+      "document": "文档",
+      "logout": "退出系统",
+      "home": "首页",
+      "profile": "用户资料",
+      "search": "搜索",
+      "tooltip_entry_full": "全屏",
+      "tooltip_exit_full": "退出全屏",
+      "tooltip_notify": "消息通知"
+    },
+    "setting": {
+      "breadcrumb": "面包屑",
+      "breadcrumb_icon": "面包屑图标",
+      "dark_mode": "主题",
+      "drawer_title": "项目配置",
+      "interface_display": "界面显示",
+      "interface_function": "界面功能",
+      "menu_accordion": "侧边菜单手风琴模式",
+      "menu_collapse": "折叠菜单",
+      "menu_search": "菜单搜索",
+      "menu_type": "导航栏风格",
+      "menu_type_dark": "暗色侧边栏",
+      "menu_type_light": "亮色侧边栏",
+      "menu_width": "菜单展开宽度",
+      "sys_theme": "系统主题",
+      "tabs": "标签页"
+    },
+    "tabs": {
+      "close": "关闭标签页",
+      "close_all": "关闭全部标签页",
+      "close_other": "关闭其它标签页",
+      "close_right": "关闭右侧标签页",
+      "reload": "重新加载"
+    }
+  },
+  "pages": {
+    "about": {
+      "title": "关于"
+    },
+    "comp": {
+      "form": "表单",
+      "page": "页面",
+      "table": "表格",
+      "title": "组件"
+    },
+    "dashboard": {
+      "title": "仪表盘"
+    },
+    "external": {
+      "naive_ui": "Naive UI",
+      "nuxt": "Nuxt",
+      "supabase": "Supabase",
+      "title": "外链"
+    },
+    "level_menu": {
+      "level1": "一级菜单1",
+      "level2": "二级菜单",
+      "title": "多级菜单"
+    },
+    "system": {
+      "role": "角色管理",
+      "title": "系统管理",
+      "user": "用户管理"
+    },
+    "workplace": {
+      "title": "工作台"
+    }
+  }
+}

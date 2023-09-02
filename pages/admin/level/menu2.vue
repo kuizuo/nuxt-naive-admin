@@ -2,7 +2,7 @@
 definePageMeta({
   layout: 'admin',
   keepalive: true,
-  title: 'Menu2',
+  title: 'pages.level_menu.level1',
   order: 2,
   icon: 'ant-design:menu-outlined',
 })

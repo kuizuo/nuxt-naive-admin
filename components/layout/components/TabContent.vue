@@ -8,6 +8,7 @@ const props = defineProps<{
   isTab?: boolean
 }>()
 
+const { t } = useI18n()
 const themeVars = useThemeVars()
 const tabStore = useTabStore()
 const route = useRoute()
@@ -23,8 +24,9 @@ const currentIndex = ref(-1)
 const tabList = computed(() => tabStore.tabList)
 const title = computed(() => {
   const { tabItem: { meta } = {} } = props
-  return meta && meta.title
+  return meta && t(meta.title!)
 })
+
 const getTargetTab = computed((): RouteLocationNormalized => {
   return unref(props.isTab) ? props.tabItem : route
 })
@@ -44,37 +46,37 @@ const options = computed(() => {
 
   const disabled = unref(tabList).length <= 1
 
-  const closeRightDisabled
+  const close_rightDisabled
       = !isCurItem || (index === tabStore.tabList.length - 1)
 
   return [
     {
-      label: '刷新标签页',
+      label: t('layout.tabs.reload'),
       key: 'refresh',
       icon: renderIcon('ion:reload-sharp'),
       disabled: refreshDisabled,
     },
     {
-      label: '关闭标签页',
+      label: t('layout.tabs.close'),
       key: 'close',
       icon: renderIcon('clarity:close-line'),
       disabled: !!meta?.affix || disabled,
     },
     {
-      label: '关闭其他标签页',
-      key: 'closeOther',
+      label: t('layout.tabs.close_other'),
+      key: 'close_other',
       icon: renderIcon('dashicons:align-center'),
       disabled,
     },
     {
-      label: '关闭右侧标签页',
-      key: 'closeRight',
+      label: t('layout.tabs.close_right'),
+      key: 'close_right',
       icon: renderIcon('ant-design:right-square-outlined'),
-      disabled: closeRightDisabled,
+      disabled: close_rightDisabled,
     },
     {
-      label: '关闭全部标签页',
-      key: 'closeAll',
+      label: t('layout.tabs.close_all'),
+      key: 'close_all',
       icon: renderIcon('clarity:minus-line'),
       disabled,
     },
@@ -89,14 +91,14 @@ async function handleSelect(key: string) {
     case 'close':
       tabStore.closeTab(route, router)
       break
-    case 'closeOther':
-      tabStore.closeOtherTab(route)
+    case 'close_other':
+      tabStore.close_otherTab(route)
       break
-    case 'closeRight':
-      tabStore.closeRightTab(route)
+    case 'close_right':
+      tabStore.close_rightTab(route)
       break
-    case 'closeAll':
-      tabStore.closeAllTab()
+    case 'close_all':
+      tabStore.close_allTab()
       break
   }
   showDropdown.value = false

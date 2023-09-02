@@ -7,6 +7,7 @@ const emit = defineEmits(['update:collapsed', 'clickMenuItem'])
 const themeVars = useThemeVars()
 const route = useRoute()
 const router = useRouter()
+const { locale } = useI18n()
 const { collapsed, menuType } = useMenuSetting()
 
 const menus = ref<MenuOption[]>([])
@@ -29,7 +30,10 @@ const color = computed(() => {
   }
 })
 
-menus.value = buildMenuList(router.options.routes) as any
+function genMenus() {
+  menus.value = buildMenuList(router.options.routes) as any
+}
+genMenus()
 
 function clickMenuItem(key: string) {
   if (/http(s)?:/.test(key))
@@ -81,6 +85,10 @@ onMounted(() => {
   nextTick(() => {
     updateMenu()
   })
+})
+
+watch(locale, () => {
+  genMenus()
 })
 </script>
 

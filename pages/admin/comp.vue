@@ -2,7 +2,7 @@
 definePageMeta({
   layout: 'admin',
   middleware: 'admin',
-  title: '组件',
+  title: 'pages.comp.title',
   order: 4,
   icon: 'gg:components',
 })

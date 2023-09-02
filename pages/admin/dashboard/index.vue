@@ -4,7 +4,7 @@ import GrowCard from '~/components/admin/dashboard/GrowCard.vue'
 definePageMeta({
   layout: 'admin',
   middleware: 'admin',
-  title: '仪表盘',
+  title: 'pages.dashboard.title',
   order: 1,
   icon: 'ant-design:dashboard-outlined',
   affix: true,

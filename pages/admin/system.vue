@@ -2,7 +2,7 @@
 definePageMeta({
   layout: 'admin',
   middleware: 'admin',
-  title: '系统管理',
+  title: 'pages.system.title',
   name: 'system',
   order: 99,
   icon: 'ant-design:setting-outlined',

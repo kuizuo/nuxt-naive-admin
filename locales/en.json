@@ -1,0 +1,72 @@
+{
+  "layout": {
+    "header": {
+      "document": "Document",
+      "logout": "Log out",
+      "home": "Home",
+      "profile": "\bProfile",
+      "search": "Search",
+      "tooltip_entry_full": "Full screen",
+      "tooltip_exit_full": "exit full screen",
+      "tooltip_notify": "Message notification"
+    },
+    "setting": {
+      "breadcrumb": "Breadcrumb",
+      "breadcrumb_icon": "Breadcrumb Icon",
+      "dark_mode": "DarkMode",
+      "drawer_title": "Project Setting",
+      "interface_display": "interface display",
+      "interface_function": "interface function",
+      "menu_accordion": "Accordion",
+      "menu_collapse": "Menu collapse",
+      "menu_collapseWidth": "Menu width",
+      "menu_search": "Menu Search",
+      "menu_type": "Menu type",
+      "menu_type_dark": "Menu dark type",
+      "menu_type_light": "Menu light type",
+      "menu_width": "Menu width",
+      "sys_theme": "System theme",
+      "tabs": "Tabs"
+    },
+    "tabs": {
+      "close": "Close current",
+      "close_all": "Close All",
+      "close_other": "Close Other",
+      "close_right": "Close Right",
+      "reload": "Reload"
+    }
+  },
+  "pages": {
+    "about": {
+      "title": "About"
+    },
+    "comp": {
+      "form": "Form",
+      "page": "Page",
+      "table": "Table",
+      "title": "Comp"
+    },
+    "dashboard": {
+      "title": "Dashboard"
+    },
+    "external": {
+      "naive_ui": "Naive UI",
+      "nuxt": "Nuxt",
+      "supabase": "Supabase",
+      "title": "External"
+    },
+    "level_menu": {
+      "level1": "level-1",
+      "level2": "level-2",
+      "title": "level-menu"
+    },
+    "system": {
+      "role": "Role",
+      "title": "System",
+      "user": "User"
+    },
+    "workplace": {
+      "title": "WorkPlace"
+    }
+  }
+}

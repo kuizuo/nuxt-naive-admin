@@ -1,7 +1,7 @@
 <script setup lang="ts">
 definePageMeta({
   layout: 'admin',
-  title: 'Nuxt',
+  title: 'pages.external.nuxt',
   order: 1,
   icon: 'logos:nuxt-icon',
   path: 'https://nuxt.com',

@@ -2,7 +2,7 @@
 definePageMeta({
   layout: 'admin',
   middleware: 'admin',
-  title: '外链',
+  title: 'pages.external.title',
   order: 4,
   icon: 'ic:sharp-launch',
 })

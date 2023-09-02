@@ -1,19 +1,28 @@
 <script  setup lang="ts">
 const supbabase = useSupabaseClient()
 const user = useSupabaseUser()
-
 const router = useRouter()
+const { t } = useI18n()
 
 const showModal = ref(false)
 
 const options = [
   {
-    label: '用户资料',
-    key: 'profile',
-    icon: renderIcon('ri:user-3-line'),
+    label: t('layout.header.home'),
+    key: 'home',
+    icon: renderIcon('ri:home-5-line'),
   },
   {
-    label: '退出登录',
+    type: 'divider',
+    key: 'd1',
+  },
+  {
+    label: t('layout.header.profile'),
+    key: 'profile',
+    icon: renderIcon('ri:user-line'),
+  },
+  {
+    label: t('layout.header.logout'),
     key: 'logout',
     icon: renderIcon('ri:logout-box-r-line'),
   },
@@ -21,6 +30,9 @@ const options = [
 
 async function handleSelect(key: string) {
   switch (key) {
+    case 'home':
+      router.push({ path: '/' })
+      break
     case 'profile':
       router.push({ path: '/account/profile' })
       break

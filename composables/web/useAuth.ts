@@ -14,6 +14,8 @@ function getKey(path: string, parentPath: string) {
 }
 
 export function buildMenuList(routes: Readonly<RouteRecordRaw[]>, parentPath = ''): MenuOption[] {
+  const i18n = useNuxtApp().$i18n
+
   const menuList: MenuOption[] = []
 
   routes
@@ -25,7 +27,7 @@ export function buildMenuList(routes: Readonly<RouteRecordRaw[]>, parentPath = '
       const { title, icon } = meta!
 
       const menu: MenuOption = {
-        label: title,
+        label: i18n.t(title),
         key: getKey(path, parentPath),
         name,
         path,
@@ -42,6 +44,8 @@ export function buildMenuList(routes: Readonly<RouteRecordRaw[]>, parentPath = '
 }
 
 export function buildRouteList(routes: Readonly<RouteRecordRaw[]>, parentPath = '') {
+  const i18n = useNuxtApp().$i18n
+
   const routeList: MenuRoute[] = []
 
   routes
@@ -53,7 +57,7 @@ export function buildRouteList(routes: Readonly<RouteRecordRaw[]>, parentPath = 
       const { title, icon } = meta!
 
       const menu: MenuRoute = {
-        label: title,
+        label: i18n.t(title),
         key: getKey(path, parentPath),
         name,
         path,

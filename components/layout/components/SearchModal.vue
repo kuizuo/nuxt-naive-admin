@@ -18,7 +18,7 @@ const {
   activeIndex,
   handleEnter,
   handleMouseenter,
-} = useMenuSearch(emit)
+} = usemenu_search(emit)
 
 const getIsNotData = computed(
   () => !keyword || unref(searchResult).length === 0,

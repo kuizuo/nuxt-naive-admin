@@ -5,7 +5,7 @@ import type { BasicColumn } from '~~/components/basic/table/types/table'
 
 definePageMeta({
   layout: 'admin',
-  title: '表格',
+  title: 'pages.comp.table',
   order: 2,
   icon: 'mdi:table-large',
   keepalive: true,

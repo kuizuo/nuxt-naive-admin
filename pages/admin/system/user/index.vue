@@ -12,7 +12,7 @@ import type { BasicColumn, TableActionType } from '~~/components/basic/table/typ
 definePageMeta({
   layout: 'admin',
   middleware: 'admin',
-  title: '用户管理',
+  title: 'pages.system.user',
   order: 1,
   icon: 'ant-design:user-outlined',
   keepalive: true,

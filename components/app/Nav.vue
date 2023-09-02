@@ -9,13 +9,13 @@ const { public: { adminUid } } = useRuntimeConfig()
   <nav class="flex gap-2 items-center text-left">
     <NuxtLink v-if="user?.id === adminUid" to="/admin/dashboard" class="w-full md:w-auto">
       <NButton type="primary" size="small">
-        仪表盘
+        {{ $t('pages.dashboard.title') }}
       </NButton>
     </NuxtLink>
 
     <NuxtLink :to="DOC_URL" class="w-full md:w-auto">
       <NButton quaternary type="primary" size="small">
-        文档地址
+        {{ $t('layout.header.document') }}
       </NButton>
     </NuxtLink>
   </nav>

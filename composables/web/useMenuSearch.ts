@@ -37,7 +37,7 @@ function createSearchReg(key: string) {
   return new RegExp(str)
 }
 
-export function useMenuSearch(emit: any) {
+export function usemenu_search(emit: any) {
   const router = useRouter()
   const { routeList: menus } = useAuth()
   const searchResult = ref<SearchResult[]>([])

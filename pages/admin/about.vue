@@ -6,7 +6,7 @@ import { DOC_URL, GITHUB_URL, SITE_URL } from '~/constants/site'
 definePageMeta({
   layout: 'admin',
   middleware: 'admin',
-  title: '关于',
+  title: 'pages.about.title',
   order: 100,
   icon: 'simple-icons:aboutdotme',
 })

@@ -16,7 +16,7 @@ import avatar4 from '~/assets/images/avatar4.png'
 definePageMeta({
   layout: 'admin',
   middleware: 'admin',
-  title: '工作台',
+  title: 'pages.workplace.title',
   order: 2,
   icon: 'material-symbols:table-restaurant-outline',
 })

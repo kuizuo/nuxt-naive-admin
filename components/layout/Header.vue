@@ -12,6 +12,7 @@ const { isMobile } = useDevice()
 const { showLogo } = useAppSetting()
 const { collapsed, toggleCollapsed, menuMode } = useMenuSetting()
 const { headerSetting } = useHeaderSetting()
+const { t } = useI18n()
 
 const getShowHeaderLogo = computed(() => {
   return !isMobile.value && !menuMode && showLogo.value
@@ -21,7 +22,7 @@ function generator(routerMap: any[]) {
   return routerMap.map((item: any) => {
     const currentMenu = {
       ...item,
-      label: item.meta.title,
+      label: item.meta?.title && t(item.meta?.title),
       key: item.name,
     }
 
@@ -39,7 +40,7 @@ function generator(routerMap: any[]) {
 const breadcrumbList = computed(() => generator(route.matched))
 
 function dropdownSelect(key: string) {
-  router.push({ name: key })
+  router.push({ path: key })
 }
 </script>
 
@@ -62,7 +63,7 @@ function dropdownSelect(key: string) {
                   v-if="headerSetting.showBreadCrumbIcon && routeItem.meta.icon" :name="routeItem.meta.icon"
                   size="20px"
                 />
-                {{ routeItem.meta.title }}
+                {{ $t(routeItem.meta.title) }}
               </span>
             </NDropdown>
             <span v-else class="inline-flex items-end gap-2">
@@ -70,7 +71,7 @@ function dropdownSelect(key: string) {
                 v-if="headerSetting.showBreadCrumbIcon && routeItem.meta.icon" :name="routeItem.meta.icon"
                 size="20px"
               />
-              {{ routeItem.meta.title }}
+              {{ $t(routeItem.meta.title) }}
             </span>
           </NBreadcrumbItem>
         </template>
@@ -82,6 +83,7 @@ function dropdownSelect(key: string) {
       <div class="flex items-center gap-4">
         <Search />
         <Fullscreen />
+        <AppLocalePicker />
         <UserButton />
         <ThemeSetting />
       </div>
