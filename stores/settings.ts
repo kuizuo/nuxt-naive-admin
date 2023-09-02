@@ -1,5 +1,5 @@
-import { defaultSettings } from '~~/constants/theme'
-import type { ProjectSetting } from '~~/types/config'
+import type { ProjectSetting } from '~~/constants/setting'
+import { defaultSettings } from '~~/constants/setting'
 
 export const useSettingsStore = defineStore('app-settings', {
   state: (): ProjectSetting => defaultSettings,

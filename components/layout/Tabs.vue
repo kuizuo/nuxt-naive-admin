@@ -34,7 +34,7 @@ watch(
 <template>
   <div>
     <NTabs
-      v-model:value="activeKey" type="card" size="small" tab-style="min-width: 60px;"
+      v-model:value="activeKey" type="card" size="small" tab-style="min-width: 60px; max-height: 40px;"
       @update:value="handleUpdateValue" @close="handleClose"
     >
       <NTab

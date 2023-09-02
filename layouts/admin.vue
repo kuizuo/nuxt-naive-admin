@@ -1,17 +1,18 @@
 <script setup lang="ts">
-const headerRef = ref<any>(null)
-
 const { showTabs } = useHeaderSetting()
 
-const headerHeight = ref(headerRef.value?.$el.offsetHeight || 0)
-
-const isDark = computed(() => useColorMode().value === 'dark')
 const refreshing = computed(() => useTabStore().refreshing)
 
-onMounted(() => {
-  nextTick(() => {
-    headerHeight.value = headerRef.value?.$el.offsetHeight || 0
-  })
+const contentHight = computed(() => {
+  const tabsHeight = showTabs.value ? 'var(--app-tabs-height)' : '0px'
+
+  return `calc(100vh - var(--app-header-height)) - ${tabsHeight}`
+})
+
+const contentTop = computed(() => {
+  const tabsHeight = showTabs.value ? 'var(--app-tabs-height)' : '0px'
+
+  return `calc(var(--app-header-height) + ${tabsHeight})`
 })
 </script>
 
@@ -20,17 +21,16 @@ onMounted(() => {
     <LayoutSider />
 
     <NLayout class="min-h-screen" :native-scrollbar="false">
-      <NLayoutHeader ref="headerRef">
+      <NLayoutHeader>
         <LayoutHeader />
         <LayoutTabs v-if="showTabs" />
       </NLayoutHeader>
       <NLayoutContent
-        :style="{
-          backgroundColor: isDark ? '#141414' : '#f9fafb',
-          height: `calc(100vh - ${headerHeight}px)`,
-        }"
+        embedded
+        position="absolute"
+        :style="{ top: contentTop }"
         :content-style="{
-          height: `calc(100vh - ${headerHeight}px - ${16}px)`,
+          height: contentHight,
         }"
         :native-scrollbar="false"
       >

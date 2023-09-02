@@ -1,9 +1,15 @@
 {
+  "action": {
+    "sign_in": "登录"
+  },
+  "common": {
+    "not_found": "无法找到相关内容"
+  },
   "layout": {
     "header": {
       "document": "文档",
-      "logout": "退出系统",
       "home": "首页",
+      "logout": "退出系统",
       "profile": "用户资料",
       "search": "搜索",
       "tooltip_entry_full": "全屏",
@@ -68,11 +74,5 @@
     "workplace": {
       "title": "工作台"
     }
-  },
-  "common": {
-    "not_found": "无法找到相关内容"
-  },
-  "action": {
-    "sign_in": "登录"
   }
 }

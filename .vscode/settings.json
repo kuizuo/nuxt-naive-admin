@@ -14,5 +14,6 @@
   ],
   "i18n-ally.preferredDelimiter": "_",
   "i18n-ally.sortKeys": true,
-  "i18n-ally.sourceLanguage": "zh-CN"
+  "i18n-ally.sourceLanguage": "zh-CN",
+  "vue.codeActions.enabled": false
 }

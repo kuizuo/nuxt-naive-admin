@@ -1,6 +1,7 @@
 :root {
     --app-header-height: 48px;
     --app-footer-height: 48px;
+    --app-tabs-height: 40px;
 }
 
 .page-enter-active,
