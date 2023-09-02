@@ -1,88 +1,65 @@
 <script setup lang="ts">
 import { darkTheme, dateZhCN, lightTheme, zhCN } from 'naive-ui'
 
+const { locale } = useI18n()
 const colorMode = useColorMode()
-const { title, keywords, description } = useAppConfig()
-
+const { title, description } = useAppConfig()
 const { themeColor } = useAppSetting()
 
+const theme = computed(() => colorMode.value === 'dark' ? darkTheme : lightTheme)
+
 const themeOverrides = computed(() => {
-  const lightenStr = lighten(themeColor.value, 6)
+  const color = unref(themeColor)
+  const lightenStr = lighten(color, 6)
   return {
     common: {
-      primaryColor: themeColor.value,
+      primaryColor: color,
       primaryColorHover: lightenStr,
       primaryColorPressed: lightenStr,
-      primaryColorSuppl: themeColor.value,
+      primaryColorSuppl: color,
     },
   }
 })
 
 useHead({
+  htmlAttrs: {
+    lang: () => locale.value,
+  },
   title,
   link: [
-    {
-      rel: 'icon', type: 'image/svg+xml', href: '/logo.svg',
-    },
+    { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' },
   ],
   meta: [
-    {
-      name: 'keywords',
-      content: keywords,
-    },
-    {
-      name: 'description', content: description,
-    },
-    {
-      name: 'referrer', content: 'no-referrer',
-    },
+    { name: 'keywords', content: 'nuxt, naive-ui, supabase, template, web' },
+    { name: 'description', content: description },
+    { name: 'referrer', content: 'no-referrer' },
+    // open graph social image
+    { property: 'og:title', content: title },
+    { property: 'og:description', content: description },
+    { property: 'og:type', content: 'website' },
+    { property: 'og:image', content: '/og.png' },
+    { property: 'og:image:width', content: '2000' },
+    { property: 'og:image:height', content: '1000' },
+    { property: 'og:site_name', content: title },
   ],
 })
 </script>
 
 <template>
-  <NConfigProvider :locale="zhCN" :date-locale="dateZhCN" :theme="colorMode.preference === 'dark' ? darkTheme : lightTheme" :theme-overrides="themeOverrides">
-    <NGlobalStyle />
-    <NuxtLayout>
-      <NMessageProvider>
-        <NuxtLoadingIndicator />
+  <NConfigProvider
+    :locale="locale === 'zh-CN' ? zhCN : null"
+    :date-locale="locale === 'zh-CN' ? dateZhCN : null"
+    :theme="theme" :theme-overrides="themeOverrides"
+    :inline-theme-disabled="true"
+  >
+    <NuxtLoadingIndicator :color="themeColor" />
+
+    <NMessageProvider>
+      <NuxtLayout>
         <NuxtPage />
-      </NMessageProvider>
-    </NuxtLayout>
+      </NuxtLayout>
+    </NMessageProvider>
+
+    <NGlobalStyle />
   </NConfigProvider>
 </template>
-
-<style>
-html,
-body,
-#__nuxt {
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-}
-
-html.dark body {
-  @apply duration-300 transition-colors;
-}
-
-.page-enter-active,
-.page-leave-active {
-  transition: all 0.4s;
-}
-.page-enter-from,
-.page-leave-to {
-  transform: translateY(20px);
-  opacity: 0;
-}
-
-.layout-enter-active ,
-.layout-leave-active {
-  transition: all 0.1s ease-out;
-  transition: all 0.4s;
-}
-.layout-enter-from,
-.layout-leave-to {
-  transform: translateY(-20px);
-  opacity: 0;
-}
-</style>

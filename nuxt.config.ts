@@ -2,6 +2,7 @@ import { i18n } from './config/i18n'
 
 export default defineNuxtConfig({
   app: {
+    keepalive: true,
     pageTransition: { name: 'page', mode: 'out-in' },
     layoutTransition: { name: 'layout', mode: 'out-in' },
   },
@@ -64,6 +65,7 @@ export default defineNuxtConfig({
   },
   css: ['~/assets/css/main.css'],
   routeRules: {
+    '/': { prerender: true },
     '/admin/**': { swr: false },
     '/api/**': { cors: true },
   },
