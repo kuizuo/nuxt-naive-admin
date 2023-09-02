@@ -19,7 +19,7 @@ const themeVars = useThemeVars()
       <AppNav class="hidden md:inline-flex " />
 
       <div class="hidden md:inline-flex items-center gap-4">
-        <div class="md:h-5 md:w-px md:bg-zinc-900/10 md:dark:bg-white/15" />
+        <div class="md:h-5 md:w-px md:bg-zinc-900/20 md:dark:bg-white/20" />
         <AppThemeSwitcher />
         <UserButton />
       </div>
