@@ -13,6 +13,7 @@ definePageMeta({
 
 const { repository, name, version, devDependencies } = pkg
 
+const { t } = useI18n()
 const { themeColor } = useAppSetting()
 
 const commonTagRender = (type: string) => (val: string) => h(NTag as any, { type, size: 'small' }, () => val)
@@ -43,6 +44,10 @@ const infoSchema = [
 
 const devSchema: { label: string; value: string }[] = Object.entries(devDependencies).map(([key, value]) => ({ label: key, value }),
 )
+
+useHead({
+  title: t('pages.about.title'),
+})
 </script>
 
 <template>

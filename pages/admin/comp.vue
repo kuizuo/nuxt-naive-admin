@@ -6,6 +6,11 @@ definePageMeta({
   order: 4,
   icon: 'gg:components',
 })
+
+const { t } = useI18n()
+useHead({
+  title: t('pages.comp.title'),
+})
 </script>
 
 <template>

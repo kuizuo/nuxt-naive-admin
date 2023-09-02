@@ -6,6 +6,11 @@ definePageMeta({
   order: 4,
   icon: 'ic:sharp-launch',
 })
+
+const { t } = useI18n()
+useHead({
+  title: t('pages.external.title'),
+})
 </script>
 
 <template>

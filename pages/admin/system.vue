@@ -7,6 +7,11 @@ definePageMeta({
   order: 99,
   icon: 'ant-design:setting-outlined',
 })
+
+const { t } = useI18n()
+useHead({
+  title: t('pages.system.title'),
+})
 </script>
 
 <template>

@@ -6,6 +6,11 @@ definePageMeta({
   order: 3,
   icon: 'ant-design:menu-outlined',
 })
+
+const { t } = useI18n()
+useHead({
+  title: t('pages.level_menu.title'),
+})
 </script>
 
 <template>

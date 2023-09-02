@@ -60,12 +60,19 @@
       "title": "多级菜单"
     },
     "system": {
-      "role": "角色管理",
       "title": "系统管理",
-      "user": "用户管理"
+      "user": {
+        "title": "用户管理"
+      }
     },
     "workplace": {
       "title": "工作台"
     }
+  },
+  "common": {
+    "not_found": "无法找到相关内容"
+  },
+  "action": {
+    "sign_in": "登录"
   }
 }

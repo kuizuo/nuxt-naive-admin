@@ -12,12 +12,13 @@ import type { BasicColumn, TableActionType } from '~~/components/basic/table/typ
 definePageMeta({
   layout: 'admin',
   middleware: 'admin',
-  title: 'pages.system.user',
+  title: 'pages.system.user.title',
   order: 1,
   icon: 'ant-design:user-outlined',
   keepalive: true,
 })
 
+const { t } = useI18n()
 const { storage } = useSupabaseClient()
 
 const tableRef = ref<TableActionType>()
@@ -252,6 +253,10 @@ async function handleSuccess() {
     setConfirmLoading(false)
   }
 }
+
+useHead({
+  title: t('pages.system.user.title'),
+})
 </script>
 
 <template>

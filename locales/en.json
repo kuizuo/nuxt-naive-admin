@@ -1,9 +1,15 @@
 {
+  "action": {
+    "sign_in": "Sign In"
+  },
+  "common": {
+    "not_found": "404 Not Found"
+  },
   "layout": {
     "header": {
       "document": "Document",
-      "logout": "Log out",
       "home": "Home",
+      "logout": "Log out",
       "profile": "\bProfile",
       "search": "Search",
       "tooltip_entry_full": "Full screen",
@@ -19,12 +25,11 @@
       "interface_function": "interface function",
       "menu_accordion": "Accordion",
       "menu_collapse": "Menu collapse",
-      "menu_collapseWidth": "Menu width",
+      "menu_width": "Menu width",
       "menu_search": "Menu Search",
       "menu_type": "Menu type",
       "menu_type_dark": "Menu dark type",
       "menu_type_light": "Menu light type",
-      "menu_width": "Menu width",
       "sys_theme": "System theme",
       "tabs": "Tabs"
     },
@@ -61,9 +66,10 @@
       "title": "level-menu"
     },
     "system": {
-      "role": "Role",
       "title": "System",
-      "user": "User"
+      "user": {
+        "title": "User"
+      }
     },
     "workplace": {
       "title": "WorkPlace"

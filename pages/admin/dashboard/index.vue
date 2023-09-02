@@ -11,8 +11,13 @@ definePageMeta({
   keepalive: true,
 })
 
+const { t } = useI18n()
 const { data, pending } = await useLazyAsyncData(async () => {
   return await request('/api/admin/dashboard/console')
+})
+
+useHead({
+  title: t('pages.dashboard.title'),
 })
 </script>
 

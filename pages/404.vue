@@ -1,10 +1,15 @@
 <script setup lang="ts">
 const router = useRouter()
+
+const { t } = useI18n()
+useHead({
+  title: t('common.not_found'),
+})
 </script>
 
 <template>
-  <main class="px-4 py-10 text-center text-teal-700 dark:text-gray-200">
-    <NResult status="404" title="404 资源不存在" description="生活总归带点荒谬">
+  <main class="px-4 py-10 text-center text-[--n-color]">
+    <NResult status="404" title="404 资源不存在">
       <template #footer>
         <NSpace justify="center">
           <NButton @click="router.back()">

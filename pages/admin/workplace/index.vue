@@ -21,6 +21,8 @@ definePageMeta({
   icon: 'material-symbols:table-restaurant-outline',
 })
 
+const { t } = useI18n()
+
 const loading = ref(true)
 
 const navItems: NavItem[] = [
@@ -151,6 +153,10 @@ const groupItems: GroupItem[] = [
     date: '2023-04-01',
   },
 ]
+
+useHead({
+  title: t('pages.workplace.title'),
+})
 </script>
 
 <template>

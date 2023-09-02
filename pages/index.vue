@@ -87,6 +87,10 @@ function Repo({ repos }: { repos: Github.Repo[] }) {
       </NList>
     </div>)
 }
+
+useHead({
+  title: 'Home',
+})
 </script>
 
 <template>

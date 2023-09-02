@@ -3,7 +3,7 @@ import { darkTheme, dateZhCN, lightTheme, zhCN } from 'naive-ui'
 
 const { locale } = useI18n()
 const colorMode = useColorMode()
-const { title, description } = useAppConfig()
+const { title: siteTitle, description } = useAppConfig()
 const { themeColor } = useAppSetting()
 
 const theme = computed(() => colorMode.value === 'dark' ? darkTheme : lightTheme)
@@ -25,7 +25,9 @@ useHead({
   htmlAttrs: {
     lang: () => locale.value,
   },
-  title,
+  titleTemplate: (titleChunk?: string) => {
+    return titleChunk ? `${titleChunk} | ${siteTitle}` : siteTitle
+  },
   link: [
     { rel: 'icon', type: 'image/svg+xml', href: '/logo.svg' },
   ],
@@ -34,13 +36,13 @@ useHead({
     { name: 'description', content: description },
     { name: 'referrer', content: 'no-referrer' },
     // open graph social image
-    { property: 'og:title', content: title },
+    { property: 'og:title', content: siteTitle },
     { property: 'og:description', content: description },
     { property: 'og:type', content: 'website' },
     { property: 'og:image', content: '/og.png' },
     { property: 'og:image:width', content: '2000' },
     { property: 'og:image:height', content: '1000' },
-    { property: 'og:site_name', content: title },
+    { property: 'og:site_name', content: siteTitle },
   ],
 })
 </script>
