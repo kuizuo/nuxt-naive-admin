@@ -4,6 +4,7 @@ import { theme } from '#tailwind-config'
 export interface AppSetting {
   themeColor: string
   showLogo: boolean
+  showFooter: boolean
 }
 
 export interface HeaderSetting {
@@ -30,6 +31,7 @@ export const defaultSettings: ProjectSetting = {
   appSetting: {
     themeColor: theme.colors.emerald[500],
     showLogo: true,
+    showFooter: false,
   },
   headerSetting: {
     showBreadCrumb: true,

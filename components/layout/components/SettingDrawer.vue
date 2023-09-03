@@ -137,6 +137,11 @@ const primaryColors = computed(() => {
         </div>
 
         <div class="flex justify-between items-center">
+          Footer
+          <NSwitch v-model:value="settingsStore.appSetting.showFooter" size="small" />
+        </div>
+
+        <div class="flex justify-between items-center">
           Logo
           <NSwitch v-model:value="settingsStore.appSetting.showLogo" size="small" />
         </div>

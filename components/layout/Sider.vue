@@ -29,8 +29,12 @@ const style = computed(() => {
 
 <template>
   <NLayoutSider
-    v-if="!isMobile" bordered show-trigger="bar" :collapsed="collapsed" collapse-mode="width"
-    :collapsed-width="64" :width="menuWidth" :native-scrollbar="false"
+    v-if="!isMobile"
+    bordered show-trigger="bar"
+    collapse-mode="width"
+    :collapsed="collapsed"
+    :collapsed-width="64" :width="menuWidth"
+    :native-scrollbar="false"
     class="min-h-screen relative z-20 transition-all duration-200 ease-in-out shadow-md"
     :style="style"
     @collapse="toggleCollapsed"

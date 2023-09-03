@@ -1,18 +1,27 @@
 <script setup lang="ts">
+const { showFooter } = useAppSetting()
 const { showTabs } = useHeaderSetting()
 
 const refreshing = computed(() => useTabStore().refreshing)
 
 const contentHight = computed(() => {
   const tabsHeight = showTabs.value ? 'var(--app-tabs-height)' : '0px'
+  const footerHeight = showFooter.value ? 'var(--app-footer-height)' : '0px'
 
-  return `calc(100vh - var(--app-header-height)) - ${tabsHeight}`
+  return `calc(100vh - var(--app-header-height)) - ${footerHeight} - ${tabsHeight}`
 })
 
-const contentTop = computed(() => {
+const top = computed(() => {
   const tabsHeight = showTabs.value ? 'var(--app-tabs-height)' : '0px'
 
   return `calc(var(--app-header-height) + ${tabsHeight})`
+})
+
+const bottom = computed(() => {
+  if (showFooter.value)
+    return 'var(--app-footer-height)'
+
+  return 0
 })
 </script>
 
@@ -21,25 +30,25 @@ const contentTop = computed(() => {
     <LayoutSider />
 
     <NLayout class="min-h-screen" :native-scrollbar="false">
-      <NLayoutHeader>
+      <NLayoutHeader position="absolute">
         <LayoutHeader />
         <LayoutTabs v-if="showTabs" />
       </NLayoutHeader>
       <NLayoutContent
         embedded
         position="absolute"
-        :style="{ top: contentTop }"
+        :style="{ top, bottom }"
         :content-style="{
           height: contentHight,
         }"
         :native-scrollbar="false"
       >
-        <slot
-          v-if="!refreshing"
-        />
+        <slot v-if="!refreshing" />
       </NLayoutContent>
 
-      <!-- <LayoutFooter /> -->
+      <NLayoutFooter v-if="showFooter" position="absolute">
+        <LayoutFooter />
+      </NLayoutFooter>
 
       <!-- <NBackTop :right="100" /> -->
     </NLayout>

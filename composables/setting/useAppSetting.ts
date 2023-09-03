@@ -1,6 +1,8 @@
 export function useAppSetting() {
   const settings = useSettingsStore()
 
+  const showFooter = computed(() => settings.appSetting.showFooter)
+
   const showLogo = computed(() => settings.appSetting.showLogo)
 
   const themeColor = computed(() => settings.appSetting.themeColor)
@@ -14,6 +16,7 @@ export function useAppSetting() {
   }
 
   return {
+    showFooter,
     showLogo,
     themeColor,
     setThemeColor,

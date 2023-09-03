@@ -20,6 +20,7 @@ const emits = defineEmits([
 const attrs = useAttrs()
 
 const wrapRef = ref<HTMLElement | null>(null)
+const titleElRef = ref<HTMLElement | null>(null)
 const tableElRef = ref<ComponentRef>(null)
 const tableData = ref<Record<string, any>[]>([])
 const innerPropsRef = ref<Partial<BasicTableProps>>()
@@ -61,24 +62,31 @@ function computeTableHeight() {
   contentHeight.value = wrapRef.value?.clientHeight || 0
 
   const tableEl: any = table?.$el
-  const headEl = tableEl.querySelector('.n-data-table-thead')
-  const { bottomIncludeBody } = getViewportOffset(headEl)
-  const headerH = 64
-  let paginationH = 2
-  const marginH = 16 * 2
+  const theadEl = tableEl.querySelector('.n-data-table-thead')
+  const { bottomIncludeBody } = getViewportOffset(theadEl)
+
+  const headerEl: HTMLElement = document.querySelector('.n-layout-header')!
+  const headerH = headerEl?.offsetHeight || 0
+
+  const footerEl: HTMLElement = document.querySelector('.n-layout-footer')!
+  const footerH = footerEl?.offsetHeight || 0
+
+  let paginationH = 0
+  const marginH = 8
 
   if (!isBoolean(unref(pagination))) {
-    const paginationEl: HTMLElement | null = tableEl.querySelector('.n-data-table__pagination')
+    const paginationEl: HTMLElement = tableEl.querySelector('.n-data-table__pagination')!
+
     if (paginationEl) {
-      const offsetHeight = paginationEl.offsetHeight
+      const offsetHeight = paginationEl?.offsetHeight
       paginationH += offsetHeight || 0
     }
     else {
       paginationH += 28
     }
   }
-  let height
-          = bottomIncludeBody - (headerH + paginationH + marginH + (props.resizeHeightOffset || 0))
+  let height = bottomIncludeBody - (headerH + footerH + paginationH + marginH + (props.resizeHeightOffset || 0))
+
   const maxHeight = props.maxHeight
   height = maxHeight && maxHeight < height ? maxHeight : height
   contentHeight.value = height
