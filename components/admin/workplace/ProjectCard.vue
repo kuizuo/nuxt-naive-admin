@@ -23,7 +23,7 @@ const props = defineProps<{ data: GroupItem[] }>()
     </template>
 
     <div class="grid grid-cols-2 lg:grid-cols-3">
-      <NCard v-for="item in data" :key="item.title" class="rounded-none box-content -m-[1px]" hoverable>
+      <NCard v-for="item in data" :key="item.title" class="rounded-none !box-content -m-[1px]" hoverable>
         <span class="flex">
           <Icon :name="item.icon" :color="item.color" size="30" />
           <span class="text-lg ml-4">{{ item.title }}</span>
