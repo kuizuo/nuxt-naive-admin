@@ -3,6 +3,7 @@ import { useThemeVars } from 'naive-ui'
 import Search from './components/Search.vue'
 import Fullscreen from './components/Fullscreen.vue'
 import ThemeSetting from './components/ThemeSetting.vue'
+import LocalePicker from './components/LocalePicker.vue'
 
 const route = useRoute()
 const router = useRouter()
@@ -83,7 +84,7 @@ function dropdownSelect(key: string) {
       <div class="flex items-center gap-4">
         <Search />
         <Fullscreen />
-        <AppLocalePicker />
+        <LocalePicker />
         <UserButton />
         <ThemeSetting />
       </div>

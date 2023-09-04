@@ -63,6 +63,7 @@ export default defineNuxtConfig({
       exclude: ['/', '/auth/reset-password', '/auth/update-password'],
     },
   },
+  i18n,
   css: ['~/assets/css/main.css'],
   routeRules: {
     '/': { prerender: true },
@@ -72,7 +73,9 @@ export default defineNuxtConfig({
   experimental: {
     componentIslands: true,
   },
-  i18n,
+  build: {
+    transpile: [/echarts/, /resize-detector/],
+  },
   devtools: {
     enabled: true,
   },

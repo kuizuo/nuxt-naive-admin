@@ -25,19 +25,19 @@ const props = defineProps({
             }"
           >
             <template #header>
-              <n-skeleton text width="60%" />
+              <NSkeleton text width="60%" />
             </template>
 
             <template #header-extra>
-              <n-skeleton text width="20%" />
+              <NSkeleton text width="20%" />
             </template>
 
             <div class="py-1 text-2xl">
-              <n-skeleton text width="100%" />
+              <NSkeleton text width="100%" />
             </div>
 
             <template #footer>
-              <n-skeleton text width="100%" />
+              <NSkeleton text width="100%" />
             </template>
           </NCard>
         </NGi>
@@ -53,10 +53,7 @@ const props = defineProps({
             }"
           >
             <template #header>
-              <n-skeleton v-if="loading" text width="60%" />
-              <template v-else>
-                <span> {{ item.title }}</span>
-              </template>
+              <span> {{ item.title }}</span>
             </template>
 
             <template v-if="item.action" #header-extra>
@@ -66,17 +63,12 @@ const props = defineProps({
             </template>
 
             <div class="py-1 text-2xl">
-              <n-skeleton v-if="loading" text width="100%" />
-              <NNumberAnimation v-else show-separator :from="0" :to="item.value" />
+              <NNumberAnimation show-separator :from="0" :to="item.value" />
             </div>
 
             <template #footer>
-              <n-skeleton v-if="loading" text width="100%" />
-
-              <div v-else class="flex gap-4">
-                <span>总{{ item.title }}</span>
-                <NNumberAnimation show-separator :from="0" :to="item.total" />
-              </div>
+              <span>总 {{ item.title }}</span>
+              <NNumberAnimation show-separator :from="0" :to="item.total" />
             </template>
           </NCard>
         </NGi>
