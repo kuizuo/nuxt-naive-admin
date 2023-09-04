@@ -49,8 +49,10 @@ const style = computed(() => {
     <LayoutMenu />
   </NLayoutSider>
   <NDrawer
-    v-else v-model:show="showSideDrawder" :width="menuWidth" placement="left"
-    class="min-h-screen relative z-20 transition-all duration-200 ease-in-out "
+    v-else v-model:show="showSideDrawder"
+    :width="menuWidth"
+    placement="left"
+    class="min-h-screen relative z-20 transition-all duration-200 ease-in-out"
   >
     <AppLogo class="flex h-12" />
     <LayoutMenu @clickMenuItem="toggleCollapsed" />

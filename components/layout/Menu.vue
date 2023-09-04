@@ -33,6 +33,7 @@ const color = computed(() => {
 function genMenus() {
   menus.value = buildMenuList(router.options.routes) as any
 }
+
 genMenus()
 
 function clickMenuItem(key: string) {
@@ -81,10 +82,8 @@ watch(
   },
 )
 
-onMounted(() => {
-  nextTick(() => {
-    updateMenu()
-  })
+tryOnMounted(() => {
+  updateMenu()
 })
 
 watch(locale, () => {

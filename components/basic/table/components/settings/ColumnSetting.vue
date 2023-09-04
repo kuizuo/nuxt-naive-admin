@@ -216,12 +216,12 @@ function handleVisibleChange() {
 
 <template>
   <NTooltip trigger="hover">
-    列设置
+    <span>列设置</span>
     <template #trigger>
-      <div class="cursor-pointer">
+      <div>
         <NPopover trigger="click" :width="230" placement="bottom-end" @update:show="handleVisibleChange">
           <template #trigger>
-            <Icon name="ant-design:setting-outlined" />
+            <Icon name="ant-design:setting-outlined" class="cursor-pointer" />
           </template>
           <template #header>
             <NSpace>
