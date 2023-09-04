@@ -43,7 +43,14 @@ const bottom = computed(() => {
         }"
         :native-scrollbar="false"
       >
-        <slot v-if="!refreshing" />
+        <ClientOnly>
+          <slot v-if="!refreshing" />
+          <n-spin v-else :show="refreshing" class="absolute translate-x-1/2 top-1/2 translate-y-1/2 left-1/2" />
+
+          <template #fallback>
+            <n-spin :show="refreshing" class="absolute translate-x-1/2 top-1/2 translate-y-1/2 left-1/2" />
+          </template>
+        </ClientOnly>
       </NLayoutContent>
 
       <NLayoutFooter v-if="showFooter" position="absolute">
