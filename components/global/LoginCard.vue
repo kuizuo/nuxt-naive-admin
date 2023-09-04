@@ -1,14 +1,15 @@
 <script setup lang='ts'>
 import { createDiscreteApi } from 'naive-ui'
 import type { FormInst, FormItemRule, FormRules } from 'naive-ui/lib/form'
+import type { User } from '@supabase/supabase-js'
 
 const emit = defineEmits<{
-  (e: 'success'): void
+  (e: 'success', user?: User): void
 }>()
 
 const user = useSupabaseUser()
 const { auth } = useSupabaseClient()
-const { message } = createDiscreteApi(['message'])
+const { message, notification } = createDiscreteApi(['message', 'notification'])
 
 const redirectTo = `${useRuntimeConfig().public.baseUrl}/auth/confirm`
 const loading = ref(false)
@@ -54,8 +55,14 @@ async function signIn() {
     if (error)
       return message.error(error.message)
 
-    message.success('登录成功')
-    emit('success')
+    notification.success({
+      content: '登录成功',
+      meta: `欢迎回来: ${data.user.user_metadata.user_name ?? ''}`,
+      duration: 5000,
+      keepAliveOnHover: true,
+    })
+
+    emit('success', data.user)
     return navigateTo('/', { external: true })
   }
   finally {
@@ -179,7 +186,7 @@ watchEffect(() => {
   <NCard>
     <template #header>
       <h2 class="text-center text-xl">
-        Nuxt-Admin
+        Nuxt-Naive-Admin
       </h2>
     </template>
     <NSpin :show="loading">

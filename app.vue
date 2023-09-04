@@ -57,9 +57,13 @@ useHead({
     <NuxtLoadingIndicator :color="themeColor" />
 
     <NMessageProvider>
-      <NuxtLayout>
-        <NuxtPage />
-      </NuxtLayout>
+      <NNotificationProvider>
+        <NDialogProvider>
+          <NuxtLayout>
+            <NuxtPage />
+          </NuxtLayout>
+        </NDialogProvider>
+      </NNotificationProvider>
     </NMessageProvider>
 
     <NGlobalStyle />

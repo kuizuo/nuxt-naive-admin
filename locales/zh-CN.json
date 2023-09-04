@@ -9,7 +9,7 @@
     "header": {
       "document": "文档",
       "home": "首页",
-      "logout": "退出系统",
+      "logout": "退出登录",
       "profile": "用户资料",
       "search": "搜索",
       "tooltip_entry_full": "全屏",

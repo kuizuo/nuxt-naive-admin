@@ -67,8 +67,9 @@ export default defineNuxtConfig({
   css: ['~/assets/css/main.css'],
   routeRules: {
     '/': { prerender: true },
-    '/admin/**': { swr: false },
+    '/admin/**': { ssr: false },
     '/api/**': { cors: true },
+    '/admin': { redirect: '/admin/dashboard' },
   },
   experimental: {
     componentIslands: true,

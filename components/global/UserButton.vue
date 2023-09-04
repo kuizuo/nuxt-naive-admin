@@ -1,10 +1,13 @@
 <script  setup lang="ts">
+import type { User } from '@supabase/supabase-js'
+
 const supbabase = useSupabaseClient()
 const user = useSupabaseUser()
 const router = useRouter()
 const { t } = useI18n()
 
 const showModal = ref(false)
+const dialog = useDialog()
 
 const options = [
   {
@@ -37,13 +40,21 @@ async function handleSelect(key: string) {
       router.push({ path: '/account/profile' })
       break
     case 'logout':
-      await supbabase.auth.signOut()
-      router.push({ path: '/' })
+      dialog.warning({
+        title: '温馨提醒',
+        content: '确定要退出登录吗？',
+        positiveText: '确定',
+        onPositiveClick: async () => {
+          await supbabase.auth.signOut()
+
+          navigateTo('/')
+        },
+      })
       break
   }
 }
 
-function handleSuccess() {
+function handleSuccess(user?: User) {
   showModal.value = false
 }
 </script>
